@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EtageController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
@@ -30,9 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('projets', ProjetController::class);
     Route::resource('contacts', ContactController::class);
     Route::resource('configurations', ConfigurationController::class);
+    Route::resource('etages', EtageController::class);
     Route::get('/projet/appartement/{id}', [ProjetController::class, 'details_appartement'])->name('details_appartement');
-    Route::post('/projets/AddEtage', [ProjetController::class, 'AddEtage'])->name('ajouter_etage');
-
 });
 
 

@@ -81,12 +81,15 @@
                                             <i class="bi bi-file-earmark-pdf"></i> PDF
                                         </a>
                                     </td>
-                                    <td>{{ $maison->created_at->format('d-m-Y H:m') }}</td>
+                                    <td>
+                                        {{ $maison->created_at->format('d-m-Y H:m') }}
+                                        <x-ModalEtage :Id="$maison->id"></x-ModalEtage>
+                                    </td>
                                     <td class="text-end">
-                                        <button class="btn btn-sm btn-dark" type="button" >
+                                        <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#ModalUpdate{{ $maison->id }}">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
-                                        <button class="btn btn-sm btn-danger" type="button" >
+                                        <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $maison->id }}" >
                                             <i class="bi bi-trash-fill"></i> Supprimer
                                         </button>
                                     </td>
@@ -118,7 +121,7 @@
                 </div>
                 @csrf
                 <div class="modal-body">
-                    <form action="{{ route('ajouter_etage') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('etages.store') }}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="appartement_id" id="appartement_id" value="{{ $appartement->id }}">
                         @csrf
                         <div class="mb-3">

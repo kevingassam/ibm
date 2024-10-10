@@ -165,27 +165,5 @@ class ProjetController extends Controller
     }
 
 
-    public function AddEtage(Request $request)
-    {
-        $validated = $request->validate([
-            'etage' => 'required|string|max:255',
-            'numero' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
-            'surface' => 'required|string|max:255',
-            'piece' => 'required|string|max:255',
-            'plan' => 'nullable|mimes:pdf|max:2048',
-            'appartement_id' => 'required|integer|exists:appartements,id'
-        ]);
-        $appartement = Appartement::find($validated['appartement_id']);
-        $etage = new DetailsAppartement();
-        $etage->etage = $validated['etage'];
-        $etage->numero = $validated['numero'];
-        $etage->type = $validated['type'];
-        $etage->surface = $validated['surface'];
-        $etage->piece = $validated['piece'];
-        $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
-        $etage->appartement_id = $validated['appartement_id'];
-        $etage->save();
-        return redirect()->back()->with('success', 'Etage ajouté avec succès!');
-    }
+
 }
