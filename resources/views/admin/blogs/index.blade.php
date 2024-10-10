@@ -79,12 +79,13 @@
                                     </td>
                                     <td>
                                         {{ $article->created_at->format('d-m-Y H:m') }}
+                                        <x-ModalBlog :Id="$article->id"></x-ModalBlog>
                                     </td>
                                     <td class="text-end">
                                         <a href="{{ route('blogs.edit',$article->id) }}" class="btn btn-sm btn-dark">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-danger">
+                                        <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $article->id }}">
                                             <i class="bi bi-trash-fill"></i> Supprimer
                                         </button>
                                     </td>

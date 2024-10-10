@@ -161,7 +161,7 @@ class ProjetController extends Controller
         // Supprimer le projet de la base de données
         $projet->delete();
 
-        return redirect()->route('admin.projets.index')->with('success', 'Projet supprimé avec succès !');
+        return redirect()->route('projets.index')->with('success', 'Projet supprimé avec succès !');
     }
 
 

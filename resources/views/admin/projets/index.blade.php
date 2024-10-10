@@ -114,13 +114,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <x-ModalProjet :Id="$projet->id"></x-ModalProjet>
                                         </td>
                                         <td class="text-end">
                                             <a href="{{ route('projets.edit', $projet->id) }}" class="btn btn-sm btn-dark">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            <button class="btn btn-sm btn-danger">
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $projet->id }}">
                                                 <i class="bi bi-trash-fill"></i> Supprimer
                                             </button>
                                         </td>
