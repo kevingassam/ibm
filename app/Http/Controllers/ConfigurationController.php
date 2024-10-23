@@ -18,8 +18,8 @@ class ConfigurationController extends Controller
             'email1' => 'nullable|email|max:255',
             'email2' => 'nullable|email|max:255',
             'telephone' => 'nullable|string|max:20',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'adresse1' => 'nullable|string|max:255',
             'adresse2' => 'nullable|string|max:255',
             'text_footer' => 'nullable|string|max:500',
@@ -40,7 +40,7 @@ class ConfigurationController extends Controller
             if($information->logo){
                 Storage::disk('public')->delete( $information->logo);
             }
-            $information->logo = $request->file('photo')->store('blogs/photos', 'public');
+            $information->logo = $request->file('logo')->store('blogs/photos', 'public');
         }
         if($request->file("icon")){
             if($information->icon){

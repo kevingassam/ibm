@@ -13,7 +13,7 @@ class FrontController extends Controller
 {
     public function home()
     {
-        return "home";
+        return view("front.index");
     }
 
     public function login()
