@@ -16,6 +16,10 @@ class FrontController extends Controller
         return view("front.index");
     }
 
+    public function contact(){
+        return view("front.contact");
+    }
+
     public function login()
     {
         return view("admin.login");

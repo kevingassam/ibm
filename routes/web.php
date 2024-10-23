@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'home'])->name('home');
 Route::get('/login', [FrontController::class, 'login'])->name('login');
+Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
 Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');
 Route::middleware('auth')->group(function () {
