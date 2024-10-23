@@ -7,6 +7,7 @@ use App\Http\Controllers\EtageController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\TemoignageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('projets', ProjetController::class);
     Route::resource('contacts', ContactController::class);
+    Route::resource('temoignages', TemoignageController::class);
     Route::resource('configurations', ConfigurationController::class);
     Route::resource('etages', EtageController::class);
     Route::get('/projet/appartement/{id}', [ProjetController::class, 'details_appartement'])->name('details_appartement');

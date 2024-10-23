@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-4">
-                                <h5 class="mb-3">nom</h5>
+                                <label class="mb-3">nom</label>
                                 <input type="text" class="form-control" required placeholder="Nom du projet"
                                     name="nom" />
                                 @error('nom')
@@ -41,7 +41,7 @@
                                 @enderror
                             </div>
                             <div class="mb-4">
-                                <h5 class="mb-3">Description</h5>
+                                <label class="mb-3">Description</label>
                                 <textarea class="form-control" cols="4" rows="6" placeholder="write a description here.."
                                     name="description"></textarea>
                                 @error('description')
@@ -70,16 +70,30 @@
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label for="Tags" class="form-label fw-bold">
-                                        Lien vidéo youtube
+                                    <label for="type">
+                                        Type de projet
                                     </label>
-                                    <input type="url" class="form-control" name="video" />
+                                    <select name="type" class="form-select" id="type">
+                                        <option value="résidentiel">Résidentiel</option>
+                                        <option value="commercial">Commercial</option>
+                                    </select>
+                                    @error('type')
+                                        <span class="small text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="Tags" class="form-label fw-bold">
+                                    <label for="video">
+                                        Lien vidéo youtube
+                                    </label>
+                                    <input type="url" class="form-control" id="video" name="video" />
+                                </div>
+                                <div class="col-12">
+                                    <label for="statut">
                                         Statut du projet
                                     </label>
-                                    <select name="statut" class="form-select" id="">
+                                    <select name="statut" class="form-select" id="statut">
                                         <option value="en cours">En cours</option>
                                         <option value="terminé">Terminé</option>
                                     </select>
@@ -90,10 +104,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="Tags" class="form-label fw-bold">
+                                    <label for="map">
                                         Url map pour la carte
                                     </label>
-                                    <input type="text" class="form-control" name="map" />
+                                    <input type="text" class="form-control" name="map" id="map" />
                                     @error('map')
                                         <span class="small text-danger">
                                             {{ $message }}
@@ -101,8 +115,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="Tags" class="form-label fw-bold">Image d'illustration</label>
-                                    <input type="file" class="form-control" name="photo" required />
+                                    <label for="photo">Image d'illustration</label>
+                                    <input type="file" class="form-control" name="photo" id="photo" required />
                                     @error('photo')
                                         <span class="small text-danger">
                                             {{ $message }}

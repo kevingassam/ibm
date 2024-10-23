@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projets', function (Blueprint $table) {
+        Schema::create('temoignages', function (Blueprint $table) {
             $table->id();
             $table->string("nom");
+            $table->string("poste");
             $table->string("photo");
-            $table->string("photos")->nullable();
-            $table->text("description");
-            $table->text("map")->nullable();
-            $table->text("video")->nullable();
-            $table->enum("type",["résidentiel","commercial"])->default("résidentiel");
-            $table->enum("statut",["en cours", "terminé"])->default("en cours");
+            $table->integer("note")->default(0);
+            $table->text("message");
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projets');
+        Schema::dropIfExists('temoignages');
     }
 };

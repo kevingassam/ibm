@@ -57,6 +57,7 @@
                                     <th>Date modification</th>
                                     <th>Date publication</th>
                                     <th>Statut</th>
+                                    <th>Type</th>
                                     <th>Appartements</th>
                                     <th></th>
                                 </tr>
@@ -85,14 +86,21 @@
                                             {{ $projet->created_at->format('d-m-Y H:m') }}
                                         </td>
                                         <td>
-                                            @if ($projet->statut == "en cours")
+                                            @if ($projet->statut == 'en cours')
                                                 <span class="badge bg-danger">En cours</span>
-                                            @elseif ($projet->statut == "terminé")
+                                            @elseif ($projet->statut == 'terminé')
                                                 <span class="badge bg-success">Terminer</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#ModalAppartement{{ $projet->id }}">
+                                            <span class="badge bg-dark text-capitalize">
+                                                {{ $projet->type }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-dark" type="button"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#ModalAppartement{{ $projet->id }}">
                                                 <i class="bi bi-house-add"></i>
                                                 Appartements ( {{ $projet->appartements->count() }} )
                                             </button>
@@ -120,14 +128,15 @@
                                             <a href="{{ route('projets.edit', $projet->id) }}" class="btn btn-sm btn-dark">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $projet->id }}">
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#ModalDelete{{ $projet->id }}">
                                                 <i class="bi bi-trash-fill"></i> Supprimer
                                             </button>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">Aucun projet trouvé.</td>
+                                        <td colspan="7" class="text-center">Aucun projet trouvé.</td>
                                     </tr>
                                 @endforelse
                             </tbody>

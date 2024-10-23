@@ -36,8 +36,6 @@
 
                     <div class="card rounded-0 mb-0 border-0 bg-transparent">
                         <div class="card-body">
-                            <img src="/admin/images/boxed-login.png" class="img-fluid auth-img-cover-login"
-                                width="650" alt="">
                         </div>
                     </div>
 
@@ -113,7 +111,13 @@
 
     <!--plugins-->
     <script src="/admin/js/jquery.min.js"></script>
-
+    <style>
+        .bg-primary{
+            background:url('/img/modern-tokyo-street-background.webp')no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
     <script>
         $(document).ready(function() {
             $("#show_hide_password a").on('click', function(event) {

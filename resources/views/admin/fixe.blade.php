@@ -87,6 +87,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('temoignages.index') }}">
+                        <div class="parent-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <div class="menu-title">Témoignages</div>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon">
                             <span class="material-symbols-outlined">apps</span>

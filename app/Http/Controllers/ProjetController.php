@@ -41,7 +41,6 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        // Valider les champs requis
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -50,12 +49,10 @@ class ProjetController extends Controller
             'statut' => 'required|string|max:255',
             'map' => 'nullable|string',
             'video' => 'nullable|url',
+            'type' => 'required|string|in:résidentiel,commercial'
         ]);
 
-        // Téléverser la photo principale
         $photoPath = $request->file('photo')->store('projets/photos', 'public');
-
-        // Téléverser les photos supplémentaires s'il y en a
         $additionalPhotos = [];
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $file) {
@@ -71,6 +68,7 @@ class ProjetController extends Controller
         $projet->photos = json_encode($additionalPhotos);
         $projet->nom = $validated['nom'];
         $projet->description = $validated['description'];
+        $projet->type = $validated['type'];
         $projet->save();
 
         return redirect()->route('projets.index')->with('success', 'Projet créé avec succès !');
@@ -106,32 +104,25 @@ class ProjetController extends Controller
             'map' => 'nullable|string',
             'video' => 'nullable|url',
             'statut' => 'required|string|max:255',
+            'type' => 'required|string|in:résidentiel,commercial'
         ]);
 
-        // Mettre à jour les champs du projet
         $projet->nom = $validated['nom'];
         $projet->description = $validated['description'];
         $projet->map = $validated['map'];
         $projet->video = $validated['video'];
         $projet->statut = $validated['statut'];
+        $projet->type = $validated['type'];
 
-        // Si une nouvelle photo principale est uploadée, remplacer l'ancienne
         if ($request->hasFile('photo')) {
-            // Supprimer l'ancienne photo
             Storage::disk('public')->delete($projet->photo);
-            // Sauvegarder la nouvelle photo
             $projet->photo = $request->file('photo')->store('projets/photos', 'public');
         }
-
-        // Gérer les photos supplémentaires
         if ($request->hasFile('photos')) {
-            // Supprimer les anciennes photos
             $oldPhotos = json_decode($projet->photos, true) ?? [];
             foreach ($oldPhotos as $oldPhoto) {
                 Storage::disk('public')->delete($oldPhoto);
             }
-
-            // Sauvegarder les nouvelles photos
             $newPhotos = [];
             foreach ($request->file('photos') as $file) {
                 $newPhotos[] = $file->store('projets/photos', 'public');
