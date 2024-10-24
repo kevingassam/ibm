@@ -84,97 +84,42 @@
             <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
                 <a href="{{ route('home') }}">
-                    <img src="/front/img/logo-white.svg" alt="{{ $infos->app_name }}">
+                    <img src="{{ $infos->GetLogo() }}" alt="{{ $infos->app_name }}">
                 </a>
             </div>
             <div class="th-mobile-menu">
                 <ul>
-                    <li class="menu-item-has-children">
+                    <li class="">
                         <a href="{{ route('home') }}">
                             accueil
                         </a>
                     </li>
-                    <li><a href="about.html">
-                            About Us
-                        </a></li>
-                    <li class="menu-item-has-children">
-                        <a href="property.html">
-                            Properties
+                    <li>
+                        <a href="{{ route('about') }}">
+                            À propos de nous
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="property.html">
-                                    Properties
-                                </a></li>
-                            <li><a href="property-details.html">
-                                    Property Details
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="agency.html">
-                            Agencies
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="agency.html">
-                                    Agencies
-                                </a></li>
-                            <li><a href="agency-details.html">
-                                    Agencies Details
-                                </a></li>
-                        </ul>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#">
-                            Pages
+                            Projets
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="team.html">
-                                    Agent Page
-                                </a></li>
-                            <li><a href="team-details.html">
-                                    Agent Details
-                                </a></li>
-                            <li><a href="pricing.html">
-                                    Pricing Page
-                                </a></li>
-                            <li class="menu-item-has-children"><a href="shop.html">
-                                    Shop Page
+                            <li>
+                                <a href="{{ route('projet','en cours') }}">
+                                    Projets en cours
                                 </a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.html">
-                                            Shop Page
-                                        </a></li>
-                                    <li><a href="shop-details.html">
-                                            Shop Details
-                                        </a></li>
-                                    <li><a href="cart.html">
-                                            Cart Page
-                                        </a></li>
-                                    <li><a href="checkout.html">
-                                            Checkout Page
-                                        </a></li>
-                                    <li><a href="wishlist.html">
-                                            Wistlist Page
-                                        </a></li>
-                                </ul>
                             </li>
-                            <li><a href="error.html">
-                                    Error Page
-                                </a></li>
+                            <li>
+                                <a href="{{ route('projet','terminé') }}">
+                                    Projets réalisés
+                                </a>
+                            </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children">
-                        <a href="blog.html">
+                    <li>
+                        <a href="{{ route('articles') }}">
                             Blog
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="blog.html">
-                                    Blog Page
-                                </a></li>
-                            <li><a href="blog-details.html">
-                                    Blog Details
-                                </a></li>
-                        </ul>
                     </li>
                     <li>
                         <a href="{{ route('contact') }}">
@@ -268,32 +213,41 @@
                         <div class="col-auto">
                             <nav class="main-menu d-none d-lg-inline-block">
                                 <ul>
-                                    <li >
+                                    <li>
                                         <a href="{{ route('home') }}">
                                             Accueil
                                         </a>
                                     </li>
-                                    <li><a href="#about-sec">
-                                            About Us
-                                        </a></li>
                                     <li>
-                                        <a href="#property-sec">
-                                            Properties
+                                        <a href="{{ route('about') }}">
+                                            À propos de nous
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#team-sec">
-                                            Agents
+                                    <li class="menu-item-has-children">
+                                        <a href="#">
+                                            Projets
                                         </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="{{ route('projet','en cours') }}">
+                                                    Projets en cours
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('projet','terminé') }}">
+                                                    Projets réalisés
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="#blog-sec">
+                                        <a href="{{ route('articles') }}">
                                             Blog
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('contact') }}#contact-sec">
-                                            Contact Us
+                                            Contactez-nous
                                         </a>
                                     </li>
                                 </ul>
@@ -308,7 +262,8 @@
                         </div>
                         <div class="col-auto d-none d-xxl-block">
                             <div class="header-button">
-                                <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Request A Visit</a>
+                                <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Request A
+                                    Visit</a>
                                 <button type="button" class="simple-icon sideMenuInfo sidebar-btn style2">
                                     <span class="line"></span>
                                     <span class="line"></span>
@@ -388,7 +343,7 @@
                                 <h3 class="widget_title">Useful Link</h3>
                                 <div class="menu-all-pages-container">
                                     <ul class="menu">
-                                        <li><a href="about.html">About us</a></li>
+                                        <li><a href="{{ route('about') }}">À propos de nous</a></li>
                                         <li><a href="property.html">Featured Properties</a></li>
                                         <li><a href="agency.html">Our Best Services</a></li>
                                         <li><a href="{{ route('contact') }}">Request Visit</a></li>
@@ -405,7 +360,7 @@
                                         <li><a href="property.html">All Properties</a></li>
                                         <li><a href="team.html">Our Agents</a></li>
                                         <li><a href="property.html">All Projects</a></li>
-                                        <li><a href="about.html">Our Process</a></li>
+                                        <li><a href="{{ route('about') }}">À propos de nous</a></li>
                                         <li><a href="{{ route('contact') }}">Neighborhood</a></li>
                                     </ul>
                                 </div>

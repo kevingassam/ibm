@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre', 'Contact')
+@section('titre', 'Contactez-nous')
 @section('body')
     <!--==============================
         Breadcumb
@@ -9,10 +9,10 @@
             <div class="row justify-content-center">
                 <div class="col-xl-9">
                     <div class="breadcumb-content">
-                        <h1 class="breadcumb-title">Contact</h1>
+                        <h1 class="breadcumb-title">Contactez-nous</h1>
                         <ul class="breadcumb-menu">
                             <li><a href="index.html">Home</a></li>
-                            <li>Contact</li>
+                            <li>Contactez-nous</li>
                         </ul>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
     <div class="space">
         <div class="container">
             <div class="title-area text-center">
-                <span class="sub-title">Get In Touch</span>
+                <span class="sub-title">Contactez-nous</span>
                 <h2 class="sec-title text-theme">Our Contact Information</h2>
             </div>
             <div class="row gy-4 justify-content-center">

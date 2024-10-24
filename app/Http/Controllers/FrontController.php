@@ -16,10 +16,28 @@ class FrontController extends Controller
         return view("front.index");
     }
 
-    public function contact(){
+    public function contact()
+    {
         return view("front.contact");
     }
 
+    public function about()
+    {
+        return view("front.about");
+    }
+
+    public function projet($statut)
+    {
+        $projets = Projet::where('statut', $statut)->get();
+        return view("front.projet")
+            ->with('projets', $projets)
+            ->with('statut', $statut);
+    }
+
+    public function blogs()
+    {
+        return view("front.blogs");
+    }
     public function login()
     {
         return view("admin.login");
