@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string("app_name")->default("IBM Projet");
             $table->string("email1")->nullable();
             $table->string("email2")->nullable();
-            $table->string("telephone")->nullable();
+            $table->string("tel1")->nullable();
+            $table->string("tel2")->nullable();
             $table->string("logo")->nullable();
             $table->string("icon")->nullable();
             $table->string("adresse1")->nullable();
             $table->string("adresse2")->nullable();
-            $table->string("text_footer")->nullable();
+            $table->text("text_footer")->nullable();
+            $table->text("map")->nullable();
             $table->timestamps();
         });
     }

@@ -1,9 +1,9 @@
 @extends('front.fixe')
-@section('titre',"Accueil")
+@section('titre', 'Accueil')
 @section('body')
     <!--==============================
-    Hero Area
-    ==============================-->
+            Hero Area
+            ==============================-->
     <div class="th-hero-wrapper hero-3" id="hero" data-bg-src="/front/img/hero/hero_bg_3_1.jpg">
         <video class="hero-video" id="video" src="/front/img/hero/hero-3-video.mp4" loop="" muted=""
             autoplay="">
@@ -48,8 +48,8 @@
         </div>
     </div>
     <!--======== / Hero Section ========--><!--==============================
-    About Area
-    ==============================-->
+            About Area
+            ==============================-->
     <div class="overflow-hidden space-top overflow-hidden" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -143,8 +143,8 @@
             </div>
         </div>
     </div><!--==============================
-    Property Area 2
-    ==============================-->
+            Property Area 2
+            ==============================-->
     <section class="space overflow-hidden" id="property-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-top="40%" data-right="1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -541,8 +541,8 @@
     </section>
 
     <!--==============================
-    Counter Area
-    ==============================-->
+            Counter Area
+            ==============================-->
     <div class="space bg-theme">
         <div class="container th-container2">
             <div class="counter-card-wrap style2">
@@ -586,8 +586,8 @@
         </div>
     </div>
     <!--==============================
-    Service Area
-    ==============================-->
+            Service Area
+            ==============================-->
     <section class="service-area-3 space overflow-hidden">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-top="-2%" data-right="30%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -746,8 +746,8 @@
     </section>
 
     <!--==============================
-    About Area
-    ==============================-->
+            About Area
+            ==============================-->
     <div class="overflow-hidden bg-theme space overflow-hidden">
         <div class="about-3-bg-shape text-white sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="15%"
             data-left="3%">
@@ -816,8 +816,8 @@
             </ul>
         </div>
     </div><!--==============================
-    Portfolio Area
-    ==============================-->
+            Portfolio Area
+            ==============================-->
     <section class="space overflow-hidden overflow-hidden">
         <div class="project-bg-shape3-1 sec-bg-shape2-1 jump shape-mockup d-xxl-block d-none" data-bottom="5%"
             data-right="0%">
@@ -1010,8 +1010,8 @@
             </div>
         </div>
     </section><!--==============================
-    Video Area
-    ==============================-->
+            Video Area
+            ==============================-->
     <div class="video-area-2 space overflow-hidden" data-bg-src="/front/img/bg/video-bg-2-1.png" id="contact-sec">
         <div class="container th-container2">
             <div class="row gy-50 flex-row-reverse">
@@ -1068,8 +1068,8 @@
         </div>
     </div>
     <!--==============================
-    Client Area
-    ==============================-->
+            Client Area
+            ==============================-->
     <div class="client-area-1 bg-theme space">
         <div class="container th-container2">
             <div class="swiper th-slider has-shadow" id="clientSlider1"
@@ -1152,8 +1152,8 @@
             </div>
         </div>
     </div><!--==============================
-    Subscribe Area
-    ==============================-->
+            Subscribe Area
+            ==============================-->
     <div class="space overflow-hidden z-index-common" data-bg-src="/front/img/bg/subscribe-bg-3-1.png"
         data-overlay="theme" data-opacity="8">
         <div class="container th-container2">
@@ -1193,8 +1193,8 @@
         </div>
     </div>
     <!--==============================
-    Testimonial Area
-    ==============================-->
+            Testimonial Area
+            ==============================-->
     <section class="overflow-hidden space">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="2%" data-left="-1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -1206,8 +1206,8 @@
             <div class="row justify-content-lg-between align-items-center">
                 <div class="col-xxl-6 col-lg-7">
                     <div class="title-area">
-                        <span class="sub-title">Testimonial</span>
-                        <h2 class="sec-title text-theme">What Our Customers Says</h2>
+                        <span class="sub-title">Témoignage</span>
+                        <h2 class="sec-title text-theme">Ce que disent nos clients</h2>
                     </div>
                 </div>
                 <div class="col-auto">
@@ -1226,221 +1226,41 @@
             <div class="swiper th-slider testi-slider3" id="testiSlider3"
                 data-slider-options='{"spaceBetween":"32","breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"1"},"992":{"slidesPerView":"2"},"1200":{"slidesPerView":"2"},"1400":{"slidesPerView":"3"}},"centeredSlides": "true"}'>
                 <div class="swiper-wrapper">
+
+                    @foreach ($temoignages as $temoignage)
                     <div class="swiper-slide">
                         <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
+                            <p class="testi-card_text">“{{$temoignage->message}}”</p>
                             <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
+                                @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $temoignage->note)
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        @endif
+                                    @endfor
                             </div>
                             <div class="testi-card_profile">
                                 <div class="quote-icon">
                                     <img src="/front/img/icon/qoute.svg" alt="icon">
                                 </div>
                                 <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_1_2.png" alt="avatar">
+                                    <img src="{{ Storage::url($temoignage->photo)}}" alt="avatar">
                                 </div>
                                 <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Andrew Simon</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
+                                    <h3 class="testi-card_name">{{$temoignage->nom}}</h3>
+                                    <span class="testi-card_desig">{{$temoignage->poste}}</span>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_2_2.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Ralph Edwards</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_2_1.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Andrew Simon</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_1_1.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Ralph Edwards</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_1_2.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Andrew Simon</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_2_2.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Ralph Edwards</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_2_1.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Andrew Simon</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“A home that perfectly blends sustainability with luxury until
-                                I discovered Ecoland Residence. From the moment I stepped into this community, I knew it
-                                was where I wanted to live. The commitment to eco-friendly living, coupled with modern
-                                amenities, is truly commendable.”</p>
-                            <div class="testi-grid_review">
-                                <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i
-                                    class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
-                                </div>
-                                <div class="avatar">
-                                    <img src="/front/img/testimonial/testi_1_1.png" alt="avatar">
-                                </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">Ralph Edwards</h3>
-                                    <span class="testi-card_desig">Property Expert</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
     <!--==============================
-    Team Area
-    ==============================-->
+            Team Area
+            ==============================-->
     <section class="space bg-theme overflow-hidden" id="team-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xxl-block d-none text-white" data-bottom="0%" data-left="1%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1753,8 +1573,8 @@
 
 
     <!--==============================
-    Blog Area
-    ==============================-->
+            Blog Area
+            ==============================-->
     <section class="overflow-hidden space" id="blog-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-bottom="0%" data-right="4%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1763,15 +1583,17 @@
             <div class="row justify-content-lg-between align-items-center">
                 <div class="col-xxl-5 col-xl-6 col-lg-7">
                     <div class="title-area">
-                        <span class="sub-title">News & Blog</span>
-                        <h2 class="sec-title text-theme">Read Our Insights</h2>
-                        <p class="sec-text text-theme">Architects and engineers collaborate to create detailed design
-                            plans that translate concepts into feasible structures. </p>
+                        <span class="sub-title">Actualités et blogs</span>
+                        <h2 class="sec-title text-theme">Lisez nos idées</h2>
+                        <p class="sec-text text-theme">
+                            Les architectes et les ingénieurs collaborent pour créer une conception détaillée
+                            des plans qui traduisent les concepts en structures réalisables.
+                        </p>
                     </div>
                 </div>
                 <div class="col-auto">
                     <div class="sec-btn">
-                        <a href="blog.html" class="th-btn style2 th-btn-icon">Browse All Blog</a>
+                        <a href="{{ route('articles') }}" class="th-btn style2 th-btn-icon">Parcourir tous les blogs</a>
                     </div>
                 </div>
             </div>
@@ -1779,155 +1601,35 @@
                 <div class="swiper th-slider has-shadow slider-drag-wrap" id="blogSlider3"
                     data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"2"},"1200":{"slidesPerView":"3"},"1500":{"slidesPerView":"4"}},"autoHeight":true}'>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_1.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">April 22, 2024</a>
-                                        <a href="blog.html">08 min read</a>
+                        @foreach ($autres as $article)
+                            <div class="swiper-slide">
+                                <div class="blog-card style3">
+                                    <div class="blog-img">
+                                        <img src="{{ Storage::url($article->photo) }}" alt="blog image">
                                     </div>
-                                    <h3 class="box-title"><a href="blog-details.html">Innovative structures rise,
-                                            blending Construction and project</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span>{{ $article->created_at->format('d-m-Y H:m') }}</span>
+                                        </div>
+                                        <h3 class="box-title">
+                                            <a
+                                                href="{{ route('article', ['id' => $article->id, 'titre' => $article->titre]) }}">
+                                                {{ Str::limit($article->titre, 70) }}
+                                            </a>
+                                        </h3>
+                                        <a href="{{ route('article', ['id' => $article->id, 'titre' => $article->titre]) }}"
+                                            class="th-btn style-border2 th-btn-icon">
+                                            Lire l'article
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_2.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">June 16, 2024</a>
-                                        <a href="blog.html">10 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">What trends do we expect to
-                                            start growing in the coming future?</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_3.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">April 22, 2024</a>
-                                        <a href="blog.html">08 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">Living sustainability: A day
-                                            in the life at realar residence</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_4.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">June 16, 2024</a>
-                                        <a href="blog.html">10 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">The workplace tells and
-                                            screams for more top story bloggers.</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_1.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">April 22, 2024</a>
-                                        <a href="blog.html">08 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">Innovative structures rise,
-                                            blending Construction and project</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_2.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">June 16, 2024</a>
-                                        <a href="blog.html">10 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">What trends do we expect to
-                                            start growing in the coming future?</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_3.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">April 22, 2024</a>
-                                        <a href="blog.html">08 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">Living sustainability: A day
-                                            in the life at realar residence</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="blog-card style3">
-                                <div class="blog-img">
-                                    <img src="/front/img/blog/blog_3_4.jpg" alt="blog image">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <a href="blog.html">June 16, 2024</a>
-                                        <a href="blog.html">10 min read</a>
-                                    </div>
-                                    <h3 class="box-title"><a href="blog-details.html">The workplace tells and
-                                            screams for more top story bloggers.</a></h3>
-                                    <a href="blog-details.html" class="th-btn style-border2 th-btn-icon">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section><!--==============================
-    Footer Area
-    ==============================-->
+            Footer Area
+            ==============================-->
 @endsection

@@ -27,6 +27,7 @@ Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/projets/{statut}', [FrontController::class, 'projet'])->name('projet');
 Route::get('/articles', [FrontController::class, 'blogs'])->name('articles');
+Route::get('/article/{id}/{titre}', [FrontController::class, 'article'])->name('article');
 Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
 Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');
 Route::middleware('auth')->group(function () {

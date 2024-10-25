@@ -70,6 +70,30 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-4">
+                                        <h6 class="mb-1">Téléphone 1</h6>
+                                        <input type="tel" class="form-control" value="{{ $infos->tel1 }}"
+                                            name="tel1" />
+                                        @error('tel1')
+                                            <span class="small text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-4">
+                                        <h6 class="mb-1">Téléphone 2</h6>
+                                        <input type="tel" class="form-control" value="{{ $infos->tel2 }}"
+                                            name="tel2" />
+                                        @error('tel2')
+                                            <span class="small text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-4">
                                         <h6 class="mb-1">Adresse 1</h6>
                                         <input type="text" class="form-control" value="{{ $infos->adresse1 }}"
                                             name="adresse1" />
@@ -95,9 +119,19 @@
                                 <div class="col-sm-12">
                                     <div class="mb-4">
                                         <h6 class="mb-1">Texte dans le footer du site</h6>
-                                        <input type="text" class="form-control"  placeholder="Texte dans le footer du site"
-                                            value="{{ $infos->text_footer }}" name="text_footer" />
+                                        <textarea name="text_footer" id="text_footer" class="form-control"  rows="5">{{ $infos->text_footer }}</textarea>
                                         @error('text_footer')
+                                            <span class="small text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="mb-4">
+                                        <h6 class="mb-1">Adresse url de la carte map</h6>
+                                        <textarea name="map" id="map" class="form-control"  rows="2">{{ $infos->map }}</textarea>
+                                        @error('map')
                                             <span class="small text-danger">
                                                 {{ $message }}
                                             </span>

@@ -105,12 +105,12 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="{{ route('projet','en cours') }}">
+                                <a href="{{ route('projet', 'en cours') }}">
                                     Projets en cours
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('projet','terminé') }}">
+                                <a href="{{ route('projet', 'terminé') }}">
                                     Projets réalisés
                                 </a>
                             </li>
@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="widget  ">
-                <h3 class="widget_title">Get In Touch</h3>
+                <h3 class="widget_title">Entrer en contact</h3>
                 <div class="th-widget-contact">
                     <div class="info-box_text">
                         <div class="icon"><img src="/front/img/icon/location-dot.svg" alt="img"></div>
@@ -178,7 +178,7 @@
                 </div>
             </div>
             <div class="widget newsletter-widget  ">
-                <h3 class="widget_title">Subscribe Now</h3>
+                <h3 class="widget_title">Abonnez-vous !</h3>
                 <form class="newsletter-form">
                     <div class="form-group">
                         <input class="form-control" type="email" placeholder="Email Address" required="">
@@ -229,12 +229,12 @@
                                         </a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="{{ route('projet','en cours') }}">
+                                                <a href="{{ route('projet', 'en cours') }}">
                                                     Projets en cours
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('projet','terminé') }}">
+                                                <a href="{{ route('projet', 'terminé') }}">
                                                     Projets réalisés
                                                 </a>
                                             </li>
@@ -296,21 +296,26 @@
                                         <a href="{{ route('home') }}"><img src="{{ $infos->GetLogo() }}"
                                                 alt="{{ $infos->app_name }}"></a>
                                     </div>
-                                    <p class="about-text"> Rapidiously myocardinate cross-platform intellectual
-                                        capital model. Appropriately create interactive infrastructures</p>
+                                    <p class="about-text">
+                                        {{ $infos->text_footer ?? '' }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-auto">
                             <div class="widget footer-widget">
-                                <h3 class="widget_title">Get In Touch</h3>
+                                <h3 class="widget_title">Entrer en contact</h3>
                                 <div class="th-widget-contact">
                                     <div class="info-box_text">
-                                        <div class="icon"><img src="/front/img/icon/location-dot.svg"
-                                                alt="img"></div>
+                                        <div class="icon">
+                                            <img src="/front/img/icon/location-dot.svg" alt="img">
+                                        </div>
                                         <div class="details">
-                                            <p>789 Inner Lane, Holy park,</p>
-                                            <p>California, USA</p>
+                                            @if ($infos->adresse1)
+                                                <p>
+                                                    {{ $infos->adresse1 }}
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="info-box_text">
@@ -318,10 +323,20 @@
                                             <img src="/front/img/icon/phone.svg" alt="img">
                                         </div>
                                         <div class="details">
-                                            <p><a href="tel:+0123456789" class="info-box_link">+01 234 567 890</a>
-                                            </p>
-                                            <p><a href="tel:+09876543210" class="info-box_link">+09 876 543 210</a>
-                                            </p>
+                                            @if ($infos->tel1)
+                                                <p>
+                                                    <a href="tel:{{ $infos->tel1 }}" class="info-box_link">
+                                                        {{ $infos->tel1 }}
+                                                    </a>
+                                                </p>
+                                            @endif
+                                            @if ($infos->tel2)
+                                                <p>
+                                                    <a href="tel:{{ $infos->tel2 }}" class="info-box_link">
+                                                        {{ $infos->tel2 }}
+                                                    </a>
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="info-box_text">
@@ -329,10 +344,20 @@
                                             <img src="/front/img/icon/envelope.svg" alt="img">
                                         </div>
                                         <div class="details">
-                                            <p><a href="mailto:mailinfo00@realar.com"
-                                                    class="info-box_link">mailinfo00@realar.com</a></p>
-                                            <p><a href="mailto:support24@realar.com"
-                                                    class="info-box_link">support24@realar.com</a></p>
+                                            @if ($infos->email1)
+                                                <p>
+                                                    <a href="mailto:{{ $infos->email1 }}" class="info-box_link">
+                                                        {{ $infos->email1 }}
+                                                    </a>
+                                                </p>
+                                            @endif
+                                            @if ($infos->email2)
+                                                <p>
+                                                    <a href="mailto:{{ $infos->email2 }}" class="info-box_link">
+                                                        {{ $infos->email2 }}
+                                                    </a>
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -340,14 +365,14 @@
                         </div>
                         <div class="col-md-6 col-xl-auto">
                             <div class="widget widget_nav_menu footer-widget">
-                                <h3 class="widget_title">Useful Link</h3>
+                                <h3 class="widget_title">Lien utile</h3>
                                 <div class="menu-all-pages-container">
                                     <ul class="menu">
                                         <li><a href="{{ route('about') }}">À propos de nous</a></li>
-                                        <li><a href="property.html">Featured Properties</a></li>
-                                        <li><a href="agency.html">Our Best Services</a></li>
-                                        <li><a href="{{ route('contact') }}">Request Visit</a></li>
-                                        <li><a href="{{ route('contact') }}">FAQ</a></li>
+                                        <li><a href="{{ route('projet', 'en cours') }}">Projets en cours</a></li>
+                                        <li><a href="{{ route('projet', 'terminé') }}">rojets terminés</a></li>
+                                        <li><a href="{{ route('about') }}">À propos de nous</a></li>
+                                        <li><a href="{{ route('contact') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>

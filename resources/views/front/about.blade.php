@@ -3,8 +3,8 @@
 @section('body')
 
     <!--==============================
-        Breadcumb
-    ============================== -->
+            Breadcumb
+        ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="/front/img/bg/breadcumb-bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
@@ -21,8 +21,8 @@
         </div>
     </div>
     <!--==============================
-    About Area
-    ==============================-->
+        About Area
+        ==============================-->
     <div class="overflow-hidden space" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -114,8 +114,8 @@
             </div>
         </div>
     </div><!--==============================
-    Why Choose Us Area
-    ==============================-->
+        Why Choose Us Area
+        ==============================-->
     <div class="why-sec-1 overflow-hidden space bg-theme">
         <div class="sec-bg-shape2-1 text-white spin shape-mockup d-xl-block d-none" data-bottom="15%" data-left="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -186,8 +186,8 @@
         </div>
     </div>
     <!--==============================
-    Testimonial Area
-    ==============================-->
+        Testimonial Area
+        ==============================-->
     <section class="overflow-hidden space">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xxl-block d-none" data-bottom="8%" data-left="8%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -196,9 +196,7 @@
             <div class="row justify-content-lg-between justify-content-center align-items-center">
                 <div class="col-xxl-6 col-lg-7">
                     <div class="title-area text-lg-start text-center">
-                        <h2 class="sec-title text-theme">What Our Customers Says</h2>
-                        <p class="sec-text text-theme">Realar help you easily create a real estate trading website. With
-                            the function Register, Login, Post real estate news.</p>
+                        <h2 class="sec-title text-theme">Ce que disent nos clients</h2>
                     </div>
                 </div>
                 <div class="col-auto">
@@ -218,134 +216,39 @@
                 <div class="swiper th-slider testi-slider2" id="testiSlider2"
                     data-slider-options='{"spaceBetween":"48","breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"1"},"992":{"slidesPerView":"1"},"1200":{"slidesPerView":"2"}}}'>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="testi-grid-wrap2">
-                                <div class="testi-grid-thumb">
-                                    <img src="/front/img/testimonial/testi_thumb_2_1.png" alt="img">
-                                </div>
-                                <div class="testi-card style2">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
-                                    </div>
-                                    <p class="testi-card_text">"Home is where love resides, memories are created, and
-                                        dreams are nurtured. I have found my sanctuary in this beautiful property. Finding
-                                        the perfect that resonates with your own"</p>
-                                    <div class="testi-card_profile">
-                                        <div class="quote-icon">
-                                            <img src="/front/img/icon/qoute2.svg" alt="icon">
-                                        </div>
-                                        <div class="avatar">
-                                            <img src="/front/img/testimonial/testi_2_1.png" alt="avatar">
-                                        </div>
-                                        <div class="testi-card_profile-details">
-                                            <h3 class="testi-card_name">Andrew Simon</h3>
-                                            <span class="testi-card_desig">Property Expert</span>
-                                        </div>
-                                    </div>
 
+                        @foreach ($temoignages as $temoignage)
+                            <div class="swiper-slide">
+                                <div class="testi-grid-wrap2">
+                                    <div class="testi-grid-thumb">
+                                        <img src="/front/img/testimonial/testi_thumb_2_1.png" alt="img">
+                                    </div>
+                                    <div class="testi-card style2">
+                                        <div class="testi-grid_review">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $temoignage->note)
+                                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                        <p class="testi-card_text">"{{ $temoignage->message }}"</p>
+                                        <div class="testi-card_profile">
+                                            <div class="quote-icon">
+                                                <img src="/front/img/icon/qoute2.svg" alt="icon">
+                                            </div>
+                                            <div class="avatar">
+                                                <img src="{{ Storage::url($temoignage->photo)}}" alt="avatar">
+                                            </div>
+                                            <div class="testi-card_profile-details">
+                                                <h3 class="testi-card_name">{{ $temoignage->nom }}</h3>
+                                                <span class="testi-card_desig">{{ $temoignage->poste }}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="testi-grid-wrap2">
-                                <div class="testi-grid-thumb">
-                                    <img src="/front/img/testimonial/testi_thumb_2_2.png" alt="img">
-                                </div>
-                                <div class="testi-card style2">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
-                                    </div>
-                                    <p class="testi-card_text">"Home is where love resides, memories are created, and
-                                        dreams are nurtured. I have found my sanctuary in this beautiful property. Finding
-                                        the perfect that resonates with your own"</p>
-                                    <div class="testi-card_profile">
-                                        <div class="quote-icon">
-                                            <img src="/front/img/icon/qoute2.svg" alt="icon">
-                                        </div>
-                                        <div class="avatar">
-                                            <img src="/front/img/testimonial/testi_2_2.png" alt="avatar">
-                                        </div>
-                                        <div class="testi-card_profile-details">
-                                            <h3 class="testi-card_name">Ralph Edwards</h3>
-                                            <span class="testi-card_desig">Property Expert</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="testi-grid-wrap2">
-                                <div class="testi-grid-thumb">
-                                    <img src="/front/img/testimonial/testi_thumb_2_1.png" alt="img">
-                                </div>
-                                <div class="testi-card style2">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
-                                    </div>
-                                    <p class="testi-card_text">"Home is where love resides, memories are created, and
-                                        dreams are nurtured. I have found my sanctuary in this beautiful property. Finding
-                                        the perfect that resonates with your own"</p>
-                                    <div class="testi-card_profile">
-                                        <div class="quote-icon">
-                                            <img src="/front/img/icon/qoute2.svg" alt="icon">
-                                        </div>
-                                        <div class="avatar">
-                                            <img src="/front/img/testimonial/testi_2_1.png" alt="avatar">
-                                        </div>
-                                        <div class="testi-card_profile-details">
-                                            <h3 class="testi-card_name">Andrew Simon</h3>
-                                            <span class="testi-card_desig">Property Expert</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="testi-grid-wrap2">
-                                <div class="testi-grid-thumb">
-                                    <img src="/front/img/testimonial/testi_thumb_2_2.png" alt="img">
-                                </div>
-                                <div class="testi-card style2">
-                                    <div class="testi-grid_review">
-                                        <i class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i><i
-                                            class="fa-sharp fa-solid fa-star"></i>
-                                    </div>
-                                    <p class="testi-card_text">"Home is where love resides, memories are created, and
-                                        dreams are nurtured. I have found my sanctuary in this beautiful property. Finding
-                                        the perfect that resonates with your own"</p>
-                                    <div class="testi-card_profile">
-                                        <div class="quote-icon">
-                                            <img src="/front/img/icon/qoute2.svg" alt="icon">
-                                        </div>
-                                        <div class="avatar">
-                                            <img src="/front/img/testimonial/testi_2_2.png" alt="avatar">
-                                        </div>
-                                        <div class="testi-card_profile-details">
-                                            <h3 class="testi-card_name">Ralph Edwards</h3>
-                                            <span class="testi-card_desig">Property Expert</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -353,8 +256,8 @@
     </section>
 
     <!--==============================
-    Team Area
-    ==============================-->
+        Team Area
+        ==============================-->
     <section class="space bg-theme">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xxl-block d-none text-white" data-bottom="5%" data-right="8%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -670,8 +573,8 @@
 
 
     <!--==============================
-    Client Area
-    ==============================-->
+        Client Area
+        ==============================-->
     <div class="client-area-1 space" data-bg-src="/front/img/hero/hero_bg_4_1.jpg">
         <div class="container">
             <div class="slider-area client-slider3">
@@ -757,7 +660,7 @@
         </div>
     </div>
     <!--==============================
-    Footer Area
-    ==============================-->
+        Footer Area
+        ==============================-->
 
 @endsection

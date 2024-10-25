@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\DetailsAppartement;
 use App\Models\Projet;
+use App\Models\Temoignage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,11 @@ class FrontController extends Controller
 {
     public function home()
     {
-        return view("front.index");
+        $autres = Blog::Orderby('created_at', 'desc')->take(10)->get();
+        $temoignages = Temoignage::all();
+        return view("front.index")
+        ->with('autres', $autres)
+        ->with('temoignages', $temoignages);
     }
 
     public function contact()
@@ -23,7 +28,9 @@ class FrontController extends Controller
 
     public function about()
     {
-        return view("front.about");
+        $temoignages = Temoignage::all();
+        return view("front.about")
+        ->with('temoignages', $temoignages);
     }
 
     public function projet($statut)
@@ -34,9 +41,29 @@ class FrontController extends Controller
             ->with('statut', $statut);
     }
 
-    public function blogs()
+
+    public function article($id,$titre){
+        $article = Blog::find($id);
+        $autres = Blog::Orderby('created_at', 'desc')->take(3)->where('id','!=',$article->id)->get();
+        return view("front.article")
+            ->with('article', $article)
+            ->with('titre', $titre)
+            ->with('autres', $autres);
+    }
+
+    public function blogs(Request $request)
     {
-        return view("front.blogs");
+        $key = $request->input('key'??  null) ;
+        $articles = Blog::query();
+        if ($key) {
+            $articles = $articles->where('titre', 'LIKE', '%' . $key . '%');
+        }
+        $articles = $articles->orderBy('created_at', 'desc')->paginate(50);
+        $autres = Blog::Orderby('created_at', 'desc')->take(3)->get();
+        return view("front.blogs")
+            ->with('articles', $articles)
+            ->with('key', $key)
+            ->with('autres', $autres);
     }
     public function login()
     {
