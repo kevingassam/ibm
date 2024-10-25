@@ -35,10 +35,23 @@ class FrontController extends Controller
 
     public function projet($statut)
     {
+        if($statut != "en cours" && $statut != "terminé"){
+            $statut = "en cours";
+        }
         $projets = Projet::where('statut', $statut)->get();
         return view("front.projet")
             ->with('projets', $projets)
             ->with('statut', $statut);
+    }
+
+
+    public function projet_details($id,$nom){
+        $projet = Projet::find($id);
+        if(!$projet){
+            abort(404);
+        }
+        return view("front.details-projet")
+            ->with('projet', $projet);
     }
 
 

@@ -110,185 +110,31 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade active show" id="tab-list" role="tabpanel" aria-labelledby="tab-shop-list">
                     <div class="row gy-40">
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-1.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Toronto
-                                                Townhouse</a></h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">2715 Ash, South Dakota 83475</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
+                        @foreach ($projets as $projet)
                         <div class="col-md-6 col-xl-4">
                             <div class="property-card2">
                                 <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-2.jpg" alt="img">
+                                    <img src="{{ Storage::url($projet->photo)}}" alt="img">
                                 </div>
                                 <div class="property-card-details">
                                     <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Serenity Villa</a>
-                                        </h4>
+                                        <h4 class="property-card-title">
+                                            <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}">
+                                                {{ Str::limit($projet->nom, 30)}}
+                                                </a>
+                                            </h4>
                                         <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">2464 Royal, New Jersey</p>
+                                        <p class="property-card-location text-capitalize">{{ $projet->type }}</p>
                                     </div>
                                     <div class="btn-wrap">
-                                        <a href="property-details.html"
+                                        <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}"
                                             class="th-btn style-border2 th-btn-icon">Details</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-3.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Loft Pent
-                                                House</a></h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">6391 Elgin St. Celina</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-4.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Villa Qubic</a>
-                                        </h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">4517 Washington Manchester</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-5.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Spectral
-                                                Houses</a></h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">1901 Thornridge, Hawaii 81063</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-6.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Modern House</a>
-                                        </h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">2715 Ash Dr. San Jose</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-7.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Villa
-                                                Archetype</a></h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">3517 W. Gray St. Utica</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-8.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Alpina house</a>
-                                        </h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">6391 Elgin St. Celina</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-xl-4">
-                            <div class="property-card2">
-                                <div class="property-card-thumb img-shine">
-                                    <img src="/front/img/property/property-s-1-9.jpg" alt="img">
-                                </div>
-                                <div class="property-card-details">
-                                    <div class="media-left">
-                                        <h4 class="property-card-title"><a href="property-details.html">Emma House</a>
-                                        </h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                        <p class="property-card-location">4517 Washington Manchester</p>
-                                    </div>
-                                    <div class="btn-wrap">
-                                        <a href="property-details.html"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
 
