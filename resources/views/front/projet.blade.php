@@ -25,56 +25,19 @@
     ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
-            <ul class="nav nav-tabs property-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="rent-tab" data-bs-toggle="tab" data-bs-target="#rent-tab-pane"
-                        type="button" role="tab" aria-controls="rent-tab-pane" aria-selected="true">Rent</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="buy-tab" data-bs-toggle="tab" data-bs-target="#buy-tab-pane"
-                        type="button" role="tab" aria-controls="buy-tab-pane" aria-selected="false">Buy</button>
-                </li>
-            </ul>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="rent-tab-pane" role="tabpanel" aria-labelledby="rent-tab"
                     tabindex="0">
-                    <form class="property-search-form">
-                        <label>Property Search</label>
+                    <form class="property-search-form" method="get" action="{{ Request::url() }}">
+                        <label>Recherche de propriété</label>
                         <div class="form-group">
                             <i class="far fa-search"></i>
-                            <input class="form-control" type="text" placeholder="Lisiting ID or Location">
+                            <input class="form-control" type="text" name="key" value="{{ $key }}" placeholder="Recherche par mot clés">
                         </div>
-                        <select class="form-select">
-                            <option value="category" selected="selected">Category</option>
-                            <option value="luxury">Luxury</option>
-                            <option value="commercial">Commercial</option>
-                        </select>
-                        <select class="form-select">
-                            <option value="offer_type" selected="selected">Offer Type</option>
-                            <option value="popularity">Popularity</option>
-                            <option value="rating">Rating</option>
-                            <option value="date">Latest</option>
-                        </select>
-                        <button class="th-btn" type="submit"><i class="far fa-search"></i> Search</button>
-                    </form>
-                </div>
-                <div class="tab-pane fade" id="buy-tab-pane" role="tabpanel" aria-labelledby="buy-tab" tabindex="0">
-                    <form class="property-search-form">
-                        <label>Property Search</label>
-                        <div class="form-group">
-                            <i class="far fa-search"></i>
-                            <input class="form-control" type="text" placeholder="Lisiting ID or Location">
-                        </div>
-                        <select class="form-select">
-                            <option value="category" selected="selected">Category</option>
-                            <option value="luxury">Luxury</option>
-                            <option value="commercial">Commercial</option>
-                        </select>
-                        <select class="form-select">
-                            <option value="offer_type" selected="selected">Offer Type</option>
-                            <option value="popularity">Popularity</option>
-                            <option value="rating">Rating</option>
-                            <option value="date">Latest</option>
+                        <select class="form-select" name="type">
+                            <option value="offer_type" selected="selected">Type</option>
+                            <option value="résidentiel" @selected($type == "résidentiel")>Résidentiel</option>
+                            <option value="commercial" @selected($type == "commercial")>Commercial</option>
                         </select>
                         <button class="th-btn" type="submit"><i class="far fa-search"></i> Search</button>
                     </form>
@@ -83,7 +46,9 @@
             <div class="th-sort-bar">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-md">
-                        <p class="woocommerce-result-count">Showing 1–9 of 16 results</p>
+                        <p class="woocommerce-result-count">
+                            Affichage de {{ $projets->count() }} sur {{ $total }} résultats
+                        </p>
                     </div>
 
                     <div class="col-md-auto">
@@ -124,7 +89,7 @@
                                                 {{ Str::limit($projet->nom, 30)}}
                                                 </a>
                                             </h4>
-                                        <h5 class="property-card-price">$ 1500.00 USD/night</h5>
+                                       {{--  <h5 class="property-card-price">$ 1500.00 USD/night</h5> --}}
                                         <p class="property-card-location text-capitalize">{{ $projet->type }}</p>
                                     </div>
                                     <div class="btn-wrap">
@@ -145,8 +110,6 @@
                     <ul>
                         <!-- <li><a class="prev-page" href="blog.html"><i class="far fa-arrow-left me-2"></i>Previous</a></li> -->
                         <li><a class="active" href="blog.html">1</a></li>
-                        <li><a href="blog.html">2</a></li>
-                        <li><a href="blog.html">3</a></li>
                         <li><a class="next-page" href="blog.html">Next<i class="far fa-arrow-right ms-2"></i></a></li>
                     </ul>
                 </div>

@@ -16,9 +16,11 @@ class FrontController extends Controller
     {
         $autres = Blog::Orderby('created_at', 'desc')->take(10)->get();
         $temoignages = Temoignage::all();
+        $projets = Projet::Orderby('created_at', 'desc')->take(15)->get();
         return view("front.index")
-        ->with('autres', $autres)
-        ->with('temoignages', $temoignages);
+            ->with('autres', $autres)
+            ->with('temoignages', $temoignages)
+            ->with('projets', $projets);
     }
 
     public function contact()
@@ -30,24 +32,38 @@ class FrontController extends Controller
     {
         $temoignages = Temoignage::all();
         return view("front.about")
-        ->with('temoignages', $temoignages);
+            ->with('temoignages', $temoignages);
     }
 
-    public function projet($statut)
+    public function projet(Request $request, $statut)
     {
-        if($statut != "en cours" && $statut != "terminé"){
+        $key = $request->input("key") ?? null;
+        $type = $request->input("type") ?? null;
+        if ($statut != "en cours" && $statut != "terminé") {
             $statut = "en cours";
         }
-        $projets = Projet::where('statut', $statut)->get();
+        $projets = Projet::where('statut', $statut);
+        if ($key) {
+            $projets = $projets->where('nom', 'LIKE', '%' . $key . '%');
+        }
+        if ($type) {
+            $projets = $projets->where('type', $type);
+        }
+        $projets = $projets->paginate(30);
+        $total =Projet::where('statut', $statut)->count();
         return view("front.projet")
             ->with('projets', $projets)
-            ->with('statut', $statut);
+            ->with('statut', $statut)
+            ->with('key', $key)
+            ->with('type', $type)
+            ->with('total', $total);
     }
 
 
-    public function projet_details($id,$nom){
+    public function projet_details($id, $nom)
+    {
         $projet = Projet::find($id);
-        if(!$projet){
+        if (!$projet) {
             abort(404);
         }
         return view("front.details-projet")
@@ -55,9 +71,10 @@ class FrontController extends Controller
     }
 
 
-    public function article($id,$titre){
+    public function article($id, $titre)
+    {
         $article = Blog::find($id);
-        $autres = Blog::Orderby('created_at', 'desc')->take(3)->where('id','!=',$article->id)->get();
+        $autres = Blog::Orderby('created_at', 'desc')->take(3)->where('id', '!=', $article->id)->get();
         return view("front.article")
             ->with('article', $article)
             ->with('titre', $titre)
@@ -66,7 +83,7 @@ class FrontController extends Controller
 
     public function blogs(Request $request)
     {
-        $key = $request->input('key'??  null) ;
+        $key = $request->input('key' ??  null);
         $articles = Blog::query();
         if ($key) {
             $articles = $articles->where('titre', 'LIKE', '%' . $key . '%');

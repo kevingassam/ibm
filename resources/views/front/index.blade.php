@@ -827,8 +827,8 @@
             <div class="row justify-content-lg-between align-items-center">
                 <div class="col-xxl-6 col-xl-7 col-lg-6">
                     <div class="title-area">
-                        <span class="sub-title">Projects</span>
-                        <h2 class="sec-title text-theme">Our Latetst Projects</h2>
+                        <span class="sub-title">Projets</span>
+                        <h2 class="sec-title text-theme">Nos derniers projets</h2>
                     </div>
                 </div>
                 <div class="col-auto">
@@ -841,170 +841,33 @@
                 <div class="swiper th-slider slider-drag-wrap" id="projectSlider3"
                     data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1400":{"slidesPerView":"4"}}}'>
                     <div class="swiper-wrapper">
+
+                        @foreach ($projets as $key=> $projet)
                         <div class="swiper-slide">
                             <div class="portfolio-card style3">
                                 <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_1.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
+                                    <img src="{{ Storage::url($projet->photo) }}" alt="project image">
+                                    <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}" class="icon-btn">
                                         <div class="icon">
                                             <img src="/front/img/icon/arrow-right.svg" alt="img">
                                         </div>
-                                        Look More
+                                        Voir
                                     </a>
                                 </div>
                                 <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">01. Luxury
-                                            Apartment</a></h3>
-                                    <p class="portfolio-text">Architects and engineers collaborate to create detail
-                                        design plans that translate concepts into realar team feasible structures. </p>
+                                    <h3 class="portfolio-title">
+                                        <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}">
+                                            {{ $key++ }}.
+                                            {{ Str::limit($projet->nom , 20)}}
+                                        </a>
+                                        </h3>
+                                    <p class="portfolio-text">
+                                        {{ Str::limit(strip_tags($projet->description), 100) }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_2.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">02. Family House</a>
-                                    </h3>
-                                    <p class="portfolio-text">Many modern construction companies focus on sale
-                                        sustainable building practices, realar incorporating eco-friendly material
-                                        energy-efficient.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_3.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">03. Luxury
-                                            Bedroom</a></h3>
-                                    <p class="portfolio-text">Architects and engineers collaborate to create detail
-                                        design plans that translate concepts into realar team feasible structures. </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_4.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">04. Eco House</a>
-                                    </h3>
-                                    <p class="portfolio-text">Many modern construction companies focus on sale
-                                        sustainable building practices, realar incorporating eco-friendly material
-                                        energy-efficient.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_1.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">01. Luxury
-                                            Apartment</a></h3>
-                                    <p class="portfolio-text">Architects and engineers collaborate to create detail
-                                        design plans that translate concepts into realar team feasible structures. </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_2.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">02. Family House</a>
-                                    </h3>
-                                    <p class="portfolio-text">Many modern construction companies focus on sale
-                                        sustainable building practices, realar incorporating eco-friendly material
-                                        energy-efficient.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_3.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">03. Luxury
-                                            Bedroom</a></h3>
-                                    <p class="portfolio-text">Architects and engineers collaborate to create detail
-                                        design plans that translate concepts into realar team feasible structures. </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="/front/img/project/project_3_4.png" alt="project image">
-                                    <a href="property-details.html" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Look More
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title"><a href="property-details.html">04. Eco House</a>
-                                    </h3>
-                                    <p class="portfolio-text">Many modern construction companies focus on sale
-                                        sustainable building practices, realar incorporating eco-friendly material
-                                        energy-efficient.</p>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>

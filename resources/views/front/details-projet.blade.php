@@ -107,7 +107,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <h3 class="page-title mt-50 mb-30">From Our Gallery</h3>
+                            <h3 class="page-title mt-50 mb-30">De notre galerie</h3>
                             <div class="row gy-4">
                                 <div class="col-xl-5">
                                     <div class="property-gallery-card">
@@ -173,7 +173,7 @@
                                                     <th>Comparaison</th>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($appartement->DetailsAppartement as $details)
+                                                    @forelse ($appartement->DetailsAppartement as $details)
                                                         <tr>
                                                             <td>{{ $details->numero }}</td>
                                                             <td>{{ $details->etage }}</td>
@@ -191,7 +191,11 @@
                                                                 <img width="25" height="25" src="https://img.icons8.com/glyph-neue/25/FFFFFF/bookmark-ribbon.png" alt="bookmark-ribbon"/>
                                                             </td>
                                                         </tr>
-                                                    @endforeach
+                                                        @empty
+                                                        <tr>
+                                                            <td colspan="8" class="text-center">Aucun résultat</td>
+                                                        </tr>
+                                                    @endforelse
                                                 </tbody>
                                             </table>
                                         </div>
