@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\DetailsAppartement;
+use App\Models\Partenaire;
 use App\Models\Projet;
 use App\Models\Temoignage;
 use Illuminate\Http\Request;
@@ -17,10 +18,14 @@ class FrontController extends Controller
         $autres = Blog::Orderby('created_at', 'desc')->take(10)->get();
         $temoignages = Temoignage::all();
         $projets = Projet::Orderby('created_at', 'desc')->take(15)->get();
+        $pieces = DetailsAppartement::distinct('piece')->pluck('piece');
+        $partenaires = Partenaire::select('nom','logo')->get();
         return view("front.index")
             ->with('autres', $autres)
             ->with('temoignages', $temoignages)
-            ->with('projets', $projets);
+            ->with('projets', $projets)
+            ->with('pieces', $pieces)
+            ->with('partenaires', $partenaires);
     }
 
     public function contact()

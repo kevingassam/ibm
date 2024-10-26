@@ -5,6 +5,7 @@ use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EtageController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\PartenaireController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\TemoignageController;
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('contacts', ContactController::class);
     Route::resource('temoignages', TemoignageController::class);
     Route::resource('configurations', ConfigurationController::class);
+    Route::resource('partenaires', PartenaireController::class);
     Route::resource('etages', EtageController::class);
     Route::get('/projet/appartement/{id}', [ProjetController::class, 'details_appartement'])->name('details_appartement');
 });

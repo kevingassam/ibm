@@ -2,8 +2,8 @@
 @section('titre', 'Accueil')
 @section('body')
     <!--==============================
-            Hero Area
-            ==============================-->
+                        Hero Area
+                        ==============================-->
     <div class="th-hero-wrapper hero-3" id="hero" data-bg-src="/front/img/hero/hero_bg_3_1.jpg">
         <video class="hero-video" id="video" src="/front/img/hero/hero-3-video.mp4" loop="" muted=""
             autoplay="">
@@ -13,31 +13,30 @@
                 <div class="col-12">
                     <div class="hero-style3 text-center">
                         <div class="btn-wrap justify-content-center">
-                            <a href="property.html" class="th-btn style-border th-btn-icon">Sales</a>
-                            <a href="property.html" class="th-btn style-border th-btn-icon">Rentals</a>
+                            <a href="property.html" class="th-btn style-border th-btn-icon">Résidentiel</a>
                             <a href="property.html" class="th-btn style-border th-btn-icon">Commercial</a>
                         </div>
                         <h1 class="hero-title text-white">
-                            Experience The Harmonious Blend Of Luxury
+                            Découvrez le mélange harmonieux du luxe
                         </h1>
                         <form class="property-search-form">
-                            <label>Property Search</label>
+                            <label>Recherche de propriété</label>
                             <div class="form-group">
                                 <i class="far fa-search"></i>
-                                <input class="form-control" type="text" placeholder="Lisiting ID or Location">
+                                <input class="form-control" type="text" placeholder="Recherche par clé">
                             </div>
-                            <select class="form-select">
-                                <option value="category" selected="selected">Category</option>
-                                <option value="luxury">Luxury</option>
+                            <select class="form-select" name="piece" id="piece">
+                                <option value="" selected="selected">Pièces</option>
+                                @foreach ($pieces as $piece)
+                                    <option value="{{ $piece }}">{{ $piece }}</option>
+                                @endforeach
+                            </select>
+                            <select class="form-select" name="type" id="type">
+                                <option value="offer_type" selected="selected">Type</option>
+                                <option value="résidentiel">Résidentiel</option>
                                 <option value="commercial">Commercial</option>
                             </select>
-                            <select class="form-select">
-                                <option value="offer_type" selected="selected">Offer Type</option>
-                                <option value="popularity">Popularity</option>
-                                <option value="rating">Rating</option>
-                                <option value="date">Latest</option>
-                            </select>
-                            <button class="th-btn" type="submit"><i class="far fa-search"></i> Search</button>
+                            <button class="th-btn" type="submit"><i class="far fa-search"></i> Recherche</button>
                         </form>
                         <div class="scroll-down">
                             <a href="#property-sec" class="hero-scroll-wrap"></a>
@@ -48,8 +47,8 @@
         </div>
     </div>
     <!--======== / Hero Section ========--><!--==============================
-            About Area
-            ==============================-->
+                        About Area
+                        ==============================-->
     <div class="overflow-hidden space-top overflow-hidden" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -143,8 +142,8 @@
             </div>
         </div>
     </div><!--==============================
-            Property Area 2
-            ==============================-->
+                        Property Area 2
+                        ==============================-->
     <section class="space overflow-hidden" id="property-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-top="40%" data-right="1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -541,8 +540,8 @@
     </section>
 
     <!--==============================
-            Counter Area
-            ==============================-->
+                        Counter Area
+                        ==============================-->
     <div class="space bg-theme">
         <div class="container th-container2">
             <div class="counter-card-wrap style2">
@@ -586,8 +585,8 @@
         </div>
     </div>
     <!--==============================
-            Service Area
-            ==============================-->
+                        Service Area
+                        ==============================-->
     <section class="service-area-3 space overflow-hidden">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-top="-2%" data-right="30%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -746,8 +745,8 @@
     </section>
 
     <!--==============================
-            About Area
-            ==============================-->
+                        About Area
+                        ==============================-->
     <div class="overflow-hidden bg-theme space overflow-hidden">
         <div class="about-3-bg-shape text-white sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="15%"
             data-left="3%">
@@ -816,8 +815,8 @@
             </ul>
         </div>
     </div><!--==============================
-            Portfolio Area
-            ==============================-->
+                        Portfolio Area
+                        ==============================-->
     <section class="space overflow-hidden overflow-hidden">
         <div class="project-bg-shape3-1 sec-bg-shape2-1 jump shape-mockup d-xxl-block d-none" data-bottom="5%"
             data-right="0%">
@@ -842,39 +841,41 @@
                     data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1400":{"slidesPerView":"4"}}}'>
                     <div class="swiper-wrapper">
 
-                        @foreach ($projets as $key=> $projet)
-                        <div class="swiper-slide">
-                            <div class="portfolio-card style3">
-                                <div class="portfolio-img">
-                                    <img src="{{ Storage::url($projet->photo) }}" alt="project image">
-                                    <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}" class="icon-btn">
-                                        <div class="icon">
-                                            <img src="/front/img/icon/arrow-right.svg" alt="img">
-                                        </div>
-                                        Voir
-                                    </a>
-                                </div>
-                                <div class="portfolio-content">
-                                    <h3 class="portfolio-title">
-                                        <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}">
-                                            {{ $key++ }}.
-                                            {{ Str::limit($projet->nom , 20)}}
+                        @foreach ($projets as $key => $projet)
+                            <div class="swiper-slide">
+                                <div class="portfolio-card style3">
+                                    <div class="portfolio-img">
+                                        <img src="{{ Storage::url($projet->photo) }}" alt="project image">
+                                        <a href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}"
+                                            class="icon-btn">
+                                            <div class="icon">
+                                                <img src="/front/img/icon/arrow-right.svg" alt="img">
+                                            </div>
+                                            Voir
                                         </a>
+                                    </div>
+                                    <div class="portfolio-content">
+                                        <h3 class="portfolio-title">
+                                            <a
+                                                href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}">
+                                                {{ $key++ }}.
+                                                {{ Str::limit($projet->nom, 20) }}
+                                            </a>
                                         </h3>
-                                    <p class="portfolio-text">
-                                        {{ Str::limit(strip_tags($projet->description), 100) }}
-                                    </p>
+                                        <p class="portfolio-text">
+                                            {{ Str::limit(strip_tags($projet->description), 100) }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section><!--==============================
-            Video Area
-            ==============================-->
+                        Video Area
+                        ==============================-->
     <div class="video-area-2 space overflow-hidden" data-bg-src="/front/img/bg/video-bg-2-1.png" id="contact-sec">
         <div class="container th-container2">
             <div class="row gy-50 flex-row-reverse">
@@ -931,92 +932,28 @@
         </div>
     </div>
     <!--==============================
-            Client Area
-            ==============================-->
+                        Client Area
+                        ==============================-->
     <div class="client-area-1 bg-theme space">
         <div class="container th-container2">
             <div class="swiper th-slider has-shadow" id="clientSlider1"
                 data-slider-options='{"breakpoints":{"0":{"slidesPerView":2},"576":{"slidesPerView":"3"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"6"}}}'>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_1.svg" alt="Image">
-                        </a>
-                    </div>
 
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_2.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_3.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_4.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_5.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_6.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_1.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_2.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_3.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_4.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_5.svg" alt="Image">
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="#" class="client-card">
-                            <img src="/front/img/brand/brand_1_6.svg" alt="Image">
-                        </a>
-                    </div>
-
+                    @foreach ($partenaires as $partenaire)
+                        <div class="swiper-slide">
+                            <a href="#" class="client-card">
+                                <img src="{{ Storage::url($partenaire->logo) }}" alt="{{ $partenaire->nom }}">
+                            </a>
+                        </div>
+                    @endforeach
 
                 </div>
             </div>
         </div>
     </div><!--==============================
-            Subscribe Area
-            ==============================-->
+                        Subscribe Area
+                        ==============================-->
     <div class="space overflow-hidden z-index-common" data-bg-src="/front/img/bg/subscribe-bg-3-1.png"
         data-overlay="theme" data-opacity="8">
         <div class="container th-container2">
@@ -1056,8 +993,8 @@
         </div>
     </div>
     <!--==============================
-            Testimonial Area
-            ==============================-->
+                        Testimonial Area
+                        ==============================-->
     <section class="overflow-hidden space">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="2%" data-left="-1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -1091,39 +1028,39 @@
                 <div class="swiper-wrapper">
 
                     @foreach ($temoignages as $temoignage)
-                    <div class="swiper-slide">
-                        <div class="testi-card style3">
-                            <p class="testi-card_text">“{{$temoignage->message}}”</p>
-                            <div class="testi-grid_review">
-                                @for ($i = 1; $i <= 5; $i++)
+                        <div class="swiper-slide">
+                            <div class="testi-card style3">
+                                <p class="testi-card_text">“{{ $temoignage->message }}”</p>
+                                <div class="testi-grid_review">
+                                    @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= $temoignage->note)
-                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                            <i class="fa-sharp fa-solid fa-star"></i>
                                         @endif
                                     @endfor
-                            </div>
-                            <div class="testi-card_profile">
-                                <div class="quote-icon">
-                                    <img src="/front/img/icon/qoute.svg" alt="icon">
                                 </div>
-                                <div class="avatar">
-                                    <img src="{{ Storage::url($temoignage->photo)}}" alt="avatar">
+                                <div class="testi-card_profile">
+                                    <div class="quote-icon">
+                                        <img src="/front/img/icon/qoute.svg" alt="icon">
+                                    </div>
+                                    <div class="avatar">
+                                        <img src="{{ Storage::url($temoignage->photo) }}" alt="avatar">
+                                    </div>
+                                    <div class="testi-card_profile-details">
+                                        <h3 class="testi-card_name">{{ $temoignage->nom }}</h3>
+                                        <span class="testi-card_desig">{{ $temoignage->poste }}</span>
+                                    </div>
                                 </div>
-                                <div class="testi-card_profile-details">
-                                    <h3 class="testi-card_name">{{$temoignage->nom}}</h3>
-                                    <span class="testi-card_desig">{{$temoignage->poste}}</span>
-                                </div>
-                            </div>
 
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
     <!--==============================
-            Team Area
-            ==============================-->
+                        Team Area
+                        ==============================-->
     <section class="space bg-theme overflow-hidden" id="team-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xxl-block d-none text-white" data-bottom="0%" data-left="1%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1436,8 +1373,8 @@
 
 
     <!--==============================
-            Blog Area
-            ==============================-->
+                        Blog Area
+                        ==============================-->
     <section class="overflow-hidden space" id="blog-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-bottom="0%" data-right="4%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1456,7 +1393,8 @@
                 </div>
                 <div class="col-auto">
                     <div class="sec-btn">
-                        <a href="{{ route('articles') }}" class="th-btn style2 th-btn-icon">Parcourir tous les blogs</a>
+                        <a href="{{ route('articles') }}" class="th-btn style2 th-btn-icon">Parcourir tous les
+                            blogs</a>
                     </div>
                 </div>
             </div>
@@ -1493,6 +1431,6 @@
             </div>
         </div>
     </section><!--==============================
-            Footer Area
-            ==============================-->
+                        Footer Area
+                        ==============================-->
 @endsection

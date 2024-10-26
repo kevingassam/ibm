@@ -262,8 +262,7 @@
                         </div>
                         <div class="col-auto d-none d-xxl-block">
                             <div class="header-button">
-                                <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Request A
-                                    Visit</a>
+                                <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Demande Client</a>
                                 <button type="button" class="simple-icon sideMenuInfo sidebar-btn style2">
                                     <span class="line"></span>
                                     <span class="line"></span>
