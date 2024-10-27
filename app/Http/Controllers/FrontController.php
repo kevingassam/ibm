@@ -19,7 +19,7 @@ class FrontController extends Controller
         $temoignages = Temoignage::all();
         $projets = Projet::Orderby('created_at', 'desc')->take(15)->get();
         $pieces = DetailsAppartement::distinct('piece')->pluck('piece');
-        $partenaires = Partenaire::select('nom','logo')->get();
+        $partenaires = Partenaire::select('nom', 'logo')->get();
         return view("front.index")
             ->with('autres', $autres)
             ->with('temoignages', $temoignages)
@@ -32,6 +32,27 @@ class FrontController extends Controller
     {
         return view("front.contact");
     }
+
+
+    public function contact_post(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|numeric',
+            'message' => 'required|string|max:2550',
+        ]);
+
+        $contact  = new Contact();
+        $contact->nom = $request->input('nom');
+        $contact->email = $request->input('email');
+        $contact->telephone = $request->input('telephone');
+        $contact->message = $request->input('message');
+        $contact->save();
+
+        return redirect()->route('contact')->with('success', 'Votre message a bien été envoyé');
+    }
+
 
     public function about()
     {
@@ -55,7 +76,7 @@ class FrontController extends Controller
             $projets = $projets->where('type', $type);
         }
         $projets = $projets->paginate(30);
-        $total =Projet::where('statut', $statut)->count();
+        $total = Projet::where('statut', $statut)->count();
         return view("front.projet")
             ->with('projets', $projets)
             ->with('statut', $statut)

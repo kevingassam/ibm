@@ -2,8 +2,8 @@
 @section('titre', 'Contactez-nous')
 @section('body')
     <!--==============================
-        Breadcumb
-    ============================== -->
+                        Breadcumb
+                    ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="/front/img/bg/breadcumb-bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div><!--==============================
-    Contact Area
-    ==============================-->
+                    Contact Area
+                    ==============================-->
     <div class="space">
         <div class="container">
             <div class="title-area text-center">
@@ -47,8 +47,10 @@
                         </div>
                         <div class="about-contact-details">
                             <h6 class="about-contact-details-title">Numéro de téléphone</h6>
-                            <p class="about-contact-details-text"><a href="tel:{{ $infos->tel1 }}">{{ $infos->tel1 }}</a></p>
-                            <p class="about-contact-details-text"><a href="tel:{{ $infos->tel2 }}">{{ $infos->tel2 }}</a></p>
+                            <p class="about-contact-details-text"><a href="tel:{{ $infos->tel1 }}">{{ $infos->tel1 }}</a>
+                            </p>
+                            <p class="about-contact-details-text"><a href="tel:{{ $infos->tel2 }}">{{ $infos->tel2 }}</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -69,8 +71,8 @@
             </div>
         </div>
     </div><!--==============================
-    Contact Area
-    ==============================-->
+                    Contact Area
+                    ==============================-->
     <div class="space contact-area-3 z-index-common" data-bg-src="/front/img/bg/contact-bg-1-1.png" data-overlay="title"
         data-opacity="3" id="contact-sec">
         <div class="contact-bg-shape3-1 spin shape-mockup " data-bottom="5%" data-left="12%">
@@ -81,38 +83,57 @@
                 <div class="col-lg-6">
                     <div class="appointment-wrap2 bg-white me-xxl-5">
                         <h2 class="form-title text-theme">Planifier une visite</h2>
-                        <form action="mail.php" method="POST" class="appointment-form ajax-contact">
+                        @if ($errors->any())
+                            <div class="text-danger small">
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        @endif
+                        <form action="{{ route('contact.post') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="form-group style-border style-radius col-12">
-                                    <input type="text" class="form-control" name="name" id="name"
-                                        placeholder="Your Name*">
+                                    <input type="text" class="form-control" name="nom" required
+                                        value="{{ old('nom') }}" id="nom" placeholder="Nom et Prénom*">
                                     <i class="fal fa-user"></i>
                                 </div>
                                 <div class="form-group style-border style-radius col-12">
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email*">
+                                    <input type="email" class="form-control" name="email" required
+                                        value="{{ old('email') }}" id="email" placeholder="Votre email*">
                                     <i class="fal fa-envelope"></i>
                                 </div>
-                                <div class="form-group style-border style-radius col-md-12">
-                                    <select name="subject" id="subject" class="form-select">
-                                        <option value="" disabled selected hidden>Select Service Type</option>
-                                        <option value="Real Estate">Real Estate</option>
-                                        <option value="Apartment">Apartment</option>
-                                        <option value="Residencial">Residencial</option>
-                                        <option value="Deluxe">Deluxe</option>
-                                    </select>
-                                    <i class="fal fa-angle-down"></i>
+                                <div class="form-group style-border style-radius col-12">
+                                    <input type="tel" class="form-control" name="telephone" required
+                                        value="{{ old('telephone') }}" contact_post id="telephone"
+                                        placeholder="Numéro de téléphone*">
+                                    <i class="fal fa-envelope"></i>
                                 </div>
                                 <div class="col-12 form-group style-border style-radius">
                                     <i class="far fa-comments"></i>
-                                    <textarea placeholder="Type Your Message" class="form-control"></textarea>
+                                    <textarea placeholder="Votre message" name="message" required class="form-control">{{ old('message') }}</textarea>
                                 </div>
                                 <div class="col-12 form-btn mt-4">
-                                    <button class="th-btn">Submit Message <span class="btn-icon"><img
-                                                src="/front/img/icon/paper-plane.svg" alt="img"></span></button>
+                                    <button class="th-btn" type="submit">
+                                        Envoyer le message
+                                        <span class="btn-icon">
+                                            <img src="/front/img/icon/paper-plane.svg" alt="img">
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
-                            <p class="form-messages mb-0 mt-3"></p>
+                            @if (session('success'))
+                                <br>
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if (session('error'))
+                                <br>
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>
@@ -120,9 +141,7 @@
         </div>
         <div class="location-map contact-sec-map z-index-common">
             <div class="contact-map">
-                <iframe
-                    src="{{ $infos->map }}"
-                    allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="{{ $infos->map }}" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="location-map-address bg-theme">
                 <div class="thumb">
@@ -131,6 +150,6 @@
             </div>
         </div>
     </div><!--==============================
-    Footer Area
-    ==============================-->
+                    Footer Area
+                    ==============================-->
 @endsection

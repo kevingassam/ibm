@@ -10,6 +10,7 @@
     <link href="/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="/admin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
     <link href="/admin/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+    
     <!-- loader-->
     <link href="/admin/css/pace.min.css" rel="stylesheet">
     <script src="/admin/js/pace.min.js"></script>
@@ -292,17 +293,6 @@
 
 
 
-
-    <!--plugins-->
-    <script src="/admin/js/jquery.min.js"></script>
-    <script src="/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="/admin/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="/admin/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="/admin/plugins/apex/apexcharts.min.js"></script>
-    <script src="/admin/js/index.js"></script>
-    <!--BS Scripts-->
-    <script src="/admin/js/bootstrap.bundle.min.js"></script>
-    <script src="/admin/js/main.js"></script>
 
     @livewireScripts
     @yield('scripts')
