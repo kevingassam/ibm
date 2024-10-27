@@ -1,11 +1,9 @@
 @extends('front.fixe')
 @section('titre', $projet->nom)
 @section('body')
-
-
     <!--==============================
-                Breadcumb
-            ============================== -->
+                            Breadcumb
+                        ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="{{ Storage::url($projet->photo) }}">
         <div class="container">
             <div class="row justify-content-center">
@@ -21,8 +19,8 @@
             </div>
         </div>
     </div><!--==============================
-            Property Page Area
-            ==============================-->
+                        Property Page Area
+                        ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="slider-area property-slider1">
@@ -34,11 +32,13 @@
                                 <img src="{{ Storage::url($projet->photo) }}" alt="img">
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="property-slider-img">
-                                <img src="/front/img/property/property_inner_2.jpg" alt="img">
+                        @foreach (json_decode($projet->photos) ?? [] as $pic)
+                            <div class="swiper-slide">
+                                <div class="property-slider-img">
+                                    <img src="{{ Storage::url($pic) }}" alt="img">
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="swiper th-slider property-thumb-slider"
@@ -49,11 +49,13 @@
                                 <img src="{{ Storage::url($projet->photo) }}" alt="Image">
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="property-slider-img">
-                                <img src="/front/img/property/property_inner_2.jpg" alt="Image">
+                        @foreach (json_decode($projet->photos) ?? [] as $pic)
+                            <div class="swiper-slide">
+                                <div class="property-slider-img">
+                                    <img src="{{ Storage::url($pic) }}" alt="Image">
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -107,49 +109,6 @@
                                     </div>
                                 </li>
                             </ul>
-                            <h3 class="page-title mt-50 mb-30">De notre galerie</h3>
-                            <div class="row gy-4">
-                                <div class="col-xl-5">
-                                    <div class="property-gallery-card">
-                                        <div class="property-gallery-card-img">
-                                            <img class="w-100" src="/front/img/property/property_inner_6.jpg"
-                                                alt="img">
-                                        </div>
-                                        <a class="icon-btn popup-image" href="/front/img/property/property_inner_6.jpg"><i
-                                                class="fal fa-magnifying-glass-plus"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-7">
-                                    <div class="property-gallery-card">
-                                        <div class="property-gallery-card-img">
-                                            <img class="w-100" src="/front/img/property/property_inner_7.jpg"
-                                                alt="img">
-                                        </div>
-                                        <a class="icon-btn popup-image" href="/front/img/property/property_inner_7.jpg"><i
-                                                class="fal fa-magnifying-glass-plus"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-7">
-                                    <div class="property-gallery-card">
-                                        <div class="property-gallery-card-img">
-                                            <img class="w-100" src="/front/img/property/property_inner_8.jpg"
-                                                alt="img">
-                                        </div>
-                                        <a class="icon-btn popup-image" href="/front/img/property/property_inner_8.jpg"><i
-                                                class="fal fa-magnifying-glass-plus"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-5">
-                                    <div class="property-gallery-card">
-                                        <div class="property-gallery-card-img">
-                                            <img class="w-100" src="/front/img/property/property_inner_9.jpg"
-                                                alt="img">
-                                        </div>
-                                        <a class="icon-btn popup-image" href="/front/img/property/property_inner_9.jpg"><i
-                                                class="fal fa-magnifying-glass-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
                             <h3 class="page-title mt-50 mb-25">Liste des plans</h3>
                             <div class="row gy-3">
                                 @foreach ($projet->appartements as $appartement)
@@ -183,15 +142,20 @@
                                                             <td class="text-center">
                                                                 <a href="{{ Storage::url($details->plan) }}"
                                                                     download="{{ $details->etage }}" target="__blank">
-                                                                    <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/FFFFFF/pdf--v1.png" alt="pdf--v1"/>
+                                                                    <img width="25" height="25"
+                                                                        src="https://img.icons8.com/ios-filled/25/FFFFFF/pdf--v1.png"
+                                                                        alt="pdf--v1" />
                                                                 </a>
                                                             </td>
-                                                            <td><a href="#" class="btn btn-sm btn-outline-light">Demander</a></td>
+                                                            <td><a href="#"
+                                                                    class="btn btn-sm btn-outline-light">Demander</a></td>
                                                             <td class="text-center">
-                                                                <img width="25" height="25" src="https://img.icons8.com/glyph-neue/25/FFFFFF/bookmark-ribbon.png" alt="bookmark-ribbon"/>
+                                                                <img width="25" height="25"
+                                                                    src="https://img.icons8.com/glyph-neue/25/FFFFFF/bookmark-ribbon.png"
+                                                                    alt="bookmark-ribbon" />
                                                             </td>
                                                         </tr>
-                                                        @empty
+                                                    @empty
                                                         <tr>
                                                             <td colspan="8" class="text-center">Aucun résultat</td>
                                                         </tr>
@@ -201,6 +165,14 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            </div>
+                            <h3 class="page-title mt-50 mb-30">Vidéo de la propriété</h3>
+                            <div class="video-box2 mb-30">
+                                <img src="{{ Storage::url($projet->photo) }}" alt="img">
+                                @if ($projet->video)
+                                    <a href="{{ $projet->video }}" class="play-btn style4 popup-video"><i
+                                            class="fa-sharp fa-solid fa-play"></i></a>
+                                @endif
                             </div>
                             <h3 class="page-title mt-45 mb-30">Localisation</h3>
                             <div class="location-map">
@@ -222,14 +194,7 @@
                                     </div>
                                 </div> --}}
                             </div>
-                            <h3 class="page-title mt-50 mb-30">Vidéo de la propriété</h3>
-                            <div class="video-box2 mb-30">
-                                <img src="{{ Storage::url($projet->photo) }}" alt="img">
-                                @if ($projet->video)
-                                    <a href="{{ $projet->video }}" class="play-btn style4 popup-video"><i
-                                            class="fa-sharp fa-solid fa-play"></i></a>
-                                @endif
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -316,8 +281,8 @@
             </div>
         </div>
     </section><!--==============================
-            Footer Area
-            ==============================-->
+                    Footer Area
+                    ==============================-->
 
 
 @endsection
