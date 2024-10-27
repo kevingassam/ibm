@@ -201,8 +201,6 @@
                 <div class="col-xxl-4 col-lg-5">
                     <aside class="sidebar-area">
                         <div class="widget widget-property-contact">
-                            <h4 class="widget_subtitle">For Rent</h4>
-                            <h4 class="widget_price">$45, 000, 000</h4>
                             <p class="widget_text">I am interested in this property</p>
                             <form action="#" class="widget-property-contact-form">
                                 <div class="form-group">
