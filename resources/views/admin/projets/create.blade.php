@@ -123,6 +123,15 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="col-12">
+                                    <label for="photos">Gallerie de photos</label>
+                                    <input type="file" class="form-control" name="photos[]" id="photos" multiple required />
+                                    @error('photos')
+                                        <span class="small text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                             <!--end row-->
                         </div>

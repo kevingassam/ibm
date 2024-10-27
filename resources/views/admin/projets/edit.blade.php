@@ -76,8 +76,8 @@
                                             Type de projet
                                         </label>
                                         <select name="type" class="form-select" id="type">
-                                            <option value="résidentiel" @selected($projet->type == "résidentiel")>Résidentiel</option>
-                                            <option value="commercial" @selected($projet->type == "commercial")>Commercial</option>
+                                            <option value="résidentiel" @selected($projet->type == 'résidentiel')>Résidentiel</option>
+                                            <option value="commercial" @selected($projet->type == 'commercial')>Commercial</option>
                                         </select>
                                         @error('type')
                                             <span class="small text-danger">
@@ -96,8 +96,8 @@
                                         Statut du projet
                                     </label>
                                     <select name="statut" class="form-select" id="">
-                                        <option value="en cours" @selected($projet->statut == "en cours")>En cours</option>
-                                        <option value="terminé" @selected($projet->statut == "terminé")>Terminé</option>
+                                        <option value="en cours" @selected($projet->statut == 'en cours')>En cours</option>
+                                        <option value="terminé" @selected($projet->statut == 'terminé')>Terminé</option>
                                     </select>
                                     @error('statut')
                                         <span class="small text-danger">
@@ -118,7 +118,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="Tags">Image d'illustration</label>
-                                    <input type="file" class="form-control" name="photo"  />
+                                    <input type="file" class="form-control" name="photo" />
                                     @error('photo')
                                         <span class="small text-danger">
                                             {{ $message }}
@@ -134,6 +134,27 @@
                             <div class="p-2">
                                 <img src="{{ Storage::url($projet->photo) }}" alt="{{ $projet->nom }}" class="w-100"
                                     srcset="">
+                            </div>
+                        </div>
+                    @endif
+                    @if ($projet->photos)
+                        <div class="card">
+                            <div class="p-2">
+                                <div class="row">
+                                    @forelse (json_decode($projet->photos) ?? [] as $pic)
+                                        <div class="col-4">
+                                            <div class="img-card">
+                                                <img src="{{ Storage::url($pic) }}" alt="{{ $projet->nom }}"
+                                                    srcset="">
+                                            </div>
+                                        </div>
+                                    @empty
+                                    <div class="col-12 text-center">
+                                        Aucune image pour le moment.
+                                    </div>
+                                </div>
+                                    @endforelse
+                                </div>
                             </div>
                         </div>
                     @endif
@@ -163,6 +184,28 @@
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
+
+
+<style>
+    .img-card{
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        position: relative;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .img-card img{
+        width: 100%;
+        height: 100%
+    }
+    .img-card img:hover{
+        opacity: 0.5;
+        cursor: pointer;
+        
+    }
+</style>
 @endsection
 
 

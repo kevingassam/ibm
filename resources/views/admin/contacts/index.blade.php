@@ -27,7 +27,7 @@
         <div class="row g-3">
             <div class="col-auto">
                 <div class="position-relative">
-                    <input class="form-control px-5" type="search" placeholder="Recherche d'article">
+                    <input class="form-control px-5" type="search" placeholder="Recherche de contact">
                     <span
                         class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50 fs-5">search</span>
                 </div>
