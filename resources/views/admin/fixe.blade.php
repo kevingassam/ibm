@@ -10,7 +10,7 @@
     <link href="/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="/admin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
     <link href="/admin/plugins/simplebar/css/simplebar.css" rel="stylesheet">
-    
+
     <!-- loader-->
     <link href="/admin/css/pace.min.css" rel="stylesheet">
     <script src="/admin/js/pace.min.js"></script>
@@ -26,6 +26,7 @@
     <link href="/admin/css/minimal-theme.css" rel="stylesheet">
     <link href="/admin/css/shadow-theme.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{ $infos->GetIcon() }}" type="image/x-icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @livewireStyles
     @yield('header')

@@ -125,6 +125,15 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="col-12">
+                                    <label for="photos">Gallerie de photos</label>
+                                    <input type="file" class="form-control" name="photos[]" id="photos" multiple />
+                                    @error('photos')
+                                        <span class="small text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                             <!--end row-->
                         </div>
@@ -141,12 +150,15 @@
                         <div class="card">
                             <div class="p-2">
                                 <div class="row">
-                                    @forelse (json_decode($projet->photos) ?? [] as $pic)
-                                        <div class="col-4">
+                                    @forelse (json_decode($projet->photos) ?? [] as $key =>$pic)
+                                        <div class="col-4" id="img-{{ $key }}">
                                             <div class="img-card">
                                                 <img src="{{ Storage::url($pic) }}" alt="{{ $projet->nom }}"
                                                     srcset="">
                                             </div>
+                                            <button type="button" class="btn btn-sm btn-danger w-100 mb-2" onclick="delete_image('{{ $key }}','{{ $pic }}')" >
+                                                Supprimer
+                                            </button>
                                         </div>
                                     @empty
                                     <div class="col-12 text-center">
@@ -176,6 +188,29 @@
             },
             maxfilesize: 1000000,
         });
+
+        function delete_image(key,url){
+            $.ajax({
+                url: "/admin/projet.deleteImage",
+                type: 'POST',
+                data: {
+                    'key': key,
+                    'url': url ,
+                    'projet_id':  {{ $projet->id}},
+                    _token: $('meta[name="csrf-token"]').attr("content"),
+                },
+                success: function (response) {
+                    if(response.statut){
+                        $('#img-' + key).remove();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                }
+            });
+        }
     </script>
     <script>
         tinymce.init({
@@ -193,24 +228,24 @@
         overflow: hidden;
         border: 1px solid #ccc;
         position: relative;
-        margin-bottom: 10px;
         border-radius: 5px;
     }
     .img-card img{
         width: 100%;
-        height: 100%
+        height: 100%;
+        object-fit: cover;
     }
     .img-card img:hover{
         opacity: 0.5;
         cursor: pointer;
-        
+
     }
 </style>
 @endsection
 
 
 @section('header')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <script src="https://cdn.tiny.cloud/1/7eigadx4xspqfo7xw2wn60evebnplqcuor4a08g85lc7jq3z/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>

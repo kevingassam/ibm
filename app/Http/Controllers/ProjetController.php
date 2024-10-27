@@ -28,6 +28,28 @@ class ProjetController extends Controller
     }
 
 
+
+
+    public function deleteSingleImage(Request $request)
+    {
+        $projet = Projet::find($request->projet_id);
+        $url = $request->input('url');
+        if ($projet) {
+            $photos = json_decode($projet->photos, true);
+            if (is_array($photos) && in_array($url, $photos)) {
+                Storage::disk('public')->delete($url);
+                $photos = array_diff($photos, [$url]);
+                $projet->photos = json_encode(array_values($photos));
+                $projet->save();
+                return response()->json(['statut' => true, 'message' => 'Image supprimée avec succès']);
+            } else {
+                return response()->json(['statut' => false, 'message' => 'Image introuvable dans les photos du produit']);
+            }
+        } else {
+            return response()->json(['statut' => false, 'message' => 'Produit introuvable']);
+        }
+    }
+
     /**
      * Affiche le formulaire pour créer un nouveau projet.
      */

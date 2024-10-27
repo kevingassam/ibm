@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="photos">Gallerie de photos</label>
-                                    <input type="file" class="form-control" name="photos[]" id="photos" multiple required />
+                                    <input type="file" class="form-control" name="photos[]" id="photos" multiple />
                                     @error('photos')
                                         <span class="small text-danger">
                                             {{ $message }}
