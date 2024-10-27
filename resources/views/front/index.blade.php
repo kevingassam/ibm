@@ -2,8 +2,8 @@
 @section('titre', 'Accueil')
 @section('body')
     <!--==============================
-                        Hero Area
-                        ==============================-->
+                                                Hero Area
+                                                ==============================-->
     <div class="th-hero-wrapper hero-3" id="hero" data-bg-src="/front/img/hero/hero_bg_3_1.jpg">
         <video class="hero-video" id="video" src="/front/img/hero/hero-3-video.mp4" loop="" muted=""
             autoplay="">
@@ -47,8 +47,8 @@
         </div>
     </div>
     <!--======== / Hero Section ========--><!--==============================
-                        About Area
-                        ==============================-->
+                                                About Area
+                                                ==============================-->
     <div class="overflow-hidden space-top overflow-hidden" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -142,8 +142,8 @@
             </div>
         </div>
     </div><!--==============================
-                        Property Area 2
-                        ==============================-->
+                                                Property Area 2
+                                                ==============================-->
     <section class="space overflow-hidden" id="property-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-top="40%" data-right="1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -155,8 +155,8 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-xxl-5 col-lg-8">
                     <div class="title-area">
-                        <span class="sub-title">Featured Listing</span>
-                        <h2 class="sec-title text-theme">Find Your Dream Home Today </h2>
+                        <span class="sub-title">Annonce en vedette</span>
+                        <h2 class="sec-title text-theme">Trouvez la maison de vos rêves aujourd'hui </h2>
                         <p class="text-theme">Quis nulla blandit vulputate morbi adipiscing sem vestibulum. Nulla
                             turpis integer dui sed posuere sem. Id molestie mi arcu gravida lorem potenti.</p>
                     </div>
@@ -164,11 +164,6 @@
                 <div class="col-auto">
                     <div class="sec-btn">
                         <ul class="nav nav-tabs property-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="rent-tab" data-bs-toggle="tab"
-                                    data-bs-target="#rent-tab-pane" type="button" role="tab"
-                                    aria-controls="rent-tab-pane" aria-selected="true">Rent</button>
-                            </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="buy-tab" data-bs-toggle="tab"
                                     data-bs-target="#buy-tab-pane" type="button" role="tab"
@@ -185,350 +180,43 @@
                         <div class="swiper th-slider"
                             data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"2"},"1200":{"slidesPerView":"3"},"1500":{"slidesPerView":"4"}},"spaceBetween":"32","grabCursor":"true","slideToClickedSlide":"true"}'>
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-1.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Town
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-2.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Family
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
+                                @foreach ($projets as $projet)
+                                    <div class="swiper-slide">
+                                        <div class="property-card2">
+                                            <div class="property-card-thumb img-shine">
+                                                <img src="{{ Storage::url($projet->photo) }}" alt="img">
                                             </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
+                                            <div class="property-card-meta">
+                                                <span>
+                                                    <img src="/front/img/icon/property-icon1-1.svg" alt="img">
+                                                    {{ $projet->type }}
+                                                </span>
+                                                <span>
+                                                    <img src="/front/img/icon/property-icon1-3.svg" alt="img">
+                                                    {{ $projet->appartements->count() }} Appartements
+                                                </span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-3.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Apartments
-                                                        House</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
+                                            <div class="property-card-details">
+                                                <div class="media-left">
+                                                    <h4 class="property-card-title">
+                                                        <a
+                                                            href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}">Town
+                                                            {{ Str::limit($projet->nom, 30) }}
+                                                        </a>
+                                                    </h4>
+                                                    <p class="property-card-location text-capitalize">{{ $projet->type }}
+                                                    </p>
+                                                </div>
+                                                <div class="btn-wrap">
+                                                    <a href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}"
+                                                        class="th-btn style-border2 th-btn-icon">Details
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-4.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Modern
-                                                        House</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-1.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Town
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-2.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Family
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="buy-tab-pane" role="tabpanel" aria-labelledby="buy-tab" tabindex="0">
-                    <div class="slider-area property-slider2 slider-drag-wrap">
-                        <div class="swiper th-slider"
-                            data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"2"},"1200":{"slidesPerView":"3"},"1500":{"slidesPerView":"4"}},"spaceBetween":"32","grabCursor":"true","slideToClickedSlide":"true"}'>
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-1.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Town
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-2.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Family
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-3.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Apartments
-                                                        House</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-4.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Modern
-                                                        House</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-1.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Town
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="property-card2">
-                                        <div class="property-card-thumb img-shine">
-                                            <img src="/front/img/property/property2-2.png" alt="img">
-                                        </div>
-                                        <div class="property-card-meta">
-                                            <span><img src="/front/img/icon/property-icon1-1.svg" alt="img">Bed
-                                                4</span>
-                                            <span><img src="/front/img/icon/property-icon1-2.svg" alt="img">Bath
-                                                2</span>
-                                            <span><img src="/front/img/icon/property-icon1-3.svg" alt="img">1500
-                                                sqft</span>
-                                        </div>
-                                        <div class="property-card-details">
-                                            <div class="media-left">
-                                                <h4 class="property-card-title"><a href="property-details.html">Family
-                                                        Houses</a></h4>
-                                                <h5 class="property-card-price">$ 1500.00 USD/night</h5>
-                                                <p class="property-card-location">California</p>
-                                            </div>
-                                            <div class="btn-wrap">
-                                                <a href="property-details.html"
-                                                    class="th-btn style-border2 th-btn-icon">Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
                         </div>
@@ -540,8 +228,8 @@
     </section>
 
     <!--==============================
-                        Counter Area
-                        ==============================-->
+                                                Counter Area
+                                                ==============================-->
     <div class="space bg-theme">
         <div class="container th-container2">
             <div class="counter-card-wrap style2">
@@ -585,8 +273,8 @@
         </div>
     </div>
     <!--==============================
-                        Service Area
-                        ==============================-->
+                                                Service Area
+                                                ==============================-->
     <section class="service-area-3 space overflow-hidden">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-top="-2%" data-right="30%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -745,8 +433,8 @@
     </section>
 
     <!--==============================
-                        About Area
-                        ==============================-->
+                                                About Area
+                                                ==============================-->
     <div class="overflow-hidden bg-theme space overflow-hidden">
         <div class="about-3-bg-shape text-white sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="15%"
             data-left="3%">
@@ -815,8 +503,8 @@
             </ul>
         </div>
     </div><!--==============================
-                        Portfolio Area
-                        ==============================-->
+                                                Portfolio Area
+                                                ==============================-->
     <section class="space overflow-hidden overflow-hidden">
         <div class="project-bg-shape3-1 sec-bg-shape2-1 jump shape-mockup d-xxl-block d-none" data-bottom="5%"
             data-right="0%">
@@ -874,8 +562,8 @@
             </div>
         </div>
     </section><!--==============================
-                        Video Area
-                        ==============================-->
+                                                Video Area
+                                                ==============================-->
     <div class="video-area-2 space overflow-hidden" data-bg-src="/front/img/bg/video-bg-2-1.png" id="contact-sec">
         <div class="container th-container2">
             <div class="row gy-50 flex-row-reverse">
@@ -932,8 +620,8 @@
         </div>
     </div>
     <!--==============================
-                        Client Area
-                        ==============================-->
+                                                Client Area
+                                                ==============================-->
     <div class="client-area-1 bg-theme space">
         <div class="container th-container2">
             <div class="swiper th-slider has-shadow" id="clientSlider1"
@@ -952,8 +640,8 @@
             </div>
         </div>
     </div><!--==============================
-                        Subscribe Area
-                        ==============================-->
+                                                Subscribe Area
+                                                ==============================-->
     <div class="space overflow-hidden z-index-common" data-bg-src="/front/img/bg/subscribe-bg-3-1.png"
         data-overlay="theme" data-opacity="8">
         <div class="container th-container2">
@@ -993,8 +681,8 @@
         </div>
     </div>
     <!--==============================
-                        Testimonial Area
-                        ==============================-->
+                                                Testimonial Area
+                                                ==============================-->
     <section class="overflow-hidden space">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="2%" data-left="-1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -1059,8 +747,8 @@
         </div>
     </section>
     <!--==============================
-                        Team Area
-                        ==============================-->
+                                                Team Area
+                                                ==============================-->
     <section class="space bg-theme overflow-hidden" id="team-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xxl-block d-none text-white" data-bottom="0%" data-left="1%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1373,8 +1061,8 @@
 
 
     <!--==============================
-                        Blog Area
-                        ==============================-->
+                                                Blog Area
+                                                ==============================-->
     <section class="overflow-hidden space" id="blog-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-bottom="0%" data-right="4%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1431,6 +1119,6 @@
             </div>
         </div>
     </section><!--==============================
-                        Footer Area
-                        ==============================-->
+                                                Footer Area
+                                                ==============================-->
 @endsection

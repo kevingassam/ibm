@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appartement;
 use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\DetailsAppartement;
