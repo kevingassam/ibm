@@ -2,12 +2,13 @@
 @section('titre', 'Accueil')
 @section('body')
     <!--==============================
-                                                Hero Area
-                                                ==============================-->
-    <div class="th-hero-wrapper hero-3" id="hero" data-bg-src="/front/img/hero/hero_bg_3_1.jpg">
-        <video class="hero-video" id="video" src="/front/img/hero/hero-3-video.mp4" loop="" muted=""
-            autoplay="">
-        </video>
+                                                        Hero Area
+                                                        ==============================-->
+    <div class="th-hero-wrapper hero-3" id="hero" data-bg-src="{{ $infos->GetVideo() }}">
+        @if ($infos->GetTypeMedia() == 'video')
+            <video class="hero-video" id="video" src="{{ $infos->GetVideo() }}" loop="" muted="" autoplay="">
+            </video>
+        @endif
         <div class="container">
             <div class="row gy-5 justify-content-center">
                 <div class="col-12">
@@ -47,8 +48,8 @@
         </div>
     </div>
     <!--======== / Hero Section ========--><!--==============================
-                                                About Area
-                                                ==============================-->
+                                                        About Area
+                                                        ==============================-->
     <div class="overflow-hidden space-top overflow-hidden" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -142,8 +143,8 @@
             </div>
         </div>
     </div><!--==============================
-                                                Property Area 2
-                                                ==============================-->
+                                                        Property Area 2
+                                                        ==============================-->
     <section class="space overflow-hidden" id="property-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-top="40%" data-right="1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -228,8 +229,8 @@
     </section>
 
     <!--==============================
-                                                Counter Area
-                                                ==============================-->
+                                                        Counter Area
+                                                        ==============================-->
     <div class="space bg-theme">
         <div class="container th-container2">
             <div class="counter-card-wrap style2">
@@ -273,8 +274,8 @@
         </div>
     </div>
     <!--==============================
-                                                Service Area
-                                                ==============================-->
+                                                        Service Area
+                                                        ==============================-->
     <section class="service-area-3 space overflow-hidden">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-top="-2%" data-right="30%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -433,8 +434,8 @@
     </section>
 
     <!--==============================
-                                                About Area
-                                                ==============================-->
+                                                        About Area
+                                                        ==============================-->
     <div class="overflow-hidden bg-theme space overflow-hidden">
         <div class="about-3-bg-shape text-white sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="15%"
             data-left="3%">
@@ -503,8 +504,8 @@
             </ul>
         </div>
     </div><!--==============================
-                                                Portfolio Area
-                                                ==============================-->
+                                                        Portfolio Area
+                                                        ==============================-->
     <section class="space overflow-hidden overflow-hidden">
         <div class="project-bg-shape3-1 sec-bg-shape2-1 jump shape-mockup d-xxl-block d-none" data-bottom="5%"
             data-right="0%">
@@ -562,8 +563,8 @@
             </div>
         </div>
     </section><!--==============================
-                                                Video Area
-                                                ==============================-->
+                                                        Video Area
+                                                        ==============================-->
     <div class="video-area-2 space overflow-hidden" data-bg-src="/front/img/bg/video-bg-2-1.png" id="contact-sec">
         <div class="container th-container2">
             <div class="row gy-50 flex-row-reverse">
@@ -620,8 +621,8 @@
         </div>
     </div>
     <!--==============================
-                                                Client Area
-                                                ==============================-->
+                                                        Client Area
+                                                        ==============================-->
     <div class="client-area-1 bg-theme space">
         <div class="container th-container2">
             <div class="swiper th-slider has-shadow" id="clientSlider1"
@@ -640,8 +641,8 @@
             </div>
         </div>
     </div><!--==============================
-                                                Subscribe Area
-                                                ==============================-->
+                                                        Subscribe Area
+                                                        ==============================-->
     <div class="space overflow-hidden z-index-common" data-bg-src="/front/img/bg/subscribe-bg-3-1.png"
         data-overlay="theme" data-opacity="8">
         <div class="container th-container2">
@@ -681,8 +682,8 @@
         </div>
     </div>
     <!--==============================
-                                                Testimonial Area
-                                                ==============================-->
+                                                        Testimonial Area
+                                                        ==============================-->
     <section class="overflow-hidden space">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="2%" data-left="-1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -747,8 +748,8 @@
         </div>
     </section>
     <!--==============================
-                                                Team Area
-                                                ==============================-->
+                                                        Team Area
+                                                        ==============================-->
     <section class="space bg-theme overflow-hidden" id="team-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xxl-block d-none text-white" data-bottom="0%" data-left="1%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1061,8 +1062,8 @@
 
 
     <!--==============================
-                                                Blog Area
-                                                ==============================-->
+                                                        Blog Area
+                                                        ==============================-->
     <section class="overflow-hidden space" id="blog-sec">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-bottom="0%" data-right="4%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
@@ -1119,6 +1120,6 @@
             </div>
         </div>
     </section><!--==============================
-                                                Footer Area
-                                                ==============================-->
+                                                        Footer Area
+                                                        ==============================-->
 @endsection

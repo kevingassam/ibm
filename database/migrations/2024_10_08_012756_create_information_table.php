@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string("adresse2")->nullable();
             $table->text("text_footer")->nullable();
             $table->text("map")->nullable();
+            $table->text("video")->nullable();
             $table->timestamps();
         });
     }

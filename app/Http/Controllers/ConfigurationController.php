@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ConfigurationController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.configuration');
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'app_name' => 'string|max:255',
             'email1' => 'nullable|email|max:255',
@@ -25,14 +27,13 @@ class ConfigurationController extends Controller
             'adresse2' => 'nullable|string|max:255',
             'text_footer' => 'nullable|string|max:5000',
             'map' => 'nullable|string|max:5000',
+            'video' => 'nullable|mimes:jpeg,png,jpg,gif,svg,mp4,mov,avi|max:20480',
         ]);
 
         $information = Information::first();
         $information->app_name = $request->input("app_name");
         $information->email1 = $request->input("email1");
         $information->email2 = $request->input("email2");
-        $information->logo = $request->input("logo");
-        $information->icon = $request->input("icon");
         $information->adresse1 = $request->input("adresse1");
         $information->adresse2 = $request->input("adresse2");
         $information->text_footer = $request->input("text_footer");
@@ -40,21 +41,31 @@ class ConfigurationController extends Controller
         $information->tel1 = $request->input("tel1");
         $information->tel2 = $request->input("tel2");
 
-        if($request->file("logo")){
-            if($information->logo){
-                Storage::disk('public')->delete( $information->logo);
+        if ($request->file("logo")) {
+            if ($information->logo) {
+                Storage::disk('public')->delete($information->logo);
             }
-            $information->logo = $request->file('logo')->store('blogs/photos', 'public');
+            $information->logo = $request->file('logo')->store('informations/photos', 'public');
         }
-        if($request->file("icon")){
-            if($information->icon){
-                Storage::disk('public')->delete( $information->icon);
+        if ($request->file("icon")) {
+            if ($information->icon) {
+                Storage::disk('public')->delete($information->icon);
             }
-            $information->icon = $request->file('icon')->store('blogs/icons', 'public');
+            $information->icon = $request->file('icon')->store('informations/icons', 'public');
+        }
+        if ($request->file("video")) {
+            if ($information->video) {
+                Storage::disk('public')->delete($information->video);
+            }
+            $information->video = $request->file('video')->store('informations/videos', 'public');
         }
 
 
         $information->save();
-        return redirect()->route('configurations.index')->with('success','La configuration a été modifiée avec succès');
+        return response()
+            ->json([
+                'statut' => true,
+                'message' => 'Configuration modifiée avec succès!',
+            ], 200);
     }
 }

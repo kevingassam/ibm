@@ -29,4 +29,33 @@ class Information extends Model
 
     }
 
+    public function GetVideo(){
+        if ($this->video) {
+           return Storage::url($this->video);
+        } else {
+            return "/front/img/hero/hero-3-video.mp4";
+        }
+
+    }
+
+    public function GetTypeMedia(){
+        $media = $this->GetVideo();
+
+        if ($media) {
+            $extension = strtolower(pathinfo($media, PATHINFO_EXTENSION));
+            $imageExtensions = ['jpeg', 'jpg', 'png', 'gif', 'svg'];
+            $videoExtensions = ['mp4', 'mov', 'avi', 'mkv'];
+            if (in_array($extension, $imageExtensions)) {
+                return 'image';
+            } elseif (in_array($extension, $videoExtensions)) {
+                return 'video';
+            } else {
+                return 'unknown';
+            }
+        }
+
+        return null;
+    }
+
+
 }
