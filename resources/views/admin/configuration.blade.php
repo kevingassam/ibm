@@ -158,6 +158,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>
+                                Gestion des réseaux
+                            </h6>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="facebook">Facebook</label>
+                                    <input type="url" name="facebook" id="facebook" class="form-control" value="{{ $infos->facebook }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="twitter">twitter</label>
+                                    <input type="url" name="twitter" id="twitter" class="form-control" value="{{ $infos->twitter }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="youtube">youtube</label>
+                                    <input type="url" name="youtube" id="youtube" class="form-control" value="{{ $infos->youtube }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="linkedin">linkedin</label>
+                                    <input type="url" name="linkedin" id="linkedin" class="form-control" value="{{ $infos->linkedin }}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <label for="youtube">youtube</label>
+                                    <input type="url" name="youtube" id="youtube" class="form-control" value="{{ $infos->youtube }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="card">

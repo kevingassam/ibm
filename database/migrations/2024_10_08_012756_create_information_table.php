@@ -25,6 +25,13 @@ return new class extends Migration
             $table->text("text_footer")->nullable();
             $table->text("map")->nullable();
             $table->text("video")->nullable();
+
+            $table->string("facebook")->nullable();
+            $table->string("twitter")->nullable();
+            $table->string("youtube")->nullable();
+            $table->string("instagram")->nullable();
+            $table->string("linkedin")->nullable();
+
             $table->timestamps();
         });
     }

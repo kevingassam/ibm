@@ -141,18 +141,20 @@
                         <a href="{{ route('home') }}"><img src="/front/img/logo.svg"
                                 alt="{{ $infos->app_name }}"></a>
                     </div>
-                    <p class="about-text"> Rapidiously myocardinate cross-platform intellectual capital model.
-                        Appropriately create interactive infrastructures</p>
+                    <p class="about-text">
+                        {{ $infos->text_footer ?? '' }}
+                    </p>
                 </div>
             </div>
-            <div class="widget  ">
+            <div class="widget">
                 <h3 class="widget_title">Entrer en contact</h3>
                 <div class="th-widget-contact">
                     <div class="info-box_text">
-                        <div class="icon"><img src="/front/img/icon/location-dot.svg" alt="img"></div>
+                        <div class="icon">
+                            <img src="{{ $infos->GetLogo() }}" alt="img">
+                        </div>
                         <div class="details">
-                            <p>789 Inner Lane, Holy park,</p>
-                            <p>California, USA</p>
+                            <p>{{ $infos->adresse1 }}</p>
                         </div>
                     </div>
                     <div class="info-box_text">
@@ -160,8 +162,16 @@
                             <img src="/front/img/icon/phone.svg" alt="img">
                         </div>
                         <div class="details">
-                            <p><a href="tel:+0123456789" class="info-box_link">+01 234 567 890</a></p>
-                            <p><a href="tel:+09876543210" class="info-box_link">+09 876 543 210</a></p>
+                            @if ($infos->tel1)
+                                <p>
+                                    <a href="tel:{{ $infos->tel1 }}" class="info-box_link">{{ $infos->tel1 }}</a>
+                                </p>
+                            @endif
+                            @if ($infos->tel2)
+                                <p>
+                                    <a href="tel:{{ $infos->tel2 }}" class="info-box_link">{{ $infos->tel2 }}</a>
+                                </p>
+                            @endif
                         </div>
                     </div>
                     <div class="info-box_text">
@@ -169,10 +179,18 @@
                             <img src="/front/img/icon/envelope.svg" alt="img">
                         </div>
                         <div class="details">
-                            <p><a href="mailto:mailinfo00@realar.com" class="info-box_link">mailinfo00@realar.com</a>
-                            </p>
-                            <p><a href="mailto:support24@realar.com" class="info-box_link">support24@realar.com</a>
-                            </p>
+                            @if ($infos->email1)
+                                <p>
+                                    <a href="mailto:{{ $infos->email1 }}"
+                                        class="info-box_link">{{ $infos->email1 }}</a>
+                                </p>
+                            @endif
+                            @if ($infos->email1)
+                                <p>
+                                    <a href="mailto:{{ $infos->email2 }}"
+                                        class="info-box_link">{{ $infos->email2 }}</a>
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -186,11 +204,30 @@
                     </div>
                 </form>
                 <div class="th-social style2">
-                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.behance.com/"><i class="fab fa-behance"></i></a>
-                    <a href="https://www.vimeo.com/"><i class="fab fa-vimeo-v"></i></a>
+                    @if ($infos->facebook)
+                        <a href="{{ $infos->facebook }}" target="__blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    @endif
+                    @if ($infos->twitter)
+                        <a href="{{ $infos->twitter }}" target="__blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    @endif
+                    @if ($infos->linkedin)
+                        <a href="{{ $infos->linkedin }}" target="__blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    @endif
+                    @if ($infos->instagram)
+                        <a href="{{ $infos->instagram }}" target="__blank">
+                            <i class="fab fa-instagram-in"></i>
+                        </a>
+                    @endif
+                    @if ($infos->youtube)
+                        <a href="{{ $infos->youtube }}" target="__blank">
+                            <i class="fab fa-youtube-in"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -262,7 +299,8 @@
                         </div>
                         <div class="col-auto d-none d-xxl-block">
                             <div class="header-button">
-                                <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Demande Client</a>
+                                <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Demande
+                                    Client</a>
                                 <button type="button" class="simple-icon sideMenuInfo sidebar-btn style2">
                                     <span class="line"></span>
                                     <span class="line"></span>
@@ -369,7 +407,7 @@
                                     <ul class="menu">
                                         <li><a href="{{ route('about') }}">À propos de nous</a></li>
                                         <li><a href="{{ route('projet', 'en cours') }}">Projets en cours</a></li>
-                                        <li><a href="{{ route('projet', 'terminé') }}">rojets terminés</a></li>
+                                        <li><a href="{{ route('projet', 'terminé') }}">Projets terminés</a></li>
                                         <li><a href="{{ route('about') }}">À propos de nous</a></li>
                                         <li><a href="{{ route('contact') }}">Contact</a></li>
                                     </ul>
@@ -408,10 +446,26 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="th-social justify-content-lg-end justify-content-center">
-                                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://www.instagram.com/"><i class="fab fa-youtube"></i></a>
-                                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                    @if ($infos->facebook)
+                                        <a href="{{ $infos->facebook }}" target="__blank">
+                                            <i class="fab fa-facebook-f"></i></a>
+                                    @endif
+                                    @if ($infos->twitter)
+                                        <a href="{{ $infos->twitter }}" target="__blank">
+                                            <i class="fab fa-twitter"></i></a>
+                                    @endif
+                                    @if ($infos->linkedin)
+                                        <a href="{{ $infos->linkedin }}" target="__blank">
+                                            <i class="fab fa-linkedin-in"></i></a>
+                                    @endif
+                                    @if ($infos->instagram)
+                                        <a href="{{ $infos->instagram }}" target="__blank">
+                                            <i class="fab fa-instagram-in"></i></a>
+                                    @endif
+                                    @if ($infos->youtube)
+                                        <a href="{{ $infos->youtube }}" target="__blank">
+                                            <i class="fab fa-youtube-in"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

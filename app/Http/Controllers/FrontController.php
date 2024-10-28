@@ -21,12 +21,31 @@ class FrontController extends Controller
         $projets = Projet::Orderby('created_at', 'desc')->take(15)->get();
         $pieces = DetailsAppartement::distinct('piece')->pluck('piece');
         $partenaires = Partenaire::select('nom', 'logo')->get();
+
+        $atouts = [
+            [
+                'titre' => "Emplacements étudiés",
+                'icon' => "",
+                'description' => "Nous privilégions les emplacements alliant cadre de vie agréable et proximité des commodités de tous les jours. Ainsi, nos appartements sont attractifs pour y habiter vous-même ou pour les mettre en location.",
+            ],
+            [
+                'titre' => "Rapport qualité-prix",
+                'icon' => "",
+                'description' => "Avec Immobilière Ben Mokthar, vous bénéficiez du meilleur rapport qualité-prix. Nous apportons une attention particulière à la qualité et la durabilité des matériaux que nous utilisons, tout en veillant à vous proposer nos biens à leur juste prix.",
+            ],
+            [
+                'titre' => "Architecture recherchée",
+                'icon' => "",
+                'description' => "Nous faisons en sorte que nos réalisations aient une architecture soignée et fonctionnelle. Nous ne construisons pas de simples appartements mais des logements pensés qui allient esthétique et confort pour toute la famille.",
+            ],
+        ];
         return view("front.index")
             ->with('autres', $autres)
             ->with('temoignages', $temoignages)
             ->with('projets', $projets)
             ->with('pieces', $pieces)
-            ->with('partenaires', $partenaires);
+            ->with('partenaires', $partenaires)
+            ->with('atouts', $atouts);
     }
 
     public function contact()
@@ -58,8 +77,10 @@ class FrontController extends Controller
     public function about()
     {
         $temoignages = Temoignage::all();
+        $partenaires = Partenaire::select('nom', 'logo')->get();
         return view("front.about")
-            ->with('temoignages', $temoignages);
+            ->with('temoignages', $temoignages)
+            ->with('partenaires', $partenaires);
     }
 
     public function projet(Request $request, $statut)

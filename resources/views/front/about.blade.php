@@ -3,8 +3,8 @@
 @section('body')
 
     <!--==============================
-            Breadcumb
-        ============================== -->
+                    Breadcumb
+                ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="/front/img/bg/breadcumb-bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
@@ -21,8 +21,8 @@
         </div>
     </div>
     <!--==============================
-        About Area
-        ==============================-->
+                About Area
+                ==============================-->
     <div class="overflow-hidden space" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -96,9 +96,14 @@
                                     <img src="/front/img/icon/phone.svg" alt="img">
                                 </div>
                                 <div class="btn-content">
-                                    <h6 class="btn-title text-theme">Call Us 24/7</h6>
-                                    <span class="btn-text"><a class="text-theme" href="tel:0123456789">+01 234
-                                            56789</a></span>
+                                    <h6 class="btn-title text-theme">Appelez-nous 24h/24 et 7j/7</h6>
+                                    <span class="btn-text">
+                                        @if ($infos->tel)
+                                            <a class="text-theme" href="tel:{{ $infos->tel }}">
+                                                {{ $infos->tel }}inde
+                                            </a>
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -114,8 +119,8 @@
             </div>
         </div>
     </div><!--==============================
-        Why Choose Us Area
-        ==============================-->
+                Why Choose Us Area
+                ==============================-->
     <div class="why-sec-1 overflow-hidden space bg-theme">
         <div class="sec-bg-shape2-1 text-white spin shape-mockup d-xl-block d-none" data-bottom="15%" data-left="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -127,15 +132,20 @@
             <div class="row justify-content-lg-between align-items-center">
                 <div class="col-lg-6">
                     <div class="title-area">
-                        <h2 class="sec-title text-white">Why Choose Us?</h2>
-                        <p class="text-light">We are a real estate firm with over 20 years of expertise, and our main goal
-                            is to provide amazing locations to our partners and clients. Within the luxury real estate
-                            market, our agency offers customized solutions.</p>
+                        <h2 class="sec-title text-white">Pourquoi nous choisir ?</h2>
+                        <p class="text-light">
+                            Nous sommes une société immobilière avec plus de 20 ans d'expertise et notre objectif principal
+                            est de fournir des emplacements incroyables à nos partenaires et clients. Au sein de l'immobilier de luxe
+                            marché, notre agence vous propose des solutions personnalisées.
+                        </p>
                     </div>
                 </div>
                 <div class="col-auto">
                     <div class="sec-btn">
-                        <a href="contact.html" class="th-btn style-border th-btn-icon">Contact Us</a>
+                        <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">
+                            <span class="th-btn-text">Nous contacter</span>
+                        </a>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -186,8 +196,8 @@
         </div>
     </div>
     <!--==============================
-        Testimonial Area
-        ==============================-->
+                Testimonial Area
+                ==============================-->
     <section class="overflow-hidden space">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xxl-block d-none" data-bottom="8%" data-left="8%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -237,7 +247,7 @@
                                                 <img src="/front/img/icon/qoute2.svg" alt="icon">
                                             </div>
                                             <div class="avatar">
-                                                <img src="{{ Storage::url($temoignage->photo)}}" alt="avatar">
+                                                <img src="{{ Storage::url($temoignage->photo) }}" alt="avatar">
                                             </div>
                                             <div class="testi-card_profile-details">
                                                 <h3 class="testi-card_name">{{ $temoignage->nom }}</h3>
@@ -256,411 +266,28 @@
     </section>
 
     <!--==============================
-        Team Area
-        ==============================-->
-    <section class="space bg-theme">
-        <div class="sec-bg-shape2-3 jump shape-mockup d-xxl-block d-none text-white" data-bottom="5%" data-right="8%">
-            <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
-        </div>
-        <div class="container">
-            <div class="row justify-content-lg-between align-items-center">
-                <div class="col-lg-6">
-                    <div class="title-area">
-                        <h2 class="sec-title text-white">Meet The Awesome Team</h2>
-                        <p class="text-light">Realar help you easily create a real estate trading website. With the
-                            function Register, Login, Post real estate news.</p>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <div class="sec-btn">
-                        <a href="team.html" class="th-btn style-border th-btn-icon">View All Team</a>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-area team-slider3">
-                <div class="swiper th-slider" id="teamSlider3"
-                    data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1400":{"slidesPerView":"3"}}}'>
-                    <div class="swiper-wrapper">
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_1.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Janny Wilson</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_2.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Andrew Richard</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_3.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Zarin Wilson</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_4.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Michel Smith</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_1.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Janny Wilson</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_2.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Andrew Richard</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_3.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Zarin Wilson</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Item -->
-                        <div class="swiper-slide">
-                            <div class="th-team team-card style3">
-                                <div class="img-wrap">
-                                    <div class="team-img">
-                                        <img src="/front/img/team/team_2_4.png" alt="Team">
-                                    </div>
-                                    <div class="th-social-wrap">
-                                        <div class="th-social">
-                                            <a target="_blank" href="https://facebook.com/"><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a target="_blank" href="https://twitter.com/"><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a target="_blank" href="https://linkedin.com/"><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                            <a target="_blank" href="https://youtube.com/"><i
-                                                    class="fab fa-youtube"></i></a>
-                                            <a target="_blank" href="https://instagram.com/"><i
-                                                    class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a class="icon-btn" href="team-details.html"><img
-                                                src="/front/img/icon/arrow-right.svg" alt="img"></a>
-                                    </div>
-                                </div>
-                                <div class="team-card-content">
-                                    <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Michel Smith</a></h3>
-                                        <span class="team-desig">Property Expert</span>
-                                    </div>
-                                    <a class="icon-btn" href="tel:09876543210"><img src="/front/img/icon/phone.svg"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <button data-slider-prev="#teamSlider3" class="slider-arrow style6 slider-prev"><img
-                        src="/front/img/icon/arrow-left.svg" alt="icon"></button>
-                <button data-slider-next="#teamSlider3" class="slider-arrow style6 slider-next"><img
-                        src="/front/img/icon/arrow-right.svg" alt="icon"></button>
-            </div>
-        </div>
-    </section>
-
-
-    <!--==============================
-        Client Area
-        ==============================-->
+                Client Area
+                ==============================-->
     <div class="client-area-1 space" data-bg-src="/front/img/hero/hero_bg_4_1.jpg">
         <div class="container">
             <div class="slider-area client-slider3">
                 <div class="swiper th-slider has-shadow" id="clientSlider1"
                     data-slider-options='{"breakpoints":{"0":{"slidesPerView":2},"576":{"slidesPerView":"3"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"6"}}}'>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_1.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_2.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_3.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_4.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_5.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_6.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_1.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_2.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_3.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_4.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_5.svg" alt="Image">
-                            </a>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="/front/img/brand/brand_3_6.svg" alt="Image">
-                            </a>
-                        </div>
-
-
+                        @foreach ($partenaires as $partenaire)
+                            <div class="swiper-slide">
+                                <a href="#" class="client-card">
+                                    <img src="{{ Storage::url($partenaire->photo) }}" alt="{{ $partenaire->nom }}">
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--==============================
-        Footer Area
-        ==============================-->
+                Footer Area
+                ==============================-->
 
 @endsection

@@ -26,6 +26,11 @@ class ConfigurationController extends Controller
             'adresse1' => 'nullable|string|max:255',
             'adresse2' => 'nullable|string|max:255',
             'text_footer' => 'nullable|string|max:5000',
+            'facebook' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'linkedin' => 'nullable|url',
+            'instagram' => 'nullable|url',
             'map' => 'nullable|string|max:5000',
             'video' => 'nullable|mimes:jpeg,png,jpg,gif,svg,mp4,mov,avi|max:20480',
         ]);
@@ -40,6 +45,11 @@ class ConfigurationController extends Controller
         $information->map = $request->input("map");
         $information->tel1 = $request->input("tel1");
         $information->tel2 = $request->input("tel2");
+        $information->facebook = $request->input("facebook");
+        $information->instagram = $request->input("instagram");
+        $information->twitter = $request->input("twitter");
+        $information->linkedin = $request->input("linkedin");
+        $information->instagram = $request->input("instagram");
 
         if ($request->file("logo")) {
             if ($information->logo) {
