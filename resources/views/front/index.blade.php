@@ -85,23 +85,17 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <p class="text-theme">That’s why we build every home like it’s our own. Building locally since
-                            1988, we hold ourselves to the highest standards of quality and construction integrity. In
-                            addition to the 28 required county inspections, we complete nine formal Inland inspections,
-                            plus nine more third-party critical inspections — that’s 18 additional formal inspections on
-                            every Inland Home, by choice. Our goal is that each home will serve your family, and others,
-                            for generations to come.</p>
+                        <p class="text-theme">{{ $infos->about_texte3 }}</p>
                         <div class="about-wrap2 style-theme mt-50">
                             <div class="checklist style4">
                                 <ul>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Quality real estate
-                                        services</li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">100% Satisfaction
-                                        guarantee</li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Highly professional
-                                        team</li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Dealing always on time
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Des services immobiliers de qualité
                                     </li>
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Garantie de satisfaction à 100%
+                                    </li>
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Équipe très professionnelle
+                                    </li>
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Traiter toujours à temps</li>
                                 </ul>
                             </div>
                             <div class="call-btn">
@@ -254,7 +248,7 @@
     <!--==============================
                                                                     Service Area
                                                                     ==============================-->
-    <section class="service-area-3 space overflow-hidden">
+{{--     <section class="service-area-3 space overflow-hidden">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-top="-2%" data-right="30%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
         </div>
@@ -306,12 +300,12 @@
                 <div class="slider-pagination"></div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!--==============================
                                                                     About Area
                                                                     ==============================-->
-    <div class="overflow-hidden bg-theme space overflow-hidden">
+  {{--   <div class="overflow-hidden bg-theme space overflow-hidden">
         <div class="about-3-bg-shape text-white sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="15%"
             data-left="3%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -379,7 +373,7 @@
                 </li>
             </ul>
         </div>
-    </div><!--==============================
+    </div> --}}<!--==============================
                                                                     Portfolio Area
                                                                     ==============================-->
     <section class="space overflow-hidden overflow-hidden">
