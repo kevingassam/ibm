@@ -126,41 +126,44 @@
                         @csrf
                         <div class="mb-3">
                             <label for="">Numéro</label>
-                            <input type="text" class="form-control" required id="numero" name="numero" required>
+                            <input type="text" class="form-control" required id="numero" value="{{ old("numero") }}" name="numero" required>
                             @error('numero')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Etage</label>
-                            <input type="text" class="form-control" required id="etage" name="etage" required>
+                            <input type="text" class="form-control" required id="etage" value="{{ old("etage") }}" name="etage" required>
                             @error('etage')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Type</label>
-                            <input type="text" class="form-control" required id="type" name="type" required>
+                            <input type="text" class="form-control" required id="type" value="{{ old("type") }}" name="type" required>
                             @error('type')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Surface</label>
-                            <input type="text" class="form-control" required id="surface" name="surface" required>
+                            <input type="text" class="form-control" required id="surface" name="surface" value="{{ old("surface") }}" required>
                             @error('surface')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Pièce</label>
-                            <input type="text" class="form-control" required id="piece" name="piece" required>
+                            <input type="text" class="form-control" required id="piece" value="{{ old("piece") }}" name="piece" required>
                             @error('piece')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="">Plan</label>
+                            <div class="small text-warning mb-1">
+                                - Fichiers :  jpeg,png,jpg,pdf
+                            </div>
                             <input type="file" class="form-control" required id="plan" name="plan" required>
                             @error('plan')
                                 <span class="small text-danger"> {{ $message }} </span>

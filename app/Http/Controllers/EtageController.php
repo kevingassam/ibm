@@ -17,7 +17,7 @@ class EtageController extends Controller
             'type' => 'required|string|max:255',
             'surface' => 'required|string|max:255',
             'piece' => 'required|string|max:255',
-            'plan' => 'nullable|mimes:pdf|max:2048',
+            'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
             'appartement_id' => 'required|integer|exists:appartements,id'
         ]);
         $appartement = Appartement::find($validated['appartement_id']);
@@ -51,7 +51,7 @@ class EtageController extends Controller
             'type' => 'required|string|max:255',
             'surface' => 'required|string|max:255',
             'piece' => 'required|string|max:255',
-            'plan' => 'nullable|mimes:pdf|max:2048',
+            'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:3048',
         ]);
         $etage = DetailsAppartement::find($id);
         $etage->etage = $validated['etage'];

@@ -2,8 +2,8 @@
 @section('titre', $projet->nom)
 @section('body')
     <!--==============================
-                                        Breadcumb
-                                    ============================== -->
+                                                                    Breadcumb
+                                                                ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="{{ Storage::url($projet->photo) }}">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div><!--==============================
-                                    Property Page Area
-                                    ==============================-->
+                                                                Property Page Area
+                                                                ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="slider-area property-slider1">
@@ -111,6 +111,13 @@
                                     </div>
                                 </li>
                             </ul>
+                            <div class="video-box2 mb-30 mt-5">
+                                <img src="{{ Storage::url($projet->photo) }}" alt="img">
+                                @if ($projet->video)
+                                    <a href="{{ $projet->video }}" class="play-btn style4 popup-video"><i
+                                            class="fa-sharp fa-solid fa-play"></i></a>
+                                @endif
+                            </div>
                             <h3 class="page-title mt-50 mb-25">Liste des plans</h3>
                             <div class="row gy-3">
                                 @foreach ($projet->appartements as $appartement)
@@ -143,18 +150,26 @@
                                                             <td>{{ $details->surface }}</td>
                                                             <td class="text-center">
                                                                 <a href="{{ Storage::url($details->plan) }}"
-                                                                    download="{{ $details->etage }}" target="__blank">
+                                                                    download="{{ $details->etage }}" target="__blank"
+                                                                    class="btn btn-sm btn-danger">
                                                                     <img width="25" height="25"
                                                                         src="https://img.icons8.com/ios-filled/25/FFFFFF/pdf--v1.png"
                                                                         alt="pdf--v1" />
+                                                                    Télécharger
                                                                 </a>
                                                             </td>
-                                                            <td><a href="#"
-                                                                    class="btn btn-sm btn-outline-light">Demander</a></td>
                                                             <td class="text-center">
-                                                                <img width="25" height="25"
-                                                                    src="https://img.icons8.com/glyph-neue/25/FFFFFF/bookmark-ribbon.png"
-                                                                    alt="bookmark-ribbon" />
+                                                                <a href="#" class="btn btn-sm btn-light">Demander</a>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <button type="button"
+                                                                    class="btn btn-sm btn-dark btn-add-compare"
+                                                                    data-id="{{ $details->id }}">
+                                                                    <img width="25" height="25"
+                                                                        src="https://img.icons8.com/glyph-neue/25/FFFFFF/bookmark-ribbon.png"
+                                                                        alt="bookmark-ribbon" />
+                                                                    Ajouter
+                                                                </button>
                                                             </td>
                                                         </tr>
                                                     @empty
@@ -168,14 +183,6 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <h3 class="page-title mt-50 mb-30">Vidéo de la propriété</h3>
-                            <div class="video-box2 mb-30">
-                                <img src="{{ Storage::url($projet->photo) }}" alt="img">
-                                @if ($projet->video)
-                                    <a href="{{ $projet->video }}" class="play-btn style4 popup-video"><i
-                                            class="fa-sharp fa-solid fa-play"></i></a>
-                                @endif
-                            </div>
                             <h3 class="page-title mt-45 mb-30">Localisation</h3>
                             <div class="location-map">
                                 <div class="contact-map">
@@ -184,17 +191,6 @@
                                     @endif
 
                                 </div>
-                                {{-- <div class="location-map-address">
-                                    <div class="thumb">
-                                        <img src="/front/img/property/property_inner_1.jpg" alt="img">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="title">Address:</h4>
-                                        <p class="text">Brooklyn, New York 11233, United States</p>
-                                        <h4 class="title">Post Code:</h4>
-                                        <p class="text">12345</p>
-                                    </div>
-                                </div> --}}
                             </div>
 
                         </div>
@@ -231,8 +227,8 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control style-border" required name="nom"
                                         placeholder="Nom">
-                                        <input type="hidden" class="form-control style-border" value="{{ $projet->id}}" required name="projet_id"
-                                        placeholder="Nom">
+                                    <input type="hidden" class="form-control style-border" value="{{ $projet->id }}"
+                                        required name="projet_id" placeholder="Nom">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control style-border" required name="email"
@@ -298,8 +294,97 @@
             </div>
         </div>
     </section><!--==============================
-                                Footer Area
-                                ==============================-->
+                                                            Footer Area
+                                                            ==============================-->
 
 
+
+    <a href="">
+        <div class="compare-btn">
+            <img width="30" height="30" src="https://img.icons8.com/hatch/30/FFFFFF/scales.png" alt="scales" />
+            <br>
+            <span class="count" id="count-total-compare">
+                0
+            </span>
+        </div>
+    </a>
+
+    <style>
+        .compare-btn {
+            position: fixed;
+            right: 35px;
+            bottom: 90px;
+            background-color: #b69364;
+            z-index: 100;
+            padding: 5px;
+            border-radius: 100%;
+            border: solid 4px white;
+        }
+
+        .compare-btn .count {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            background-color: black;
+            color: white;
+            padding: 0px 8px 0px 8px;
+            border-radius: 100%;
+            font-size: 10px;
+        }
+
+        .compare-btn img {}
+    </style>
+
+    <script>
+        // Fonction pour lire un cookie
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Fonction pour définir un cookie avec une durée de vie de 2 semaines
+        function setCookie(name, value, days = 14) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+        }
+
+        // Récupère les IDs stockés dans le cookie et les convertit en tableau
+        function getStoredIds() {
+            const storedIds = getCookie('compareIds');
+            //count total ids
+            return storedIds ? JSON.parse(storedIds) : [];
+        }
+
+        // Stocke le tableau d'IDs dans le cookie
+        function storeIds(ids) {
+            setCookie('compareIds', JSON.stringify(ids));
+        }
+
+        // Lorsque la page se charge, récupère les IDs existants
+        $(document).ready(function() {
+            let compareIds = getStoredIds();
+            $("#count-total-compare").text(compareIds.length);
+
+            // Ajoute un ID au tableau et au cookie, si pas déjà présent
+            $('.btn-add-compare').on('click', function() {
+                const id = $(this).data('id');
+
+                // Ajoute uniquement si l'ID n'est pas déjà dans le tableau
+                if (!compareIds.includes(id)) {
+                    compareIds.push(id);
+                    storeIds(compareIds); // Met à jour le cookie avec le nouveau tableau
+                    alert(`ID ${id} ajouté à la comparaison.`);
+                } else {
+                    alert(`ID ${id} est déjà dans la comparaison.`);
+                }
+            });
+        });
+    </script>
+
+@endsection
+
+@section('header')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @endsection

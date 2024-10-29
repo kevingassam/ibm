@@ -2,8 +2,8 @@
 @section('titre', 'Accueil')
 @section('body')
     <!--==============================
-                                                                    Hero Area
-                                                                    ==============================-->
+                                                                        Hero Area
+                                                                        ==============================-->
     <div class="th-hero-wrapper hero-3" id="hero" data-bg-src="{{ $infos->GetVideo() }}">
         @if ($infos->GetTypeMedia() == 'video')
             <video class="hero-video" id="video" src="{{ $infos->GetVideo() }}" loop="" muted="" autoplay="">
@@ -48,8 +48,8 @@
         </div>
     </div>
     <!--======== / Hero Section ========--><!--==============================
-                                                                    About Area
-                                                                    ==============================-->
+                                                                        About Area
+                                                                        ==============================-->
     <div class="overflow-hidden space-top overflow-hidden" id="about-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="25%" data-right="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -77,46 +77,35 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="img-box3">
-                            <div class="img1">
-                                <img src="/front/img/normal/about_3_3.png" alt="About">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <p class="text-theme">{{ $infos->about_texte3 }}</p>
-                        <div class="about-wrap2 style-theme mt-50">
-                            <div class="checklist style4">
-                                <ul>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Des services immobiliers de qualité
-                                    </li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Garantie de satisfaction à 100%
-                                    </li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Équipe très professionnelle
-                                    </li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Traiter toujours à temps</li>
-                                </ul>
-                            </div>
-                            <div class="call-btn">
-                                <div class="icon-btn bg-theme">
-                                    <img src="/front/img/icon/phone.svg" alt="img">
-                                </div>
-                                <div class="btn-content">
-                                    <h6 class="btn-title text-theme">Call Us 24/7</h6>
-                                    <span class="btn-text"><a class="text-theme" href="tel:0123456789">+01 234
-                                            56789</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </div><!--==============================
-                                                                    Property Area 2
-                                                                    ==============================-->
+                                                                        Property Area 2
+                                                                        ==============================-->
+
+        <br>
+
+    <div class="client-area-1 bg-theme space">
+        <div class="container th-container2">
+            <div class="swiper th-slider has-shadow" id="clientSlider1"
+                data-slider-options='{"breakpoints":{"0":{"slidesPerView":2},"576":{"slidesPerView":"3"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"6"}}}'>
+                <div class="swiper-wrapper">
+
+                    @foreach ($partenaires as $partenaire)
+                        <div class="swiper-slide">
+                            <a href="#" class="client-card">
+                                <img src="{{ Storage::url($partenaire->logo) }}" alt="{{ $partenaire->nom }}">
+                            </a>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <section class="space overflow-hidden" id="property-sec">
         <div class="sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-top="40%" data-right="1%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -201,27 +190,27 @@
     </section>
 
     <!--==============================
-                                                                    Counter Area
-                                                                    ==============================-->
+                                                                        Counter Area
+                                                                        ==============================-->
     <div class="space bg-theme">
         <div class="container th-container2">
             <div class="counter-card-wrap style2">
                 <div class="counter-card style2">
                     <div class="media-body">
                         <h2 class="box-number text-white"><span class="counter-number text-white">20</span>+</h2>
-                        <p class="box-text text-light">Years of Experiences</p>
+                        <p class="box-text text-light">Années d'xperiences</p>
                     </div>
                 </div>
                 <div class="counter-card style2">
                     <div class="media-body">
-                        <h2 class="box-number text-white"><span class="counter-number text-white">12</span>k+</h2>
-                        <p class="box-text text-light">Featured Projects</p>
+                        <h2 class="box-number text-white"><span class="counter-number text-white"> {{ $total_projets }} </span></h2>
+                        <p class="box-text text-light">Projets</p>
                     </div>
                 </div>
                 <div class="counter-card style2">
                     <div class="media-body">
-                        <h2 class="box-number text-white"><span class="counter-number text-white">985</span>+</h2>
-                        <p class="box-text text-light">Modern Houses</p>
+                        <h2 class="box-number text-white"><span class="counter-number text-white">{{ $total_appartements }}</span>+</h2>
+                        <p class="box-text text-light">Appartements</p>
                     </div>
                 </div>
                 <div class="counter-card style2">
@@ -232,23 +221,23 @@
                 </div>
                 <div class="counter-card style2">
                     <div class="media-body">
-                        <h2 class="box-number text-white"><span class="counter-number text-white">25</span>k+</h2>
+                        <h2 class="box-number text-white"><span class="counter-number text-white">40</span>+</h2>
                         <p class="box-text text-light">Satisfied clieants</p>
                     </div>
                 </div>
                 <div class="counter-card style2">
                     <div class="media-body">
-                        <h2 class="box-number text-white"><span class="counter-number text-white">45</span>k</h2>
-                        <p class="box-text text-light">Trusted Partners</p>
+                        <h2 class="box-number text-white"><span class="counter-number text-white">{{ $total_partenaires }}</span></h2>
+                        <p class="box-text text-light">Partenaires</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--==============================
-                                                                    Service Area
-                                                                    ==============================-->
-{{--     <section class="service-area-3 space overflow-hidden">
+                                                                        Service Area
+                                                                        ==============================-->
+    {{--     <section class="service-area-3 space overflow-hidden">
         <div class="sec-bg-shape2-3 jump shape-mockup d-xl-block d-none" data-top="-2%" data-right="30%">
             <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
         </div>
@@ -303,9 +292,9 @@
     </section> --}}
 
     <!--==============================
-                                                                    About Area
-                                                                    ==============================-->
-  {{--   <div class="overflow-hidden bg-theme space overflow-hidden">
+                                                                        About Area
+                                                                        ==============================-->
+    {{--   <div class="overflow-hidden bg-theme space overflow-hidden">
         <div class="about-3-bg-shape text-white sec-bg-shape2-1 spin shape-mockup d-xl-block d-none" data-bottom="15%"
             data-left="3%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
@@ -374,8 +363,8 @@
             </ul>
         </div>
     </div> --}}<!--==============================
-                                                                    Portfolio Area
-                                                                    ==============================-->
+                                                                        Portfolio Area
+                                                                        ==============================-->
     <section class="space overflow-hidden overflow-hidden">
         <div class="project-bg-shape3-1 sec-bg-shape2-1 jump shape-mockup d-xxl-block d-none" data-bottom="5%"
             data-right="0%">
@@ -435,24 +424,7 @@
     </section>
 
 
-    <div class="client-area-1 bg-theme space">
-        <div class="container th-container2">
-            <div class="swiper th-slider has-shadow" id="clientSlider1"
-                data-slider-options='{"breakpoints":{"0":{"slidesPerView":2},"576":{"slidesPerView":"3"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"6"}}}'>
-                <div class="swiper-wrapper">
 
-                    @foreach ($partenaires as $partenaire)
-                        <div class="swiper-slide">
-                            <a href="#" class="client-card">
-                                <img src="{{ Storage::url($partenaire->logo) }}" alt="{{ $partenaire->nom }}">
-                            </a>
-                        </div>
-                    @endforeach
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <section class="overflow-hidden space">
@@ -575,6 +547,6 @@
             </div>
         </div>
     </section><!--==============================
-                                                                    Footer Area
-                                                                    ==============================-->
+                                                                        Footer Area
+                                                                        ==============================-->
 @endsection

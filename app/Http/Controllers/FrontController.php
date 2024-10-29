@@ -22,7 +22,10 @@ class FrontController extends Controller
         $projets = Projet::Orderby('created_at', 'desc')->take(15)->get();
         $pieces = DetailsAppartement::distinct('piece')->pluck('piece');
         $partenaires = Partenaire::select('nom', 'logo')->get();
-
+        $total_projets = Projet::count();
+        $total_appartements =  DetailsAppartement::count();
+        $total_partenaires = Partenaire::count();
+        $total_articles = Blog::count();
         $atouts = [
             [
                 'titre' => "Emplacements étudiés",
@@ -46,7 +49,11 @@ class FrontController extends Controller
             ->with('projets', $projets)
             ->with('pieces', $pieces)
             ->with('partenaires', $partenaires)
-            ->with('atouts', $atouts);
+            ->with('atouts', $atouts)
+            ->with('total_projets', $total_projets)
+            ->with('total_appartements', $total_appartements)
+            ->with('total_partenaires', $total_partenaires)
+            ->with('total_articles', $total_articles);
     }
 
     public function contact()
@@ -107,14 +114,19 @@ class FrontController extends Controller
             ->with('partenaires', $partenaires);
     }
 
-    public function projet(Request $request, $statut)
+    public function projet(Request $request, $statut = null)
     {
         $key = $request->input("key") ?? null;
         $type = $request->input("type") ?? null;
-        if ($statut != "en cours" && $statut != "terminé") {
-            $statut = "en cours";
+        if ($statut) {
+            if ($statut != "en cours" && $statut != "terminé") {
+                $statut = "en cours";
+            }
         }
-        $projets = Projet::where('statut', $statut);
+        $projets = Projet::query();
+        if ($statut) {
+            $projets = $projets->where('statut', $statut);
+        }
         if ($key) {
             $projets = $projets->where('nom', 'LIKE', '%' . $key . '%');
         }
@@ -138,7 +150,7 @@ class FrontController extends Controller
         if (!$projet) {
             abort(404);
         }
-        $autres = Projet::where('type',$projet->type)->where('id','!=',$projet->id)->take(3)->get();
+        $autres = Projet::where('type', $projet->type)->where('id', '!=', $projet->id)->take(3)->get();
         return view("front.details-projet")
             ->with('projet', $projet)
             ->with('autres', $autres);

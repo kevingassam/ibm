@@ -47,6 +47,9 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="/front/css/style.css">
 
+
+    @yield('header')
+
 </head>
 
 <body class="bg-light">
@@ -100,7 +103,7 @@
                         </a>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">
+                        <a href="{{ route('projet') }}">
                             Projets
                         </a>
                         <ul class="sub-menu">
@@ -261,7 +264,7 @@
                                         </a>
                                     </li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">
+                                        <a href="{{ route('projet') }}">
                                             Projets
                                         </a>
                                         <ul class="sub-menu">
@@ -432,7 +435,7 @@
                 </div>
             </div>
         </div>
-        <div class="copyright-area" data-bg-src="/front/img/bg/footer-bg-3-1.png">
+        <div class="copyright-area" data-bg-src="/front/img/bg/xfooter-bg-3-1.png">
             <div class="container th-container2">
                 <div class="copyright-wrap bg-light">
                     <div class="footer-container">

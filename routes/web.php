@@ -29,7 +29,7 @@ Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
 Route::post('/demandes/projet', [FrontController::class, 'demandes_post'])->name('demandes.post');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
-Route::get('/projet/v/{statut}', [FrontController::class, 'projet'])->name('projet');
+Route::get('/projet/v/{statut?}', [FrontController::class, 'projet'])->name('projet');
 Route::get('/projet/d/{id}/{nom}', [FrontController::class, 'projet_details'])->name('projet_details');
 Route::get('/articles', [FrontController::class, 'blogs'])->name('articles');
 Route::get('/article/{id}/{titre}', [FrontController::class, 'article'])->name('article');

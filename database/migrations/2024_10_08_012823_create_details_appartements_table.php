@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("piece")->nullable();
             $table->string("surface")->nullable();
             $table->string("plan")->nullable();
+            $table->enum("etat",["disponible","vendu"])->default("disponible");
             $table->unsignedBigInteger("appartement_id");
             $table->timestamps();
             $table->foreign("appartement_id")
