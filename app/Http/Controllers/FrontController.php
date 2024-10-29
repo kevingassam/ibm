@@ -114,8 +114,10 @@ class FrontController extends Controller
         if (!$projet) {
             abort(404);
         }
+        $autres = Projet::where('type',$projet->type)->where('id','!=',$projet->id)->take(3)->get();
         return view("front.details-projet")
-            ->with('projet', $projet);
+            ->with('projet', $projet)
+            ->with('autres', $autres);
     }
 
 

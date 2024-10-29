@@ -32,6 +32,12 @@ return new class extends Migration
             $table->string("instagram")->nullable();
             $table->string("linkedin")->nullable();
 
+            //images de couvertures
+            $table->string("cover_about")->nullable();
+            $table->string("cover_blog")->nullable();
+            $table->string("cover_projet")->nullable();
+            $table->string("cover_contact")->nullable();
+
             $table->timestamps();
         });
     }

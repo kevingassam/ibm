@@ -25,6 +25,8 @@
     <link href="/admin/css/semi-dark-theme.css" rel="stylesheet">
     <link href="/admin/css/minimal-theme.css" rel="stylesheet">
     <link href="/admin/css/shadow-theme.css" rel="stylesheet">
+
+
     <link rel="shortcut icon" href="{{ $infos->GetIcon() }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -89,14 +91,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('temoignages.index') }}">
-                        <div class="parent-icon">
-                            <i class="bi bi-chat-dots"></i>
-                        </div>
-                        <div class="menu-title">Témoignages</div>
-                    </a>
-                </li>
-                <li>
                     <a href="{{ route('partenaires.index') }}">
                         <div class="parent-icon">
                             <i class="bi bi-people"></i>
@@ -113,7 +107,8 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('projets.index') }}"><span class="material-symbols-outlined">arrow_right</span>
+                            <a href="{{ route('projets.index') }}"><span
+                                    class="material-symbols-outlined">arrow_right</span>
                                 Liste
                             </a>
                         </li>
@@ -148,18 +143,39 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('contacts.index') }}" >
-                        <div class="parent-icon"><i class="bi bi-telephone"></i>
+                    <a href="{{ route('contacts.index') }}">
+                        <div class="parent-icon">
+                            <i class="bi bi-telephone"></i>
                         </div>
                         <div class="menu-title">Contacts</div>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('configurations.index') }}" >
+                    <a href="javascript:;" class="has-arrow">
                         <div class="parent-icon"><i class="bi bi-gear"></i>
                         </div>
                         <div class="menu-title">Configuration</div>
                     </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('configurations.index') }}">
+                                <span class="material-symbols-outlined">arrow_right</span>
+                                Informations
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('temoignages.index') }}">
+                                <span class="material-symbols-outlined">arrow_right</span>
+                                Témoignanges
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('banners') }}">
+                                <span class="material-symbols-outlined">arrow_right</span>
+                                Bannières page
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <!--end navigation-->
@@ -177,7 +193,8 @@
                 </div>
             </div>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ route('configurations.index') }}"><span class="material-symbols-outlined me-2">
+                <li><a class="dropdown-item" href="{{ route('configurations.index') }}"><span
+                            class="material-symbols-outlined me-2">
                             tune
                         </span><span>Configuration</span></a>
                 </li>
@@ -296,6 +313,18 @@
 
 
     @livewireScripts
+
+
+    <script src="/admin/js/jquery.min.js"></script>
+    <script src="/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="/admin/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="/admin/plugins/simplebar/js/simplebar.min.js"></script>
+
+    <!--BS Scripts-->
+    <script src="/admin/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/js/main.js"></script>
+
+
     @yield('scripts')
 </body>
 

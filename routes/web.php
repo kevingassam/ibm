@@ -36,6 +36,7 @@ Route::post('/login', [FrontController::class, 'login_post'])->name('login.post'
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [FrontController::class, 'dashboard'])->name('dashboard');
+    Route::get('/banners', [ConfigurationController::class, 'banners'])->name('banners');
     Route::resource('blogs', BlogController::class);
     Route::resource('projets', ProjetController::class);
     Route::post('/admin/projet.deleteImage', [ProjetController::class, 'deleteSingleImage']);

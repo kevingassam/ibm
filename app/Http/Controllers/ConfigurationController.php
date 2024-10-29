@@ -13,15 +13,23 @@ class ConfigurationController extends Controller
         return view('admin.configuration');
     }
 
+    public function banners(){
+        return view('admin.banners');
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([
-            'app_name' => 'string|max:255',
+            'app_name' => 'nullable|string|max:255',
             'email1' => 'nullable|email|max:255',
             'email2' => 'nullable|email|max:255',
             'tel1' => 'nullable|string|max:20',
             'tel2' => 'nullable|string|max:20',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_about' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_blog' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_projet' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_contatct' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'adresse1' => 'nullable|string|max:255',
             'adresse2' => 'nullable|string|max:255',
@@ -69,7 +77,30 @@ class ConfigurationController extends Controller
             }
             $information->video = $request->file('video')->store('informations/videos', 'public');
         }
-
+        if ($request->file("cover_about")) {
+            if ($information->cover_about) {
+                Storage::disk('public')->delete($information->cover_about);
+            }
+            $information->cover_about = $request->file('cover_about')->store('informations', 'public');
+        }
+        if ($request->file("cover_blog")) {
+            if ($information->cover_blog) {
+                Storage::disk('public')->delete($information->cover_blog);
+            }
+            $information->cover_blog = $request->file('cover_blog')->store('informations', 'public');
+        }
+        if ($request->file("cover_projet")) {
+            if ($information->cover_projet) {
+                Storage::disk('public')->delete($information->cover_projet);
+            }
+            $information->cover_projet = $request->file('cover_projet')->store('informations', 'public');
+        }
+        if ($request->file("cover_contact")) {
+            if ($information->cover_contact) {
+                Storage::disk('public')->delete($information->cover_contact);
+            }
+            $information->cover_contact = $request->file('cover_contact')->store('informations', 'public');
+        }
 
         $information->save();
         return response()

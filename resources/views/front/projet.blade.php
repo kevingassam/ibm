@@ -5,7 +5,7 @@
     <!--==============================
         Breadcumb
     ============================== -->
-    <div class="breadcumb-wrapper " data-bg-src="/front/img/bg/breadcumb-bg.jpg">
+    <div class="breadcumb-wrapper " data-bg-src="{{ $infos->GetCoverProjet() }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-9">
@@ -92,10 +92,10 @@
                                        {{--  <h5 class="property-card-price">$ 1500.00 USD/night</h5> --}}
                                         <p class="property-card-location text-capitalize">{{ $projet->type }}</p>
                                     </div>
-                                    <div class="btn-wrap">
-                                        <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}"
-                                            class="th-btn style-border2 th-btn-icon">Details</a>
-                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}"
+                                        class="th-btn style-border2 th-btn-icon">Details</a>
                                 </div>
                             </div>
                         </div>

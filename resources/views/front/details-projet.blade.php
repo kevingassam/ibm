@@ -2,8 +2,8 @@
 @section('titre', $projet->nom)
 @section('body')
     <!--==============================
-                            Breadcumb
-                        ============================== -->
+                                Breadcumb
+                            ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="{{ Storage::url($projet->photo) }}">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div><!--==============================
-                        Property Page Area
-                        ==============================-->
+                            Property Page Area
+                            ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="slider-area property-slider1">
@@ -201,62 +201,56 @@
                 <div class="col-xxl-4 col-lg-5">
                     <aside class="sidebar-area">
                         <div class="widget widget-property-contact">
-                            <p class="widget_text">I am interested in this property</p>
+                            <p class="widget_text">
+                                Je suis intéressé par ce bien
+                            </p>
                             <form action="#" class="widget-property-contact-form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" placeholder="Name">
+                                    <input type="text" class="form-control style-border" name="name"
+                                        placeholder="Nom">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" placeholder="Email Address">
+                                    <input type="text" class="form-control style-border" name="email"
+                                        placeholder="Email adresse">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" placeholder="Phone Number">
+                                    <input type="text" class="form-control style-border" name="telephone"
+                                        placeholder="Téléphone">
                                 </div>
-                                <button class="th-btn style-white th-btn-icon mt-15">Request Al Video</button>
+                                <div class="form-group">
+                                    <textarea name="message" id="message"  class="form-control style-border" rows="3"></textarea>
+                                </div>
+                                <button class="th-btn style-white th-btn-icon mt-15">
+                                    Envoyer le formulaire
+                                </button>
                             </form>
                         </div>
                         <div class="widget  ">
-                            <h3 class="widget_title">Featured Listing</h3>
+                            <h3 class="widget_title">Annonce en vedette</h3>
                             <div class="recent-post-wrap">
-                                <div class="recent-post">
-                                    <div class="media-img">
-                                        <a href="blog-details.html"><img src="/front/img/blog/recent-post-1-1.jpg"
-                                                alt="Blog Image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Exploring
-                                                The Green Spaces Of Realar Residence</a></h4>
-                                        <div class="recent-post-meta">
-                                            <a href="blog.html"><i class="far fa-calendar"></i>22/6/2024</a>
+                                @foreach ($autres as $autre)
+                                    <div class="recent-post">
+                                        <div class="media-img">
+                                            <a href="{{ route('projet_details',['id'=>$autre->id,'nom'=>$autre->nom]) }}">
+                                                <img src="{{ Storage::url($autre->photo)}}"
+                                                    alt="{{ $autre->nom }}">
+                                                </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="post-title"><a class="text-inherit"
+                                                    href="{{ route('projet_details',['id'=>$autre->id,'nom'=>$autre->nom]) }}">
+                                                    {{ Str::limit($autre->nom , 20)}}
+                                                </a>
+                                            </h4>
+                                            <div class="recent-post-meta">
+                                                <span>
+                                                    <i class="far fa-calendar"></i>
+                                                    {{ $autre->created_at->format('d-m-Y ') }}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="recent-post">
-                                    <div class="media-img">
-                                        <a href="blog-details.html"><img src="/front/img/blog/recent-post-1-2.jpg"
-                                                alt="Blog Image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Harmony
-                                                With Nature Of Realar Residence</a></h4>
-                                        <div class="recent-post-meta">
-                                            <a href="blog.html"><i class="far fa-calendar"></i>25/6/2024</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent-post">
-                                    <div class="media-img">
-                                        <a href="blog-details.html"><img src="/front/img/blog/recent-post-1-3.jpg"
-                                                alt="Blog Image"></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="post-title"><a class="text-inherit" href="blog-details.html">Exploring
-                                                The Green Spaces Of Realar Residence</a></h4>
-                                        <div class="recent-post-meta">
-                                            <a href="blog.html"><i class="far fa-calendar"></i>27/6/2024</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="widget widget_banner  " data-bg-src="/front/img/widget/widget-banner.png">
@@ -279,8 +273,8 @@
             </div>
         </div>
     </section><!--==============================
-                    Footer Area
-                    ==============================-->
+                        Footer Area
+                        ==============================-->
 
 
 @endsection

@@ -4,7 +4,7 @@
     <!--==============================
                         Breadcumb
                     ============================== -->
-    <div class="breadcumb-wrapper " data-bg-src="/front/img/bg/breadcumb-bg.jpg">
+    <div class="breadcumb-wrapper " data-bg-src="{{ $infos->GetCoverContact() }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-9">
