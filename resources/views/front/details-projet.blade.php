@@ -2,8 +2,8 @@
 @section('titre', $projet->nom)
 @section('body')
     <!--==============================
-                                Breadcumb
-                            ============================== -->
+                                    Breadcumb
+                                ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="{{ Storage::url($projet->photo) }}">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div><!--==============================
-                            Property Page Area
-                            ==============================-->
+                                Property Page Area
+                                ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="slider-area property-slider1">
@@ -204,23 +204,43 @@
                             <p class="widget_text">
                                 Je suis intéressé par ce bien
                             </p>
-                            <form action="#" class="widget-property-contact-form">
+                            @if (session('success'))
+                                <br>
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if (session('error'))
+                                <br>
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            @if ($errors->any())
+                                <div class="text-danger small">
+                                    @foreach ($errors->all() as $error)
+                                        <div>{{ $error }}</div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <form action="{{ route("demandes.post") }}" class="widget-property-contact-form" method="post">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" name="name"
+                                    <input type="text" class="form-control style-border" required name="name"
                                         placeholder="Nom">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" name="email"
+                                    <input type="text" class="form-control style-border" required name="email"
                                         placeholder="Email adresse">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" name="telephone"
+                                    <input type="text" class="form-control style-border" required name="telephone"
                                         placeholder="Téléphone">
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="message" id="message"  class="form-control style-border" rows="3"></textarea>
+                                    <textarea name="message" id="message" class="form-control style-border" required rows="3"></textarea>
                                 </div>
-                                <button class="th-btn style-white th-btn-icon mt-15">
+                                <button class="th-btn style-white th-btn-icon mt-15" type="submit">
                                     Envoyer le formulaire
                                 </button>
                             </form>
@@ -231,15 +251,14 @@
                                 @foreach ($autres as $autre)
                                     <div class="recent-post">
                                         <div class="media-img">
-                                            <a href="{{ route('projet_details',['id'=>$autre->id,'nom'=>$autre->nom]) }}">
-                                                <img src="{{ Storage::url($autre->photo)}}"
-                                                    alt="{{ $autre->nom }}">
-                                                </a>
+                                            <a href="{{ route('projet_details', ['id' => $autre->id, 'nom' => $autre->nom]) }}">
+                                                <img src="{{ Storage::url($autre->photo) }}" alt="{{ $autre->nom }}">
+                                            </a>
                                         </div>
                                         <div class="media-body">
                                             <h4 class="post-title"><a class="text-inherit"
-                                                    href="{{ route('projet_details',['id'=>$autre->id,'nom'=>$autre->nom]) }}">
-                                                    {{ Str::limit($autre->nom , 20)}}
+                                                    href="{{ route('projet_details', ['id' => $autre->id, 'nom' => $autre->nom]) }}">
+                                                    {{ Str::limit($autre->nom, 20) }}
                                                 </a>
                                             </h4>
                                             <div class="recent-post-meta">
@@ -273,8 +292,8 @@
             </div>
         </div>
     </section><!--==============================
-                        Footer Area
-                        ==============================-->
+                            Footer Area
+                            ==============================-->
 
 
 @endsection

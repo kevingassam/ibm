@@ -17,6 +17,10 @@ class ConfigurationController extends Controller
         return view('admin.banners');
     }
 
+    public function about_config(){
+        return view('admin.about_config');
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -37,6 +41,7 @@ class ConfigurationController extends Controller
             'facebook' => 'nullable|url',
             'instagram' => 'nullable|url',
             'twitter' => 'nullable|url',
+            'youtube' => 'nullable|url',
             'linkedin' => 'nullable|url',
             'instagram' => 'nullable|url',
             'map' => 'nullable|string|max:5000',
@@ -57,7 +62,8 @@ class ConfigurationController extends Controller
         $information->instagram = $request->input("instagram");
         $information->twitter = $request->input("twitter");
         $information->linkedin = $request->input("linkedin");
-        $information->instagram = $request->input("instagram");
+        $information->youtube = $request->input("youtube");
+
 
         if ($request->file("logo")) {
             if ($information->logo) {

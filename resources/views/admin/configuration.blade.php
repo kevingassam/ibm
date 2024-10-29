@@ -128,17 +128,17 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="mb-4">
-                                        <h6 class="mb-1">Adresse url de la carte map</h6>
-                                        <textarea name="map" id="map" class="form-control" rows="2">{{ $infos->map }}</textarea>
-                                        @error('map')
-                                            <span class="small text-danger">
-                                                {{ $message }}
-                                            </span>
-                                        @enderror
+                                    <div class="col-sm-12">
+                                        <div class="mb-4">
+                                            <h6 class="mb-1">Adresse url de la carte map</h6>
+                                            <textarea name="map" id="map" class="form-control" rows="2">{{ $infos->map }}</textarea>
+                                            @error('map')
+                                                <span class="small text-danger">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="col-sm-12">
                                     <div class="mb-4">
                                         <h6 class="mb-1">Vidéo / Image pour la bannière</h6>
@@ -180,10 +180,6 @@
                                 <div class="col-sm-6">
                                     <label for="linkedin">linkedin</label>
                                     <input type="url" name="linkedin" id="linkedin" class="form-control" value="{{ $infos->linkedin }}">
-                                </div>
-                                <div class="col-sm-12">
-                                    <label for="youtube">youtube</label>
-                                    <input type="url" name="youtube" id="youtube" class="form-control" value="{{ $infos->youtube }}">
                                 </div>
                             </div>
                         </div>

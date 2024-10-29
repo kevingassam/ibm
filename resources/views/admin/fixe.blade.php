@@ -175,6 +175,12 @@
                                 Bannières page
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('about-config') }}">
+                                <span class="material-symbols-outlined">arrow_right</span>
+                                Page à-propos
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

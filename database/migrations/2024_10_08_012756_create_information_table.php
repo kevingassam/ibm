@@ -38,6 +38,12 @@ return new class extends Migration
             $table->string("cover_projet")->nullable();
             $table->string("cover_contact")->nullable();
 
+            //page informations
+            $table->string("about_video")->nullable();
+            $table->text("about_texte1")->nullable();
+            $table->text("about_texte2")->nullable();
+            $table->text("about_texte3")->nullable();
+
             $table->timestamps();
         });
     }
