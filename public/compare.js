@@ -11,8 +11,10 @@ function getCookie(name) {
 // Fonction pour définir un cookie avec une durée de vie de 2 semaines
 function setCookie(name, value, days = 14) {
     const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(
+        value
+    )}; expires=${date.toUTCString()}; path=/`;
 }
 
 // Récupère les IDs stockés dans le cookie et les convertit en tableau
@@ -31,9 +33,9 @@ function updateCompareCount() {
     const compareIds = getStoredIds();
     const total = compareIds.length;
     $("#count-total-compare").text(total);
-    if(total > 0) {
+    if (total > 0) {
         $("#compare-btn").removeClass("d-none");
-    }else{
+    } else {
         $("#compare-btn").addClass("d-none");
     }
 }
@@ -51,7 +53,7 @@ $(document).ready(function () {
         // Vérifie si l'ID est déjà dans le tableau
         if (compareIds.includes(id)) {
             // Retire l'ID du tableau
-            compareIds = compareIds.filter(item => item !== id);
+            compareIds = compareIds.filter((item) => item !== id);
             //alert(`L'ID ${id} a été retiré de la comparaison.`);
         } else {
             // Ajoute l'ID au tableau
@@ -62,5 +64,14 @@ $(document).ready(function () {
         // Met à jour le cookie avec le tableau modifié et l'affichage
         storeIds(compareIds);
         updateCompareCount();
+    });
+
+    $("#compare-btn").on("click", function () {
+        let compareIds = getStoredIds();
+        if (compareIds.length > 0) {
+            const idsParam = compareIds.join(",");
+            const url = `/compare?ids=${idsParam}`;
+            window.location.href = url;
+        }
     });
 });

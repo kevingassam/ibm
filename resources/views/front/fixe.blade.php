@@ -482,7 +482,7 @@
 Code End  Here
 ******************************** -->
 
-<a href="">
+
     <div class="compare-btn d-none" id="compare-btn" >
         <img width="30" height="30" src="https://img.icons8.com/hatch/30/FFFFFF/scales.png" alt="scales" />
         <br>
@@ -490,7 +490,6 @@ Code End  Here
             0
         </span>
     </div>
-</a>
 
 <style>
     .compare-btn {

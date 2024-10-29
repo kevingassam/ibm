@@ -62,6 +62,13 @@ class FrontController extends Controller
     }
 
 
+    public function compare(Request $request)
+    {
+        $ids = explode(',', $request->query('ids'));
+        $elements = DetailsAppartement::whereIn('id', $ids)->get();
+        return view('front.compare', compact('elements'));
+    }
+
     public function demandes_post(Request $request)
     {
         $request->validate([
