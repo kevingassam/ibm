@@ -482,6 +482,41 @@
 Code End  Here
 ******************************** -->
 
+<a href="">
+    <div class="compare-btn d-none" id="compare-btn" >
+        <img width="30" height="30" src="https://img.icons8.com/hatch/30/FFFFFF/scales.png" alt="scales" />
+        <br>
+        <span class="count" id="count-total-compare">
+            0
+        </span>
+    </div>
+</a>
+
+<style>
+    .compare-btn {
+        position: fixed;
+        right: 35px;
+        bottom: 90px;
+        background-color: #b69364;
+        z-index: 100;
+        padding: 5px;
+        border-radius: 100%;
+        border: solid 4px white;
+    }
+
+    .compare-btn .count {
+        position: absolute;
+        top: -15px;
+        right: -10px;
+        background-color: black;
+        color: white;
+        padding: 0px 8px 0px 8px;
+        border-radius: 100%;
+        font-size: 10px;
+    }
+
+</style>
+
     <!-- Scroll To Top -->
     <div class="scroll-top">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">

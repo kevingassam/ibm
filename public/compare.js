@@ -2,51 +2,65 @@
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) {
+        return decodeURIComponent(parts.pop().split(";").shift());
+    }
+    return null;
 }
 
 // Fonction pour définir un cookie avec une durée de vie de 2 semaines
 function setCookie(name, value, days = 14) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;
 }
 
 // Récupère les IDs stockés dans le cookie et les convertit en tableau
 function getStoredIds() {
-    const storedIds = getCookie('compareIds');
-    //count total ids
+    const storedIds = getCookie("compareIds");
     return storedIds ? JSON.parse(storedIds) : [];
 }
 
 // Stocke le tableau d'IDs dans le cookie
 function storeIds(ids) {
-    setCookie('compareIds', JSON.stringify(ids));
+    setCookie("compareIds", JSON.stringify(ids));
 }
 
-// Lorsque la page se charge, récupère les IDs existants
-$(document).ready(function() {
-    let compareIds = getStoredIds();
-    total = compareIds.length;
-    if(total>0){
-        $("#count-total-compare").text(total);
+// Met à jour l'affichage du nombre total d'IDs dans la comparaison
+function updateCompareCount() {
+    const compareIds = getStoredIds();
+    const total = compareIds.length;
+    $("#count-total-compare").text(total);
+    if(total > 0) {
         $("#compare-btn").removeClass("d-none");
     }else{
         $("#compare-btn").addClass("d-none");
     }
+}
 
+// Au chargement de la page
+$(document).ready(function () {
+    // Initialise l'affichage du nombre d'éléments dans la comparaison
+    updateCompareCount();
 
-    // Ajoute un ID au tableau et au cookie, si pas déjà présent
-    $('.btn-add-compare').on('click', function() {
-        const id = $(this).data('id');
+    // Gère l'ajout ou la suppression d'un ID au clic
+    $(".btn-add-compare").on("click", function () {
+        const id = $(this).data("id");
+        let compareIds = getStoredIds();
 
-        // Ajoute uniquement si l'ID n'est pas déjà dans le tableau
-        if (!compareIds.includes(id)) {
-            compareIds.push(id);
-            storeIds(compareIds); // Met à jour le cookie avec le nouveau tableau
-            alert(`ID ${id} ajouté à la comparaison.`);
+        // Vérifie si l'ID est déjà dans le tableau
+        if (compareIds.includes(id)) {
+            // Retire l'ID du tableau
+            compareIds = compareIds.filter(item => item !== id);
+            //alert(`L'ID ${id} a été retiré de la comparaison.`);
         } else {
-            alert(`ID ${id} est déjà dans la comparaison.`);
+            // Ajoute l'ID au tableau
+            compareIds.push(id);
+            //alert(`L'ID ${id} a été ajouté à la comparaison.`);
         }
+
+        // Met à jour le cookie avec le tableau modifié et l'affichage
+        storeIds(compareIds);
+        updateCompareCount();
     });
 });
