@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\EtageController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PartenaireController;
@@ -26,7 +27,7 @@ Route::get('/', [FrontController::class, 'home'])->name('home');
 Route::get('/login', [FrontController::class, 'login'])->name('login');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
-Route::post('/demandes', [FrontController::class, 'demandes_post'])->name('demandes.post');
+Route::post('/demandes/projet', [FrontController::class, 'demandes_post'])->name('demandes.post');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/projet/v/{statut}', [FrontController::class, 'projet'])->name('projet');
 Route::get('/projet/d/{id}/{nom}', [FrontController::class, 'projet_details'])->name('projet_details');
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('configurations', ConfigurationController::class);
     Route::resource('partenaires', PartenaireController::class);
     Route::resource('etages', EtageController::class);
+    Route::resource('demandes', DemandeController::class);
     Route::get('/projet/appartement/{id}', [ProjetController::class, 'details_appartement'])->name('details_appartement');
 });
 

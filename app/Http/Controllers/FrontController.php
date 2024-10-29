@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Blog;
 use App\Models\Contact;
+use App\Models\Demande;
 use App\Models\DetailsAppartement;
 use App\Models\Partenaire;
 use App\Models\Projet;
@@ -51,6 +52,29 @@ class FrontController extends Controller
     public function contact()
     {
         return view("front.contact");
+    }
+
+
+    public function demandes_post(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'prennom' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|numeric',
+            'message' => 'required|string|max:2550',
+            'projet_id' => 'required|integer|exists:projets,id'
+        ]);
+
+        $demande = new Demande();
+        $demande->nom = $request->input('nom');
+        $demande->prenom = $request->input('prenom');
+        $demande->email = $request->input('email');
+        $demande->telephone = $request->input('telephone');
+        $demande->message = $request->input('message');
+        $demande->projet_id = $request->input('projet_id');
+        $demande->save();
+        return redirect()->back()->with('success', 'Demande créée avec succès');
     }
 
 

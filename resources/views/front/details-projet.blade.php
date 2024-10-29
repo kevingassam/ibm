@@ -229,7 +229,9 @@
                                 method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control style-border" required name="name"
+                                    <input type="text" class="form-control style-border" required name="nom"
+                                        placeholder="Nom">
+                                        <input type="hidden" class="form-control style-border" value="{{ $projet->id}}" required name="projet_id"
                                         placeholder="Nom">
                                 </div>
                                 <div class="form-group">
