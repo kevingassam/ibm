@@ -35,13 +35,8 @@
                 <div class="row gy-40 justify-content-between align-items-center">
                     <div class="col-lg-6">
                         <div class="title-area mb-0">
-                            <h2 class="sec-title text-theme mb-2">Realar Vission & Mission</h2>
-                            <p class="mb-0 text-theme">You are the center of our process. Your needs, your wants, and your
-                                goals. We actively listen, always keep it even keel — never rushing you or pushing something
-                                you don’t need. </p>
-                            <p class="text-theme">Full transparency is our goal. We stay connected while building your home,
-                                clearly outlining next steps and collaborating with you to select personal design details.
-                                From day one, your peace of mind is our highest priority.</p>
+                            <h2 class="sec-title text-theme mb-2">{{ $infos->about_titre }}</h2>
+                            <p class="mb-0 text-theme"> {{ $infos->about_texte1 }} </p>
                         </div>
                     </div>
                     <div class="col-lg-5">
@@ -51,9 +46,9 @@
                             </div>
                             <div class="about-tag">
                                 <div class="about-experience-tag">
-                                    <span class="circle-title-anime">Realar Living Solutions</span>
+                                    <span class="circle-title-anime">{{ $infos->app_name }}</span>
                                 </div>
-                                <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video"><i
+                                <a href="{{ Storage::url($infos->about_video) }}" class="play-btn popup-video"><i
                                         class="fa-sharp fa-solid fa-play"></i></a>
                             </div>
                         </div>
@@ -66,29 +61,20 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <p class="text-theme">We design homes for how people live. Centered Design is our philosophy, our
-                            approach to creating spaces that energize and inspire.</p>
-                        <p class="text-theme">Our floor plan designs focus on three elements: natural light, color, and
-                            clean air all qualities that support your wellbeing and energy levels. When you walk into our
-                            homes, you’ll see design that puts people first, and more importantly, you’ll feel it.</p>
+                        <p class="text-theme">{{ $infos->about_texte2 }}</p>
                     </div>
                     <div class="col-lg-6">
-                        <p class="text-theme">That’s why we build every home like it’s our own. Building locally since 1988,
-                            we hold ourselves to the highest standards of quality and construction integrity. In addition to
-                            the 28 required county inspections, we complete nine formal Inland inspections, plus nine more
-                            third-party critical inspections — that’s 18 additional formal inspections on every Inland Home,
-                            by choice. Our goal is that each home will serve your family, and others, for generations to
-                            come.</p>
+                        <p class="text-theme">{{ $infos->about_texte3 }}</p>
                         <div class="about-wrap2 style-theme mt-50">
                             <div class="checklist style4">
                                 <ul>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Quality real estate services
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Des services immobiliers de qualité
                                     </li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">100% Satisfaction guarantee
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Garantie de satisfaction à 100%
                                     </li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Highly professional team
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Équipe très professionnelle
                                     </li>
-                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Dealing always on time</li>
+                                    <li><img src="/front/img/icon/checkmark.svg" alt="img">Traiter toujours à temps</li>
                                 </ul>
                             </div>
                             <div class="call-btn">
@@ -112,82 +98,6 @@
                         <div class="img-box3">
                             <div class="img1">
                                 <img src="/front/img/normal/about_3_3.png" alt="About">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--==============================
-                Why Choose Us Area
-                ==============================-->
-    <div class="why-sec-1 overflow-hidden space bg-theme">
-        <div class="sec-bg-shape2-1 text-white spin shape-mockup d-xl-block d-none" data-bottom="15%" data-left="12%">
-            <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">
-        </div>
-        <div class="sec-bg-shape2-3 text-white jump shape-mockup d-xl-block d-none" data-bottom="0%" data-right="7%">
-            <img src="/front/img/shape/section_shape_2_3.jpg" alt="img">
-        </div>
-        <div class="container">
-            <div class="row justify-content-lg-between align-items-center">
-                <div class="col-lg-6">
-                    <div class="title-area">
-                        <h2 class="sec-title text-white">Pourquoi nous choisir ?</h2>
-                        <p class="text-light">
-                            Nous sommes une société immobilière avec plus de 20 ans d'expertise et notre objectif principal
-                            est de fournir des emplacements incroyables à nos partenaires et clients. Au sein de l'immobilier de luxe
-                            marché, notre agence vous propose des solutions personnalisées.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <div class="sec-btn">
-                        <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">
-                            <span class="th-btn-text">Nous contacter</span>
-                        </a>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper th-slider"
-                data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"2"},"1200":{"slidesPerView":"3"}}}'>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="service-card style4">
-                            <div class="service-card-icon">
-                                <img src="/front/img/icon/service-icon4-1.svg" alt="Icon">
-                            </div>
-                            <h3 class="box-title"><a href="property-details.html">Property Valuation</a></h3>
-                            <p class="box-text">Generous amounts of south facing glazing maximize the solar gains for most
-                                of the year.</p>
-                            <div class="service-img img-shine">
-                                <img src="/front/img/service/1-1.png" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-card style4">
-                            <div class="service-card-icon">
-                                <img src="/front/img/icon/service-icon4-2.svg" alt="Icon">
-                            </div>
-                            <h3 class="box-title"><a href="property-details.html">Property Management</a></h3>
-                            <p class="box-text">All living, dining, kitchen and play areas were devised by attached to the
-                                home.</p>
-                            <div class="service-img img-shine">
-                                <img src="/front/img/service/1-2.png" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-card style4">
-                            <div class="service-card-icon">
-                                <img src="/front/img/icon/service-icon4-1.svg" alt="Icon">
-                            </div>
-                            <h3 class="box-title"><a href="property-details.html">Invest Opportunities</a></h3>
-                            <p class="box-text">All-inclusive real estate services to facilitate the easy management of
-                                your properties.</p>
-                            <div class="service-img img-shine">
-                                <img src="/front/img/service/1-3.png" alt="img">
                             </div>
                         </div>
                     </div>

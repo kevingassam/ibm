@@ -46,6 +46,11 @@ class ConfigurationController extends Controller
             'instagram' => 'nullable|url',
             'map' => 'nullable|string|max:5000',
             'video' => 'nullable|mimes:jpeg,png,jpg,gif,svg,mp4,mov,avi|max:20480',
+            'about_video' => 'nullable|mimes:mp4,mov,avi|max:20480',
+            'about_titre' => 'nullable|string|max:2055',
+            'about_texte1' => 'nullable|string|max:5055',
+            'about_texte2' => 'nullable|string|max:5055',
+            'about_texte3' => 'nullable|string|max:5055',
         ]);
 
         $information = Information::first();
@@ -63,6 +68,10 @@ class ConfigurationController extends Controller
         $information->twitter = $request->input("twitter");
         $information->linkedin = $request->input("linkedin");
         $information->youtube = $request->input("youtube");
+        $information->about_titre = $request->input("about_titre");
+        $information->about_texte1 = $request->input("about_texte1");
+        $information->about_texte2 = $request->input("about_texte2");
+        $information->about_texte3 = $request->input("about_texte3");
 
 
         if ($request->file("logo")) {
@@ -82,6 +91,12 @@ class ConfigurationController extends Controller
                 Storage::disk('public')->delete($information->video);
             }
             $information->video = $request->file('video')->store('informations/videos', 'public');
+        }
+        if ($request->file("about_video")) {
+            if ($information->about_video) {
+                Storage::disk('public')->delete($information->about_video);
+            }
+            $information->about_video = $request->file('about_video')->store('informations/videos', 'public');
         }
         if ($request->file("cover_about")) {
             if ($information->cover_about) {

@@ -41,7 +41,7 @@
                                         value="{{ $infos->about_titre }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-sm-12">
                                 <div class="mb-4">
                                     <h6 class="mb-1">Paragraphe 1</h6>
                                     <textarea name="about_texte1" id="about_texte1" class="form-control" rows="5">{{ $infos->about_texte1 }}</textarea>
@@ -52,7 +52,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-sm-12">
                                 <div class="mb-4">
                                     <h6 class="mb-1">Paragraphe 2</h6>
                                     <textarea name="about_texte2" id="about_texte2" class="form-control" rows="5">{{ $infos->about_texte2 }}</textarea>
@@ -63,7 +63,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 col-sm-12">
                                 <div class="mb-4">
                                     <h6 class="mb-1">Paragraphe 3</h6>
                                     <textarea name="about_texte3" id="about_texte3" class="form-control" rows="5">{{ $infos->about_texte3 }}</textarea>
@@ -107,6 +107,11 @@
                                         {{ $message }}
                                     </span>
                                 @enderror
+                                @if ($infos->about_video)
+                                <video  id="video" src="{{ Storage::url($infos->about_video) }}"
+                                    loop="" muted="" autoplay="" class="w-100">
+                                </video>
+                                @endif
                             </div>
                         </div>
                     </div>

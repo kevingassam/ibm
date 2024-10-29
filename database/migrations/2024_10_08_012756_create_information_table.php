@@ -40,6 +40,7 @@ return new class extends Migration
 
             //page informations
             $table->string("about_video")->nullable();
+            $table->string("about_titre")->nullable();
             $table->text("about_texte1")->nullable();
             $table->text("about_texte2")->nullable();
             $table->text("about_texte3")->nullable();
