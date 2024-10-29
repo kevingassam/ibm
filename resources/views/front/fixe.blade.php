@@ -517,6 +517,8 @@ All Js File
 
     <!-- Main Js File -->
     <script src="/front/js/main.js"></script>
+
+    <script src="/compare.js?v={{ time() }}"></script>
 </body>
 
 </html>

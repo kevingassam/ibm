@@ -300,7 +300,7 @@
 
 
     <a href="">
-        <div class="compare-btn">
+        <div class="compare-btn d-none" id="compare-btn" >
             <img width="30" height="30" src="https://img.icons8.com/hatch/30/FFFFFF/scales.png" alt="scales" />
             <br>
             <span class="count" id="count-total-compare">
@@ -332,59 +332,9 @@
             font-size: 10px;
         }
 
-        .compare-btn img {}
     </style>
 
-    <script>
-        // Fonction pour lire un cookie
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-
-        // Fonction pour définir un cookie avec une durée de vie de 2 semaines
-        function setCookie(name, value, days = 14) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
-        }
-
-        // Récupère les IDs stockés dans le cookie et les convertit en tableau
-        function getStoredIds() {
-            const storedIds = getCookie('compareIds');
-            //count total ids
-            return storedIds ? JSON.parse(storedIds) : [];
-        }
-
-        // Stocke le tableau d'IDs dans le cookie
-        function storeIds(ids) {
-            setCookie('compareIds', JSON.stringify(ids));
-        }
-
-        // Lorsque la page se charge, récupère les IDs existants
-        $(document).ready(function() {
-            let compareIds = getStoredIds();
-            $("#count-total-compare").text(compareIds.length);
-
-            // Ajoute un ID au tableau et au cookie, si pas déjà présent
-            $('.btn-add-compare').on('click', function() {
-                const id = $(this).data('id');
-
-                // Ajoute uniquement si l'ID n'est pas déjà dans le tableau
-                if (!compareIds.includes(id)) {
-                    compareIds.push(id);
-                    storeIds(compareIds); // Met à jour le cookie avec le nouveau tableau
-                    alert(`ID ${id} ajouté à la comparaison.`);
-                } else {
-                    alert(`ID ${id} est déjà dans la comparaison.`);
-                }
-            });
-        });
-    </script>
 
 @endsection
 
-@section('header')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-@endsection
+
