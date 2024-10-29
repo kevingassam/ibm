@@ -2,8 +2,8 @@
 @section('titre', $projet->nom)
 @section('body')
     <!--==============================
-                                    Breadcumb
-                                ============================== -->
+                                        Breadcumb
+                                    ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="{{ Storage::url($projet->photo) }}">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,23 +19,25 @@
             </div>
         </div>
     </div><!--==============================
-                                Property Page Area
-                                ==============================-->
+                                    Property Page Area
+                                    ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="slider-area property-slider1">
                 <div class="swiper th-slider mb-4" id="propertySlider"
                     data-slider-options='{"effect":"fade","loop":true,"thumbs":{"swiper":".property-thumb-slider"},"autoplayDisableOnInteraction":"true"}'>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="property-slider-img">
-                                <img src="{{ Storage::url($projet->photo) }}" alt="img">
+                        @if ($firstPhoto = collect(json_decode($projet->photos))->first())
+                            <div class="swiper-slide">
+                                <div class="property-slider-img">
+                                    <img src="{{ Storage::url($firstPhoto) }}" alt="{{ $projet->nom }}">
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         @foreach (json_decode($projet->photos) ?? [] as $pic)
                             <div class="swiper-slide">
                                 <div class="property-slider-img">
-                                    <img src="{{ Storage::url($pic) }}" alt="img">
+                                    <img src="{{ Storage::url($pic) }}" alt="{{ $projet->nom }}">
                                 </div>
                             </div>
                         @endforeach
@@ -223,7 +225,8 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <form action="{{ route("demandes.post") }}" class="widget-property-contact-form" method="post">
+                            <form action="{{ route('demandes.post') }}" class="widget-property-contact-form"
+                                method="post">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control style-border" required name="name"
@@ -251,7 +254,8 @@
                                 @foreach ($autres as $autre)
                                     <div class="recent-post">
                                         <div class="media-img">
-                                            <a href="{{ route('projet_details', ['id' => $autre->id, 'nom' => $autre->nom]) }}">
+                                            <a
+                                                href="{{ route('projet_details', ['id' => $autre->id, 'nom' => $autre->nom]) }}">
                                                 <img src="{{ Storage::url($autre->photo) }}" alt="{{ $autre->nom }}">
                                             </a>
                                         </div>
@@ -292,8 +296,8 @@
             </div>
         </div>
     </section><!--==============================
-                            Footer Area
-                            ==============================-->
+                                Footer Area
+                                ==============================-->
 
 
 @endsection

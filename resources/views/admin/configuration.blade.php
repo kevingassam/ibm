@@ -206,6 +206,10 @@
                         <div class="card-body">
                             <div class="col-12">
                                 <label for="Tags" class="form-label fw-bold">Logo du site</label>
+                                <div class="text-warning small mb-1">
+                                    - Vous pouvez utiliser une image au format PNG, JPEG ou SVG. <br>
+                                    - La taille de l'image doit être de 792x233 pixels.
+                                </div>
                                 <input type="file" class="form-control" name="logo" />
                                 @error('logo')
                                     <span class="small text-danger">

@@ -116,6 +116,9 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="photo">Image d'illustration</label>
+                                    <div class="text-warning small">
+                                        Taille : 416px * 400px
+                                    </div>
                                     <input type="file" class="form-control" name="photo" id="photo" required />
                                     @error('photo')
                                         <span class="small text-danger">
@@ -125,6 +128,9 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="photos">Gallerie de photos</label>
+                                    <div class="text-warning small">
+                                        Taille : 1296px * 555px
+                                    </div>
                                     <input type="file" class="form-control" name="photos[]" id="photos" multiple />
                                     @error('photos')
                                         <span class="small text-danger">
