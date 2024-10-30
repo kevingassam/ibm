@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('details_appartements', function (Blueprint $table) {
-            $table->id();
             $table->string("reference");
             $table->string("vocation")->nullable();
             $table->integer("chambres")->default(0);
