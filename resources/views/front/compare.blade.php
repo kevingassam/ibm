@@ -26,6 +26,16 @@
             <table class="table">
                 <tr>
                     <td>
+                        <b>référence :</b>
+                    </td>
+                    @foreach ($elements as $item)
+                        <td>
+                            <b>{{ $item->reference ?? '-' }}</b>
+                        </td>
+                    @endforeach
+                </tr>
+                <tr>
+                    <td>
                         <b>Titre :</b>
                     </td>
                     @foreach ($elements as $item)
