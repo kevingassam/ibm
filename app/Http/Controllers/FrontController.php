@@ -71,9 +71,9 @@ class FrontController extends Controller
 
 
 
-    public function check_exist_appartement($id)
+    public function check_exist_appartement(Request $request)
     {
-        $appartement = DetailsAppartement::find($id);
+        $appartement = DetailsAppartement::find($request->input('id'));
         if ($appartement) {
             return response()->json(
                 [
