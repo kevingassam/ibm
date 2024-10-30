@@ -123,9 +123,9 @@
                          </div>
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Nombre de chambre</label>
-                             <input type="text" class="form-control" required id="chambre"
-                                 value="{{ old('chambre', $etage->chambres) }}" name="chambre" required>
-                             @error('chambre')
+                             <input type="text" class="form-control" required id="chambres"
+                                 value="{{ old('chambres', $etage->chambres) }}" name="chambres" required>
+                             @error('chambres')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror
                          </div>
