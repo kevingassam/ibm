@@ -34,6 +34,10 @@ function checkExist(id) {
         url: "check_exist_appartement",
         type: "GET",
         data: { id: id },
+        headers: {
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
         success: function (data) {
             if (!data.exist) {
                 const compareIds = getStoredIds();
