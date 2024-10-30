@@ -31,13 +31,8 @@ function storeIds(ids) {
 // Vérifie si un ID existe et le retire du tableau si non existant
 function checkExist(id) {
     $.ajax({
-        url: "check_exist_appartement",
+        url: "/check_exist_appartement/"+id ,
         type: "GET",
-        data: { id: id },
-        headers: {
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        },
         success: function (data) {
             if (!data.exist) {
                 const compareIds = getStoredIds();

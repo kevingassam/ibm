@@ -27,7 +27,7 @@ Route::get('/', [FrontController::class, 'home'])->name('home');
 Route::get('/login', [FrontController::class, 'login'])->name('login');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('/compare', [FrontController::class, 'compare'])->name('compare');
-Route::get('/check_exist_appartement', [FrontController::class, 'check_exist_appartement'])->name('check_exist_appartement');
+Route::get('/check_exist_appartement/{id}', [FrontController::class, 'check_exist_appartement'])->name('check_exist_appartement');
 Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
 Route::post('/demandes/projet', [FrontController::class, 'demandes_post'])->name('demandes.post');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
