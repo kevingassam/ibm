@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\EtageController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\PartenaireController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetController;
@@ -52,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('etages', EtageController::class);
     Route::resource('demandes', DemandeController::class);
     Route::get('/projet/appartement/{id}', [ProjetController::class, 'details_appartement'])->name('details_appartement');
+    Route::get('/projet/parking/{id}', [ParkingController::class, 'details_parking'])->name('details_parking');
+    Route::resource('parkings', ParkingController::class);
 });
 
 

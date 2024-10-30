@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CreateAppartement extends Component
 {
-    public $nom,$projet,$appartements;
+    public $nom,$projet,$appartements,$type;
 
     public function mount($projet){
         $this->projet = $projet;
@@ -19,6 +19,7 @@ class CreateAppartement extends Component
         $appartement = new Appartement();
         $appartement->nom = $this->nom;
         $appartement->projet_id = $this->projet->id;
+        $appartement->type = $this->type;  
         $appartement->save();
 
         // Reset the form

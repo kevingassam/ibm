@@ -156,7 +156,7 @@
                                                 </span>
                                                 <span>
                                                     <img src="/front/img/icon/property-icon1-3.svg" alt="img">
-                                                    {{ $projet->appartements->count() }} Appartements
+                                                    {{ $projet->appartements->count() }} propriétés
                                                 </span>
                                             </div>
                                             <div class="property-card-details">

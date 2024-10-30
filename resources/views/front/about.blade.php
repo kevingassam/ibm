@@ -175,29 +175,4 @@
         </div>
     </section>
 
-    <!--==============================
-                Client Area
-                ==============================-->
-    <div class="client-area-1 space" data-bg-src="/front/img/hero/hero_bg_4_1.jpg">
-        <div class="container">
-            <div class="slider-area client-slider3">
-                <div class="swiper th-slider has-shadow" id="clientSlider1"
-                    data-slider-options='{"breakpoints":{"0":{"slidesPerView":2},"576":{"slidesPerView":"3"},"768":{"slidesPerView":"4"},"992":{"slidesPerView":"5"},"1200":{"slidesPerView":"6"}}}'>
-                    <div class="swiper-wrapper">
-                        @foreach ($partenaires as $partenaire)
-                            <div class="swiper-slide">
-                                <a href="#" class="client-card">
-                                    <img src="{{ Storage::url($partenaire->photo) }}" alt="{{ $partenaire->nom }}">
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--==============================
-                Footer Area
-                ==============================-->
-
 @endsection

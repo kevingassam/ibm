@@ -30,6 +30,7 @@ class ProjetController extends Controller
 
 
 
+
     public function deleteSingleImage(Request $request)
     {
         $projet = Projet::find($request->projet_id);

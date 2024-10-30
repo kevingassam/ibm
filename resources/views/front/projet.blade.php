@@ -39,7 +39,12 @@
                             <option value="résidentiel" @selected($type == "résidentiel")>Résidentiel</option>
                             <option value="commercial" @selected($type == "commercial")>Commercial</option>
                         </select>
-                        <button class="th-btn" type="submit"><i class="far fa-search"></i> Search</button>
+                        <select class="form-select" name="etat">
+                            <option value="offer_type" selected="selected">Etat</option>
+                            <option value="en cours" @selected($type == "en cours")>En cours</option>
+                            <option value="réalisé" @selected($type == "réalisé")>Réalisé</option>
+                        </select>
+                        <button class="th-btn" type="submit"><i class="far fa-search"></i> recherche</button>
                     </form>
                 </div>
             </div>
@@ -92,6 +97,16 @@
                                        {{--  <h5 class="property-card-price">$ 1500.00 USD/night</h5> --}}
                                         <p class="property-card-location text-capitalize">{{ $projet->type }}</p>
                                     </div>
+                                </div>
+                                <div class="property-card-meta">
+                                    <span>
+                                        <img src="/front/img/icon/property-icon1-1.svg" alt="img">
+                                        {{ $projet->type }}
+                                    </span>
+                                    <span>
+                                        <img src="/front/img/icon/property-icon1-3.svg" alt="img">
+                                        {{ $projet->appartements->count() }} propriétés
+                                    </span>
                                 </div>
                                 <div class="mt-2">
                                     <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}"

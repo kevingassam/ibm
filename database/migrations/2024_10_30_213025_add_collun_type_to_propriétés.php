@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('information', function (Blueprint $table) {
-            $table->string("cover_contact2")->nullable();
+        Schema::table('appartements', function (Blueprint $table) {
+            $table->string("type")->default("habitation");
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('information', function (Blueprint $table) {
-            $table->dropColumn("cover_contact2");
+        Schema::table('appartements', function (Blueprint $table) {
+            $table->dropColumn("type");
         });
     }
 };

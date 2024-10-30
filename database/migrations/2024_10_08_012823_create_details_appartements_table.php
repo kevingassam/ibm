@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('details_appartements', function (Blueprint $table) {
             $table->id();
-            $table->string("reference");
+            $table->string("reference")->nullable();
             $table->string("numero");
             $table->string("etage")->nullable();
             $table->string("type")->nullable();
@@ -22,13 +22,13 @@ return new class extends Migration
             $table->string("plan")->nullable();
             $table->string("vocation")->nullable();
             $table->integer("chambres")->default(0);
-            $table->enum("statut",["disponible","vendu"])->default("disponible");
+            $table->enum("statut", ["disponible", "vendu"])->default("disponible");
             $table->unsignedBigInteger("appartement_id");
             $table->timestamps();
             $table->foreign("appartement_id")
-            ->references("id")
-            ->on("appartements")
-            ->onDelete("cascade");
+                ->references("id")
+                ->on("appartements")
+                ->onDelete("cascade");
         });
     }
 
