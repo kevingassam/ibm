@@ -26,11 +26,15 @@
             <table class="table">
                 <tr>
                     <td>
-                        <b>référence :</b>
+                        <b>Référence :</b>
                     </td>
                     @foreach ($elements as $item)
-                        <td>
+                        <td class="text-center">
                             <b>{{ $item->reference ?? '-' }}</b>
+                            <br>
+                            <button class="btn btn-sm btn-danger btn-retirer-compare" type="button" data-id="{{ $item->id }}">
+                                Réttirer
+                            </button>
                         </td>
                     @endforeach
                 </tr>

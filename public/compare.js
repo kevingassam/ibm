@@ -99,4 +99,15 @@ $(document).ready(function () {
             window.location.href = url;
         }
     });
+
+    $(".btn-retirer-compare").on("click", function () {
+        const id = $(this).data("id");
+        //rettirer l'id du tableau
+        const compareIds = getStoredIds();
+        compareIds.splice(compareIds.indexOf(id), 1);
+        storeIds(compareIds);
+        updateCompareCount();
+        //reload page
+        location.reload();
+    });
 });
