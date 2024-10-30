@@ -247,7 +247,7 @@
                         <div class="col-auto">
                             <div class="header-logo">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ $infos->GetLogo() }}" style="Max-height: 30px !important;"
+                                    <img src="{{ $infos->GetLogo() }}" style="Max-height: 60px !important;"
                                         alt="{{ $infos->app_name }}">
                                 </a>
                             </div>
@@ -336,7 +336,7 @@
                                 <div class="th-widget-about">
                                     <div class="about-logo">
                                         <a href="{{ route('home') }}">
-                                            <img src="{{ $infos->GetLogo() }}" style="Max-height: 30px !important;" alt="{{ $infos->app_name }}">
+                                            <img src="{{ $infos->GetLogo() }}" style="Max-height: 80px !important;" alt="{{ $infos->app_name }}">
                                         </a>
                                     </div>
                                     <p class="about-text">
