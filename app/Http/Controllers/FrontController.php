@@ -69,6 +69,29 @@ class FrontController extends Controller
         return view('front.compare', compact('elements'));
     }
 
+
+
+    public function check_exist_appartement(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer'
+        ]);
+        $appartement = DetailsAppartement::find($request->input('id'));
+        if ($appartement) {
+            return response()->json(
+                [
+                    'exist' => true,
+                ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'exist' => false,
+                ]
+            );
+        }
+    }
+
     public function demandes_post(Request $request)
     {
         $request->validate([

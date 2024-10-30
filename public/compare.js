@@ -28,12 +28,37 @@ function storeIds(ids) {
     setCookie("compareIds", JSON.stringify(ids));
 }
 
+function Check_exist(id) {
+    $.ajax({
+        url: "check_exist_appartement",
+        type: "GET",
+        data: {
+            id: id,
+        },
+        success: function (data) {
+            if (!data.exist) {
+                //rettirer l'id du tableau
+                const compareIds = getStoredIds();
+                compareIds.splice(compareIds.indexOf(id), 1);
+                storeIds(compareIds);
+                updateCompareCount();
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("Erreur lors de la recherche : " + error);
+        },
+    });
+}
+
 // Met à jour l'affichage du nombre total d'IDs dans la comparaison
 function updateCompareCount() {
     const compareIds = getStoredIds();
     const total = compareIds.length;
-    $("#count-total-compare").text(total);
     if (total > 0) {
+        compareIds.forEach(function (id) {
+            Check_exist(id);
+        });
+        $("#count-total-compare").text(total);
         $("#compare-btn").removeClass("d-none");
     } else {
         $("#compare-btn").addClass("d-none");

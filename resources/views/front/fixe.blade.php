@@ -22,6 +22,7 @@
     <link rel="manifest" href="/front/img/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ $infos->GetIcon() }}">
+
     <meta name="theme-color" content="#ffffff">
 
     <!--==============================
@@ -47,7 +48,7 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="/front/css/style.css">
 
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('header')
 
 </head>
