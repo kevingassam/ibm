@@ -46,11 +46,20 @@
                  @method('PUT')
                  @csrf
                  <div class="modal-body">
+                     @if ($errors->any())
+                         <div class="alert alert-danger small">
+                             <ul>
+                                 @foreach ($errors->all() as $error)
+                                     <li>{{ $error }}</li>
+                                 @endforeach
+                             </ul>
+                         </div>
+                     @endif
                      <div class="row mb-3">
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Référence</label>
                              <input type="text" class="form-control" required id="reference"
-                                 value="{{ old('reference',$etage->reference) }}" name="reference" required>
+                                 value="{{ old('reference', $etage->reference) }}" name="reference" required>
                              @error('reference')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror
@@ -58,7 +67,7 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Numéro</label>
                              <input type="text" class="form-control" required id="numero"
-                                 value="{{ old('numero',$etage->numero) }}" name="numero" required>
+                                 value="{{ old('numero', $etage->numero) }}" name="numero" required>
                              @error('numero')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror
@@ -66,8 +75,8 @@
                      </div>
                      <div class="mb-3">
                          <label for="" class="mb-1">Etage</label>
-                         <input type="text" class="form-control" required id="etage" value="{{ old('etage',$etage->etage) }}"
-                             name="etage" required>
+                         <input type="text" class="form-control" required id="etage"
+                             value="{{ old('etage', $etage->etage) }}" name="etage" required>
                          @error('etage')
                              <span class="small text-danger"> {{ $message }} </span>
                          @enderror
@@ -76,8 +85,8 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Type</label>
                              <select class="form-select" required id="type" name="type">
-                                 <option value="résidentiel" @selected($etage->type == "résidentiel")>Résidentiel</option>
-                                 <option value="commercial" @selected($etage->type == "commercial")>Commercial</option>
+                                 <option value="résidentiel" @selected($etage->type == 'résidentiel')>Résidentiel</option>
+                                 <option value="commercial" @selected($etage->type == 'commercial')>Commercial</option>
                              </select>
                              @error('type')
                                  <span class="small text-danger"> {{ $message }} </span>
@@ -86,8 +95,8 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Vocation</label>
                              <select class="form-select" required id="vocation" name="vocation">
-                                 <option value="location"  @selected($etage->vocation == "location")>Location</option>
-                                 <option value="vente"  @selected($etage->vocation == "vente")>Vente</option>
+                                 <option value="location" @selected($etage->vocation == 'location')>Location</option>
+                                 <option value="vente" @selected($etage->vocation == 'vente')>Vente</option>
                              </select>
                              @error('vocation')
                                  <span class="small text-danger"> {{ $message }} </span>
@@ -98,7 +107,7 @@
                      <div class="mb-3">
                          <label for="" class="mb-1">Surface</label>
                          <input type="text" class="form-control" required id="surface" name="surface"
-                             value="{{ old('surface',$etage->surface) }}" required>
+                             value="{{ old('surface', $etage->surface) }}" required>
                          @error('surface')
                              <span class="small text-danger"> {{ $message }} </span>
                          @enderror
@@ -107,7 +116,7 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Nombre de pièce</label>
                              <input type="text" class="form-control" required id="piece"
-                                 value="{{ old('piece',$etage->pieces) }}" name="piece" required>
+                                 value="{{ old('piece', $etage->pieces) }}" name="piece" required>
                              @error('piece')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror
@@ -115,7 +124,7 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Nombre de chambre</label>
                              <input type="text" class="form-control" required id="chambre"
-                                 value="{{ old('chambre',$etage->chambres) }}" name="chambre" required>
+                                 value="{{ old('chambre', $etage->chambres) }}" name="chambre" required>
                              @error('chambre')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror

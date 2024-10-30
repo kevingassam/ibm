@@ -74,14 +74,14 @@
                                             <input class="form-check-input" type="checkbox">
                                         </td>
                                         <td>{{ $maison->id }}</td>
-                                        <td>{{ $maison->reference ?? "-" }}</td>
+                                        <td>{{ $maison->reference ?? '-' }}</td>
                                         <td>{{ $maison->numero }}</td>
                                         <td>{{ $maison->etage }}</td>
                                         <td>{{ $maison->type }}</td>
-                                        <td>{{ $maison->vocation ?? "-" }}</td>
+                                        <td>{{ $maison->vocation ?? '-' }}</td>
                                         <td>{{ $maison->surface }}</td>
                                         <td>{{ $maison->piece }}</td>
-                                        <td>{{ $maison->chambre ?? "0" }}</td>
+                                        <td>{{ $maison->chambre ?? '0' }}</td>
                                         <td>
                                             <a href="{{ Storage::url($maison->plan) }}"
                                                 class="btn btn-sm btn-outline-danger">
@@ -130,6 +130,15 @@
                 </div>
                 @csrf
                 <div class="modal-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger small">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form action="{{ route('etages.store') }}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="appartement_id" id="appartement_id" value="{{ $appartement->id }}">
                         @csrf
