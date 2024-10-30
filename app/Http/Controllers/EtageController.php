@@ -14,7 +14,10 @@ class EtageController extends Controller
         $validated = $request->validate([
             'etage' => 'required|string|max:255',
             'numero' => 'required|string|max:255',
+            'reference' => 'required|string|max:255|unique:details_appartements,reference',
             'type' => 'required|string|max:255',
+            'vocation' => 'required|string|max:255',
+            'chambres' => 'required|string|max:255',
             'surface' => 'required|string|max:255',
             'piece' => 'required|string|max:255',
             'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
@@ -26,6 +29,9 @@ class EtageController extends Controller
         $etage->numero = $validated['numero'];
         $etage->type = $validated['type'];
         $etage->surface = $validated['surface'];
+        $etage->vocation = $validated['vocation'];
+        $etage->chambres = $validated['chambres'];
+        $etage->reference = $validated['reference'];
         $etage->piece = $validated['piece'];
         $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
         $etage->appartement_id = $validated['appartement_id'];
@@ -52,6 +58,9 @@ class EtageController extends Controller
             'surface' => 'required|string|max:255',
             'piece' => 'required|string|max:255',
             'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:3048',
+            'vocation' => 'required|string|max:255',
+            'chambres' => 'required|string|max:255',
+            'reference' => 'required|string|max:255|unique:details_appartements,reference,' . $id,
         ]);
         $etage = DetailsAppartement::find($id);
         $etage->etage = $validated['etage'];
@@ -59,6 +68,9 @@ class EtageController extends Controller
         $etage->type = $validated['type'];
         $etage->surface = $validated['surface'];
         $etage->piece = $validated['piece'];
+        $etage->vocation = $validated['vocation'];
+        $etage->chambres = $validated['chambres'];
+        $etage->reference = $validated['reference'];
         if ($request->hasFile('plan')) {
 
             Storage::disk('public')->delete($etage->plan);

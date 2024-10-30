@@ -32,10 +32,6 @@
             @method('PUT')
             <div class="row">
                 <div class="col-12 col-lg-8">
-                    <div class="alert alert-warning small mb-2">
-                        - Taille : <b>1920 px * 401 px</b>. <br>
-                        - Maximun :  2 Mo
-                    </div>
                     <div class="row">
                         <div class="col-12 col-sm-6">
                             <div class="card card-body">
@@ -45,6 +41,9 @@
                                 <label for="cover_contact" class="form-label fw-bold">
                                     Page Contact
                                 </label>
+                                <div class="small text-warning">
+                                    - Taille : <b>1920 px * 401 px</b>.
+                                </div>
                                 <input type="file" class="form-control" name="cover_contact" id="cover_contact" />
                                 @error('cover_contact')
                                     <span class="small text-danger">
@@ -61,6 +60,9 @@
                                 <label for="cover_blog" class="form-label fw-bold">
                                     Page blog
                                 </label>
+                                <div class="small text-warning">
+                                    - Taille : <b>1920 px * 401 px</b>.
+                                </div>
                                 <input type="file" class="form-control" name="cover_blog" id="cover_blog" />
                                 @error('cover_blog')
                                     <span class="small text-danger">
@@ -77,6 +79,9 @@
                                 <label for="cover_projet" class="form-label fw-bold">
                                     Page projet
                                 </label>
+                                <div class="small text-warning">
+                                    - Taille : <b>1920 px * 401 px</b>.
+                                </div>
                                 <input type="file" class="form-control" name="cover_projet" id="cover_projet" />
                                 @error('cover_projet')
                                     <span class="small text-danger">
@@ -93,8 +98,30 @@
                                 <label for="cover_about" class="form-label fw-bold">
                                     Page about
                                 </label>
+                                <div class="small text-warning">
+                                    - Taille : <b>1920 px * 401 px</b>.
+                                </div>
                                 <input type="file" class="form-control" name="cover_about" id="cover_about" />
                                 @error('cover_about')
+                                    <span class="small text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="card card-body">
+                                <div class="mb-2">
+                                    <img src="{{ $infos->GetCoverContact2() }}" alt="{{ $infos->app_name }}" class="w-100">
+                                </div>
+                                <label for="cover_contact2" class="form-label fw-bold">
+                                    Image principale de la page contact
+                                </label>
+                                <div class="small text-warning">
+                                    - Taille : <b>1920 px * 817 px</b>.
+                                </div>
+                                <input type="file" class="form-control" name="cover_contact2" id="cover_contact2" />
+                                @error('cover_contact2')
                                     <span class="small text-danger">
                                         {{ $message }}
                                     </span>

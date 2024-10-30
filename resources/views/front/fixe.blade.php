@@ -87,7 +87,7 @@
             <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ $infos->GetLogo() }}" alt="{{ $infos->app_name }}">
+                    <img src="{{ $infos->GetLogo() }}"  style="Max-height: 30px !important;" alt="{{ $infos->app_name }}">
                 </a>
             </div>
             <div class="th-mobile-menu">
@@ -246,7 +246,8 @@
                         <div class="col-auto">
                             <div class="header-logo">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ $infos->GetLogo() }}" alt="{{ $infos->app_name }}">
+                                    <img src="{{ $infos->GetLogo() }}" style="Max-height: 30px !important;"
+                                        alt="{{ $infos->app_name }}">
                                 </a>
                             </div>
                         </div>
@@ -333,8 +334,9 @@
                             <div class="widget footer-widget">
                                 <div class="th-widget-about">
                                     <div class="about-logo">
-                                        <a href="{{ route('home') }}"><img src="{{ $infos->GetLogo() }}"
-                                                alt="{{ $infos->app_name }}"></a>
+                                        <a href="{{ route('home') }}">
+                                            <img src="{{ $infos->GetLogo() }}" style="Max-height: 30px !important;" alt="{{ $infos->app_name }}">
+                                        </a>
                                     </div>
                                     <p class="about-text">
                                         {{ $infos->text_footer ?? '' }}
@@ -483,7 +485,7 @@ Code End  Here
 ******************************** -->
 
 
-    <div class="compare-btn d-none" id="compare-btn" >
+    <div class="compare-btn d-none" id="compare-btn">
         <img width="30" height="30" src="https://img.icons8.com/hatch/30/FFFFFF/scales.png" alt="scales" />
         <br>
         <span class="count" id="count-total-compare">
@@ -491,30 +493,29 @@ Code End  Here
         </span>
     </div>
 
-<style>
-    .compare-btn {
-        position: fixed;
-        right: 35px;
-        bottom: 90px;
-        background-color: #b69364;
-        z-index: 100;
-        padding: 5px;
-        border-radius: 100%;
-        border: solid 4px white;
-    }
+    <style>
+        .compare-btn {
+            position: fixed;
+            right: 35px;
+            bottom: 90px;
+            background-color: #b69364;
+            z-index: 100;
+            padding: 5px;
+            border-radius: 100%;
+            border: solid 4px white;
+        }
 
-    .compare-btn .count {
-        position: absolute;
-        top: -15px;
-        right: -10px;
-        background-color: black;
-        color: white;
-        padding: 0px 8px 0px 8px;
-        border-radius: 100%;
-        font-size: 10px;
-    }
-
-</style>
+        .compare-btn .count {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            background-color: black;
+            color: white;
+            padding: 0px 8px 0px 8px;
+            border-radius: 100%;
+            font-size: 10px;
+        }
+    </style>
 
     <!-- Scroll To Top -->
     <div class="scroll-top">

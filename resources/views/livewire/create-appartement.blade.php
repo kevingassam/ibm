@@ -32,7 +32,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="2" class="text-center">Aucun appartement disponible.</td>
+                        <td colspan="2" class="text-center">Aucune propriété disponible.</td>
                     </tr>
                 @endforelse
             </tbody>

@@ -73,7 +73,7 @@
     </div><!--==============================
                     Contact Area
                     ==============================-->
-    <div class="space contact-area-3 z-index-common" data-bg-src="/front/img/bg/contact-bg-1-1.png" data-overlay="title"
+    <div class="space contact-area-3 z-index-common" data-bg-src="{{ $infos->GetCoverContact2() }}" data-overlay="title"
         data-opacity="3" id="contact-sec">
         <div class="contact-bg-shape3-1 spin shape-mockup " data-bottom="5%" data-left="12%">
             <img src="/front/img/shape/section_shape_2_1.jpg" alt="img">

@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string("cover_blog")->nullable();
             $table->string("cover_projet")->nullable();
             $table->string("cover_contact")->nullable();
+            $table->string("cover_contact2")->nullable();
 
             //page informations
             $table->string("about_video")->nullable();

@@ -33,7 +33,8 @@ class ConfigurationController extends Controller
             'cover_about' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'cover_blog' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'cover_projet' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'cover_contatct' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_contact' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_contact2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'adresse1' => 'nullable|string|max:255',
             'adresse2' => 'nullable|string|max:255',
@@ -121,6 +122,12 @@ class ConfigurationController extends Controller
                 Storage::disk('public')->delete($information->cover_contact);
             }
             $information->cover_contact = $request->file('cover_contact')->store('informations', 'public');
+        }
+        if ($request->file("cover_contact2")) {
+            if ($information->cover_contact2) {
+                Storage::disk('public')->delete($information->cover_contact2);
+            }
+            $information->cover_contact2 = $request->file('cover_contact2')->store('informations', 'public');
         }
 
         $information->save();

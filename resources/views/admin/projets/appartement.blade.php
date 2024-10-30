@@ -37,7 +37,7 @@
             <div class="col-auto">
                 <div class="d-flex align-items-center gap-2 justify-content-lg-end">
                     <button type="button" class="btn btn-dark px-4" data-bs-toggle="modal" data-bs-target="#AjouteEtage">
-                        <i class="bi bi-plus-lg me-2"></i>Ajouter un étage
+                        <i class="bi bi-plus-lg me-2"></i>Ajouter un apppartement
                     </button>
                 </div>
             </div>
@@ -54,11 +54,14 @@
                                         <input class="form-check-input" type="checkbox">
                                     </th>
                                     <th>ID</th>
+                                    <th>Référence</th>
                                     <th>Numéro</th>
                                     <th>étage</th>
                                     <th>Type</th>
+                                    <th>vocation</th>
                                     <th>Surface</th>
-                                    <th>Pièce</th>
+                                    <th>Pièces</th>
+                                    <th>Chambres</th>
                                     <th>Plan</th>
                                     <th>Date publication</th>
                                     <th></th>
@@ -66,37 +69,43 @@
                             </thead>
                             <tbody>
                                 @forelse ($appartement->DetailsAppartement as $maison)
-                                <tr>
-                                    <td>
-                                        <input class="form-check-input" type="checkbox">
-                                    </td>
-                                    <td>{{ $maison->id }}</td>
-                                    <td>{{ $maison->numero }}</td>
-                                    <td>{{ $maison->etage }}</td>
-                                    <td>{{ $maison->type }}</td>
-                                    <td>{{ $maison->surface }}</td>
-                                    <td>{{ $maison->piece }}</td>
-                                    <td>
-                                        <a href="{{ Storage::url($maison->plan) }}" class="btn btn-sm btn-outline-danger">
-                                            <i class="bi bi-file-earmark-pdf"></i> PDF
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {{ $maison->created_at->format('d-m-Y H:m') }}
-                                        <x-ModalEtage :Id="$maison->id"></x-ModalEtage>
-                                    </td>
-                                    <td class="text-end">
-                                        <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#ModalUpdate{{ $maison->id }}">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#ModalDelete{{ $maison->id }}" >
-                                            <i class="bi bi-trash-fill"></i> Supprimer
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            <input class="form-check-input" type="checkbox">
+                                        </td>
+                                        <td>{{ $maison->id }}</td>
+                                        <td>{{ $maison->reference ?? "-" }}</td>
+                                        <td>{{ $maison->numero }}</td>
+                                        <td>{{ $maison->etage }}</td>
+                                        <td>{{ $maison->type }}</td>
+                                        <td>{{ $maison->vocation ?? "-" }}</td>
+                                        <td>{{ $maison->surface }}</td>
+                                        <td>{{ $maison->piece }}</td>
+                                        <td>{{ $maison->chambre ?? "0" }}</td>
+                                        <td>
+                                            <a href="{{ Storage::url($maison->plan) }}"
+                                                class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-file-earmark-pdf"></i> PDF
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{ $maison->created_at->format('d-m-Y H:m') }}
+                                            <x-ModalEtage :Id="$maison->id"></x-ModalEtage>
+                                        </td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#ModalUpdate{{ $maison->id }}">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#ModalDelete{{ $maison->id }}">
+                                                <i class="bi bi-trash-fill"></i> Supprimer
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="10" class="text-center">Aucun étage disponible.</td>
+                                        <td colspan="13" class="text-center">Aucun étage disponible.</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -115,7 +124,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="exampleModalLabel">
-                        Ajouté un étage
+                        Ajouté un appartement
                     </h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -124,53 +133,94 @@
                     <form action="{{ route('etages.store') }}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="appartement_id" id="appartement_id" value="{{ $appartement->id }}">
                         @csrf
-                        <div class="mb-3">
-                            <label for="">Numéro</label>
-                            <input type="text" class="form-control" required id="numero" value="{{ old("numero") }}" name="numero" required>
-                            @error('numero')
-                                <span class="small text-danger"> {{ $message }} </span>
-                            @enderror
+                        <div class="row mb-3">
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Référence</label>
+                                <input type="text" class="form-control" required id="reference"
+                                    value="{{ old('reference') }}" name="reference" required>
+                                @error('reference')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Numéro</label>
+                                <input type="text" class="form-control" required id="numero"
+                                    value="{{ old('numero') }}" name="numero" required>
+                                @error('numero')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="">Etage</label>
-                            <input type="text" class="form-control" required id="etage" value="{{ old("etage") }}" name="etage" required>
+                            <label for="" class="mb-1">Etage</label>
+                            <input type="text" class="form-control" required id="etage" value="{{ old('etage') }}"
+                                name="etage" required>
                             @error('etage')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="">Type</label>
-                            <input type="text" class="form-control" required id="type" value="{{ old("type") }}" name="type" required>
-                            @error('type')
-                                <span class="small text-danger"> {{ $message }} </span>
-                            @enderror
+                        <div class="row mb-3">
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Type</label>
+                                <select class="form-select" required id="type" name="type">
+                                    <option value="résidentiel">Résidentiel</option>
+                                    <option value="commercial">Commercial</option>
+                                </select>
+                                @error('type')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Vocation</label>
+                                <select class="form-select" required id="vocation" name="vocation">
+                                    <option value="location">Location</option>
+                                    <option value="vente">Vente</option>
+                                </select>
+                                @error('vocation')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+
                         </div>
                         <div class="mb-3">
-                            <label for="">Surface</label>
-                            <input type="text" class="form-control" required id="surface" name="surface" value="{{ old("surface") }}" required>
+                            <label for="" class="mb-1">Surface</label>
+                            <input type="text" class="form-control" required id="surface" name="surface"
+                                value="{{ old('surface') }}" required>
                             @error('surface')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="">Pièce</label>
-                            <input type="text" class="form-control" required id="piece" value="{{ old("piece") }}" name="piece" required>
-                            @error('piece')
-                                <span class="small text-danger"> {{ $message }} </span>
-                            @enderror
+                        <div class="row mb-3">
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Nombre de pièce</label>
+                                <input type="text" class="form-control" required id="piece"
+                                    value="{{ old('piece', 0) }}" name="piece" required>
+                                @error('piece')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Nombre de chambre</label>
+                                <input type="text" class="form-control" required id="chambre"
+                                    value="{{ old('chambre', 0) }}" name="chambre" required>
+                                @error('chambre')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="">Plan</label>
-                            <div class="small text-warning mb-1">
-                                - Fichiers :  jpeg,png,jpg,pdf
-                            </div>
+                            <label for="" class="mb-1">Plan</label>
+                            <span class="small text-warning mb-1">
+                                ( Fichiers : jpeg,png,jpg,pdf )
+                            </span>
                             <input type="file" class="form-control" required id="plan" name="plan" required>
                             @error('plan')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Annuler</button>
                             <button type="submit" class="btn btn-dark">Ajouter</button>
                         </div>
                     </form>

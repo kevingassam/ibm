@@ -88,4 +88,12 @@ class Information extends Model
         }
     }
 
+    public function GetCoverContact2(){
+        if ($this->cover_contact2) {
+            return Storage::url($this->cover_contact2);
+        } else {
+            return "/front/img/bg/contact-bg-1-1.png";
+        }
+    }
+
 }

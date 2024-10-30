@@ -58,7 +58,7 @@
                                     <th>Date publication</th>
                                     <th>Statut</th>
                                     <th>Type</th>
-                                    <th>Appartements</th>
+                                    <th>Propriétés</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -102,7 +102,7 @@
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#ModalAppartement{{ $projet->id }}">
                                                 <i class="bi bi-house-add"></i>
-                                                Appartements ( {{ $projet->appartements->count() }} )
+                                                Propriétés ( {{ $projet->appartements->count() }} )
                                             </button>
                                             <!-- Modal -->
                                             <div class="modal fade" id="ModalAppartement{{ $projet->id }}" tabindex="-1">
@@ -110,7 +110,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h6 class="modal-title" id="exampleModalLabel">
-                                                                Gestion des appartements
+                                                                Gestion des types des propriétés
                                                             </h6>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('details_appartements', function (Blueprint $table) {
             $table->id();
+            $table->string("reference");
             $table->string("numero");
             $table->string("etage")->nullable();
             $table->string("type")->nullable();
