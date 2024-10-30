@@ -18,7 +18,7 @@ class PartenaireController extends Controller
         $request->validate([
             'nom' =>'required|string|max:255',
             'description' =>'nullable|required|string|max:25005',
-            'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
 
         $partenaire = new Partenaire();
@@ -35,7 +35,7 @@ class PartenaireController extends Controller
         $request->validate([
             'nom' =>'required|string|max:255',
             'description' =>'nullable|required|string|max:25005',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
 
         $partenaire = Partenaire::find($id);
