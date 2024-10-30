@@ -135,7 +135,7 @@
                          <span class="small text-warning mb-1">
                              ( Fichiers : jpeg,png,jpg,pdf )
                          </span>
-                         <input type="file" class="form-control" id="plan" name="plan" required>
+                         <input type="file" class="form-control" id="plan" name="plan"  >
                          @error('plan')
                              <span class="small text-danger"> {{ $message }} </span>
                          @enderror
