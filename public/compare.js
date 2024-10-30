@@ -28,16 +28,14 @@ function storeIds(ids) {
     setCookie("compareIds", JSON.stringify(ids));
 }
 
-function Check_exist(id) {
+// Vérifie si un ID existe et le retire du tableau si non existant
+function checkExist(id) {
     $.ajax({
         url: "check_exist_appartement",
         type: "GET",
-        data: {
-            id: id,
-        },
+        data: { id: id },
         success: function (data) {
             if (!data.exist) {
-                //rettirer l'id du tableau
                 const compareIds = getStoredIds();
                 compareIds.splice(compareIds.indexOf(id), 1);
                 storeIds(compareIds);
@@ -54,10 +52,13 @@ function Check_exist(id) {
 function updateCompareCount() {
     const compareIds = getStoredIds();
     const total = compareIds.length;
+
     if (total > 0) {
+        // Vérifie chaque ID pour s'assurer qu'il existe encore
         compareIds.forEach(function (id) {
-            Check_exist(id);
+            checkExist(id);
         });
+
         $("#count-total-compare").text(total);
         $("#compare-btn").removeClass("d-none");
     } else {
@@ -75,39 +76,41 @@ $(document).ready(function () {
         const id = $(this).data("id");
         let compareIds = getStoredIds();
 
-        // Vérifie si l'ID est déjà dans le tableau
+        // Ajoute ou retire l'ID du tableau
         if (compareIds.includes(id)) {
-            // Retire l'ID du tableau
             compareIds = compareIds.filter((item) => item !== id);
-            //alert(`L'ID ${id} a été retiré de la comparaison.`);
         } else {
-            // Ajoute l'ID au tableau
             compareIds.push(id);
-            //alert(`L'ID ${id} a été ajouté à la comparaison.`);
         }
 
-        // Met à jour le cookie avec le tableau modifié et l'affichage
+        // Met à jour le cookie et rafraîchit l'affichage
         storeIds(compareIds);
         updateCompareCount();
     });
 
+    // Redirige vers la page de comparaison avec les IDs sélectionnés
     $("#compare-btn").on("click", function () {
-        let compareIds = getStoredIds();
-        if (compareIds.length > 0) {
-            const idsParam = compareIds.join(",");
-            const url = `/compare?ids=${idsParam}`;
-            window.location.href = url;
-        }
+        go_to_url();
     });
 
+    // Retire un ID de la comparaison
     $(".btn-retirer-compare").on("click", function () {
         const id = $(this).data("id");
-        //rettirer l'id du tableau
         const compareIds = getStoredIds();
+
         compareIds.splice(compareIds.indexOf(id), 1);
         storeIds(compareIds);
         updateCompareCount();
-        //reload page
-        location.reload();
+
+        // Recharge la page après la suppression
+        go_to_url();
     });
+
+    function go_to_url() {
+        const compareIds = getStoredIds();
+        if (compareIds.length > 0) {
+            const idsParam = compareIds.join(",");
+            window.location.href = `/compare?ids=${idsParam}`;
+        }
+    }
 });
