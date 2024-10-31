@@ -141,6 +141,7 @@
                             <div class="swiper-slide">
                                 <div class="testi-grid-wrap2">
                                     <div class="testi-grid-thumb">
+                                        <img src="https://as2.ftcdn.net/v2/jpg/01/91/47/87/1000_F_191478790_eCF3nQLD3wCTDxOKsagzRZKMkr6hbRE6.jpg" alt="img">
                                     </div>
                                     <div class="testi-card style2">
                                         <div class="testi-grid_review">
