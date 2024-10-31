@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('appartements', function (Blueprint $table) {
             $table->id();
             $table->string("nom");
+            $table->string("type")->default("habitation");
             $table->unsignedBigInteger("projet_id");
             $table->timestamps();
 
