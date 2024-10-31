@@ -35,6 +35,7 @@ Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/projet/v/{statut?}', [FrontController::class, 'projet'])->name('projet');
 Route::get('/projet/d/{id}/{nom}', [FrontController::class, 'projet_details'])->name('projet_details');
 Route::get('/articles', [FrontController::class, 'blogs'])->name('articles');
+Route::get('/demander_appartement/{id}', [FrontController::class, 'demander_appartement'])->name('demander_appartement');
 Route::get('/article/{id}/{titre}', [FrontController::class, 'article'])->name('article');
 Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
 Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');

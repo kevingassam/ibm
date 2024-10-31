@@ -162,7 +162,9 @@
                                                                 </a>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="#" class="btn btn-sm btn-light">Demander</a>
+                                                                <a href="{{ route('demander_appartement',$details->id) }}" class="btn btn-sm btn-light">
+                                                                    Demander
+                                                                </a>
                                                             </td>
                                                             <td class="text-center">
                                                                 <button type="button"

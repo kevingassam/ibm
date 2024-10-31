@@ -400,7 +400,7 @@
                                         <h3 class="portfolio-title">
                                             <a
                                                 href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}">
-                                                {{ $key++ }}.
+                                                {{ $key+1 }}.
                                                 {{ Str::limit($projet->nom, 20) }}
                                             </a>
                                         </h3>

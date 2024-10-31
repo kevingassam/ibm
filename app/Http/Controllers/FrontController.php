@@ -209,6 +209,26 @@ class FrontController extends Controller
             ->with('autres', $autres);
     }
 
+    public function demander_appartement($id){
+        $appartement = DetailsAppartement::find($id);
+        if(!$appartement){
+            abort(404);
+        }
+        $sup = Appartement::find($appartement->appartement_id);
+        if($sup){
+            $projet = Projet::find($sup->projet_id);
+            if($projet){
+                $parkings = Appartement::where('projet_id',$projet->id)
+                ->where('type',"place parking")
+                ->get();
+            }
+        }
+        return view("front.demander-appartement")
+            ->with('appartement', $appartement)
+            ->with('projet', $projet ?? null)
+            ->with('parkings', $parkings?? null);
+    }
+
 
     public function article($id, $titre)
     {
