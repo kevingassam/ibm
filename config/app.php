@@ -16,6 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'app_url_demaine' => env('APP_URL_DOMAINE',''),
 
     /*
     |--------------------------------------------------------------------------

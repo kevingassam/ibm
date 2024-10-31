@@ -12,6 +12,7 @@ use App\Models\Projet;
 use App\Models\Temoignage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class FrontController extends Controller
 {
@@ -71,7 +72,7 @@ class FrontController extends Controller
 
 
 
-    public function check_exist_appartement(Request $request,$id)
+    public function check_exist_appartement(Request $request, $id)
     {
         $appartement = DetailsAppartement::find($id);
         if ($appartement) {
@@ -119,6 +120,7 @@ class FrontController extends Controller
             'email' => 'required|email|max:255',
             'telephone' => 'required|numeric',
             'message' => 'required|string|max:2550',
+            'adresse' => 'nullable|string|max:2550',
         ]);
 
         $contact  = new Contact();
@@ -128,7 +130,31 @@ class FrontController extends Controller
         $contact->message = $request->input('message');
         $contact->save();
 
-        return redirect()->route('contact')->with('success', 'Votre message a bien été envoyé');
+
+        $token = config('services.contact_form.api_key');
+        $url = config('services.contact_form.api')."contact";
+        $response = Http::withHeaders([
+            'x-api-key' => $token,
+        ])->post($url , [
+            'nom' => $request->input('nom'),
+            'email' => $request->input('email'),
+            'telephone' => $request->input('telephone'),
+            'message' => $request->input('message'),
+            'adresse' => $request->input('adresse') ?? "-",
+            "domaine" => config('app.app_url_demaine'),
+        ]);
+
+        // Déboguer la réponse
+        $status = $response->status();   // Récupère le code d'état HTTP
+        $body = $response->body();       // Récupère le corps de la réponse
+        if ($response->successful()) {
+            return redirect()->back()
+                ->with('success', 'Votre message a bien été reçu et va être envoyé vers l\'équipe de support.');
+        } else {
+            // Affichez les détails pour comprendre l'erreur
+            return redirect()->back()
+                ->with('error', 'Une erreur s\'est produite lors de l\'envoi de votre message. Code: ' . $status . ' - Réponse: ' . $body);
+        }
     }
 
 

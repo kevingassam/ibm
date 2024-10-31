@@ -42,7 +42,7 @@
                     <div class="col-lg-5">
                         <div class="img-box3">
                             <div class="img1">
-                                <img src="/front/img/normal/about_3_1.png" alt="About">
+                                <img src="{{ Storage::url($infos->about_photo1)}}" alt="About">
                             </div>
                             <div class="about-tag">
                                 <div class="about-experience-tag">
@@ -56,7 +56,7 @@
                     <div class="col-lg-5">
                         <div class="img-box3">
                             <div class="img1">
-                                <img src="/front/img/normal/about_3_2.png" alt="About">
+                                <img src="{{ Storage::url($infos->about_photo2)}}" alt="About">
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="col-lg-6">
                         <div class="img-box3">
                             <div class="img1">
-                                <img src="/front/img/normal/about_3_3.png" alt="About">
+                                <img src="{{ Storage::url($infos->about_photo3)}}" alt="About">
                             </div>
                         </div>
                     </div>

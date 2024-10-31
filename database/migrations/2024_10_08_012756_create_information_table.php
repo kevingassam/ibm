@@ -45,6 +45,9 @@ return new class extends Migration
             $table->text("about_texte1")->nullable();
             $table->text("about_texte2")->nullable();
             $table->text("about_texte3")->nullable();
+            $table->text("about_photo1")->nullable();
+            $table->text("about_photo2")->nullable();
+            $table->text("about_photo3")->nullable();
 
             $table->timestamps();
         });

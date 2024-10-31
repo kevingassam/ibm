@@ -52,6 +52,9 @@ class ConfigurationController extends Controller
             'about_texte1' => 'nullable|string|max:5055',
             'about_texte2' => 'nullable|string|max:5055',
             'about_texte3' => 'nullable|string|max:5055',
+            'about_photo1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'about_photo2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'about_photo3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $information = Information::first();
@@ -128,6 +131,24 @@ class ConfigurationController extends Controller
                 Storage::disk('public')->delete($information->cover_contact2);
             }
             $information->cover_contact2 = $request->file('cover_contact2')->store('informations', 'public');
+        }
+        if ($request->file("about_photo1")) {
+            if ($information->about_photo1) {
+                Storage::disk('public')->delete($information->about_photo1);
+            }
+            $information->about_photo1 = $request->file('about_photo1')->store('informations', 'public');
+        }
+        if ($request->file("about_photo2")) {
+            if ($information->about_photo2) {
+                Storage::disk('public')->delete($information->about_photo2);
+            }
+            $information->about_photo2 = $request->file('about_photo2')->store('informations', 'public');
+        }
+        if ($request->file("about_photo3")) {
+            if ($information->about_photo3) {
+                Storage::disk('public')->delete($information->about_photo3);
+            }
+            $information->about_photo3 = $request->file('about_photo3')->store('informations', 'public');
         }
 
         $information->save();

@@ -168,7 +168,7 @@
                                                                     <img width="25" height="25"
                                                                         src="https://img.icons8.com/glyph-neue/25/FFFFFF/bookmark-ribbon.png"
                                                                         alt="bookmark-ribbon" />
-                                                                    Ajouter
+                                                                    Comparer
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -299,7 +299,7 @@
 
 
 
-   
+
 
 
 @endsection

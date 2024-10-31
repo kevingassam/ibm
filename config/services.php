@@ -30,5 +30,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'contact_form' => [
+        'api_key' => env('CONTACT_FORM_API_KEY', 'votre_cle_api_secrete'),
+        'api' => env('CONTACT_FORM_API', 'url_api'),
+    ],
 
 ];

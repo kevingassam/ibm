@@ -44,7 +44,7 @@
                             <div class="col-4 col-sm-12">
                                 <div class="mb-4">
                                     <h6 class="mb-1">Paragraphe 1</h6>
-                                    <textarea name="about_texte1" id="about_texte1" class="form-control" rows="5">{{ $infos->about_texte1 }}</textarea>
+                                    <textarea name="about_texte1" id="about_texte1" class="form-control" rows="3">{{ $infos->about_texte1 }}</textarea>
                                     @error('about_texte1')
                                         <span class="small text-danger">
                                             {{ $message }}
@@ -55,7 +55,7 @@
                             <div class="col-4 col-sm-12">
                                 <div class="mb-4">
                                     <h6 class="mb-1">Paragraphe 2</h6>
-                                    <textarea name="about_texte2" id="about_texte2" class="form-control" rows="5">{{ $infos->about_texte2 }}</textarea>
+                                    <textarea name="about_texte2" id="about_texte2" class="form-control" rows="3">{{ $infos->about_texte2 }}</textarea>
                                     @error('about_texte2')
                                         <span class="small text-danger">
                                             {{ $message }}
@@ -66,7 +66,7 @@
                             <div class="col-4 col-sm-12">
                                 <div class="mb-4">
                                     <h6 class="mb-1">Paragraphe 3</h6>
-                                    <textarea name="about_texte3" id="about_texte3" class="form-control" rows="5">{{ $infos->about_texte3 }}</textarea>
+                                    <textarea name="about_texte3" id="about_texte3" class="form-control" rows="3">{{ $infos->about_texte3 }}</textarea>
                                     @error('about_texte3')
                                         <span class="small text-danger">
                                             {{ $message }}
@@ -115,6 +115,64 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-12">
+                                <label for="about_photo1" class="form-label fw-bold">
+                                    Image de paragraphe 1
+                                </label>
+                                <input type="file" class="form-control" name="about_photo1" />
+                                @error('about_photo1')
+                                    <span class="small text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                                @if ($infos->about_photo1)
+                                <img src="{{ Storage::url($infos->about_photo1) }}" class="w-100" alt="" srcset="">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-12">
+                                <label for="about_photo2" class="form-label fw-bold">
+                                    Image de paragraphe 2
+                                </label>
+                                <input type="file" class="form-control" name="about_photo2" />
+                                @error('about_photo2')
+                                    <span class="small text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                                @if ($infos->about_photo2)
+                                <img src="{{ Storage::url($infos->about_photo2) }}" class="w-100" alt="" srcset="">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-12">
+                                <label for="about_photo3" class="form-label fw-bold">
+                                    Image de paragraphe 3
+                                </label>
+                                <input type="file" class="form-control" name="about_photo3" />
+                                @error('about_photo3')
+                                    <span class="small text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                                @if ($infos->about_photo3)
+                                <img src="{{ Storage::url($infos->about_photo3) }}" class="w-100" alt="" srcset="">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
         </form>
         <!--end row-->
