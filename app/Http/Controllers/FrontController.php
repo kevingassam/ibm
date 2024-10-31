@@ -170,7 +170,7 @@ class FrontController extends Controller
     public function projet(Request $request, $statut = null)
     {
         $key = $request->input("key") ?? null;
-        $type = $request->input("type") ?? null;
+        $type = $request->input("type") ?? $request->get('type') ?? null;
         if ($statut) {
             if ($statut != "en cours" && $statut != "terminé") {
                 $statut = "en cours";

@@ -101,7 +101,7 @@
                         <div class="widget widget_banner  " data-bg-src="/front/img/widget/widget-banner.png">
                             <div class="widget-banner text-center">
                                 <h3 class="title">Besoin d'aide ? Nous sommes là pour vous aider</h3>
-                                <div class="logo"><img src="{{ $infos->GetLogo() }}" alt="img"></div>
+                                <div class="logo"><img src="{{ $infos->GetLogo() }}" style="height: 50px !important;" alt="img"></div>
                                 <h4 class="subtitle">Vous bénéficiez d'une assistance en ligne</h4>
                                 @if ($infos->tel1)
                                     <h5 class="link">

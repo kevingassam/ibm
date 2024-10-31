@@ -14,8 +14,8 @@
                 <div class="col-12">
                     <div class="hero-style3 text-center">
                         <div class="btn-wrap justify-content-center">
-                            <a href="property.html" class="th-btn style-border th-btn-icon">Résidentiel</a>
-                            <a href="property.html" class="th-btn style-border th-btn-icon">Commercial</a>
+                            <a href="{{ route('projet') }}?type=résidentiel" class="th-btn style-border th-btn-icon">Résidentiel</a>
+                            <a href="{{ route('projet') }}?type=commercial" class="th-btn style-border th-btn-icon">Commercial</a>
                         </div>
                         <h1 class="hero-title text-white">
                             Découvrez le mélange harmonieux du luxe
@@ -211,12 +211,6 @@
                     <div class="media-body">
                         <h2 class="box-number text-white"><span class="counter-number text-white">{{ $total_appartements }}</span>+</h2>
                         <p class="box-text text-light">Appartements</p>
-                    </div>
-                </div>
-                <div class="counter-card style2">
-                    <div class="media-body">
-                        <h2 class="box-number text-white"><span class="counter-number text-white">85</span>+</h2>
-                        <p class="box-text text-light">Team Members</p>
                     </div>
                 </div>
                 <div class="counter-card style2">

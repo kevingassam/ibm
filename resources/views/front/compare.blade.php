@@ -23,89 +23,110 @@
 
     <section class="space-top space-extra-bottom">
         <div class="container">
-            <table class="table">
-                <tr>
-                    <td>
-                    </td>
-                    @foreach ($elements as $item)
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-danger btn-retirer-compare" type="button" data-id="{{ $item->id }}">
-                                Retirer ( <b>{{ $item->reference ?? '-' }}</b> )
-                            </button>
-                        </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>Référence :</b>
-                    </td>
-                    @foreach ($elements as $item)
-                        <td class="text-center">
-                            <b>{{ $item->reference ?? '-' }}</b>
-                        </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>Titre :</b>
-                    </td>
-                    @foreach ($elements as $item)
+           <div class="row">
+            <div class="col-sm-8">
+                <table class="table">
+                    <tr>
                         <td>
-                            {{ $item->numero ?? '-' }}
                         </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>vocation :</b>
-                    </td>
-                    @foreach ($elements as $item)
+                        @foreach ($elements as $item)
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-danger btn-retirer-compare" type="button" data-id="{{ $item->id }}">
+                                    Retirer ( <b>{{ $item->reference ?? '-' }}</b> )
+                                </button>
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
                         <td>
-                            {{ $item->vocation ?? '-' }}
+                            <b>Référence :</b>
                         </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>statut :</b>
-                    </td>
-                    @foreach ($elements as $item)
+                        @foreach ($elements as $item)
+                            <td class="text-center">
+                                <b>{{ $item->reference ?? '-' }}</b>
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
                         <td>
-                            {{ $item->statut ?? '-' }}
+                            <b>Titre :</b>
                         </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>Surface terrain :</b>
-                    </td>
-                    @foreach ($elements as $item)
+                        @foreach ($elements as $item)
+                            <td>
+                                {{ $item->numero ?? '-' }}
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
                         <td>
-                            {{ $item->surface ?? '-' }}
+                            <b>vocation :</b>
                         </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>Total pieces :</b>
-                    </td>
-                    @foreach ($elements as $item)
+                        @foreach ($elements as $item)
+                            <td>
+                                {{ $item->vocation ?? '-' }}
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
                         <td>
-                            {{ $item->pieces ?? '-' }}
+                            <b>statut :</b>
                         </td>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>
-                        <b>Chambres :</b>
-                    </td>
-                    @foreach ($elements as $item)
+                        @foreach ($elements as $item)
+                            <td>
+                                {{ $item->statut ?? '-' }}
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
                         <td>
-                            {{ $item->chambres ?? '-' }}
+                            <b>Surface terrain :</b>
                         </td>
-                    @endforeach
-                </tr>
-            </table>
+                        @foreach ($elements as $item)
+                            <td>
+                                {{ $item->surface ?? '-' }}
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Total pieces :</b>
+                        </td>
+                        @foreach ($elements as $item)
+                            <td>
+                                {{ $item->pieces ?? '-' }}
+                            </td>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Chambres :</b>
+                        </td>
+                        @foreach ($elements as $item)
+                            <td>
+                                {{ $item->chambres ?? '-' }}
+                            </td>
+                        @endforeach
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-4">
+                <div class="widget widget_banner  " data-bg-src="https://www.magazineb2b.com/wp-content/uploads/sites/467/2019/02/classification-immeubles-bureaux-1.jpg">
+                    <div class="widget-banner text-center">
+                        <h3 class="title">Besoin d'aide ? Nous sommes là pour vous aider</h3>
+                        <div class="logo"><img src="{{ $infos->GetLogo() }}" style="height: 50px !important;" alt="img"></div>
+                        <h4 class="subtitle">Vous bénéficiez d'une assistance en ligne</h4>
+                        @if ($infos->tel1)
+                            <h5 class="link">
+                                <a href="tel:{{ $infos->tel1 }}">
+                                    {{ $infos->tel1 }}
+                                </a>
+                            </h5>
+                        @endif
+                        <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Contact</a>
+                    </div>
+                </div>
+            </div>
+           </div>
         </div>
     </section>
 
