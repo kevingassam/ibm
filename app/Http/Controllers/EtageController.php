@@ -20,6 +20,7 @@ class EtageController extends Controller
             'chambres' => 'required|string|max:255',
             'surface' => 'required|string|max:255',
             'piece' => 'required|string|max:255',
+            'prix' => 'nullable|numeric',
             'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
             'appartement_id' => 'required|integer|exists:appartements,id'
         ]);
@@ -44,6 +45,7 @@ class EtageController extends Controller
         $etage->piece = $request->input('piece');
         $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
         $etage->appartement_id = $request->input('appartement_id');
+        $etage->prix = $request->input('prix');
         $etage->save();
         return redirect()->back()->with('success', 'Etage ajouté avec succès!');
     }
@@ -70,6 +72,7 @@ class EtageController extends Controller
             'vocation' => 'required|string|max:255',
             'chambres' => 'required|string|max:255',
             'reference' => 'required|string|max:255|unique:details_appartements,reference,' . $id,
+            'prix' => 'nullable|numeric',
         ]);
         $etage = DetailsAppartement::find($id);
 
@@ -90,6 +93,7 @@ class EtageController extends Controller
         $etage->chambres = $request->input('chambres');
         $etage->reference = $request->input('reference');
         $etage->surface_terrase = $request->input('surface_terrase');
+        $etage->prix = $request->input('prix');
         if ($request->hasFile('plan')) {
             Storage::disk('public')->delete($etage->plan);
             $etage->plan = $request->file('plan')->store('appartements/plans', 'public');

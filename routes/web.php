@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiCrmController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\ContactController;
@@ -31,6 +32,7 @@ Route::get('/compare', [FrontController::class, 'compare'])->name('compare');
 Route::get('/check_exist_appartement/{id}', [FrontController::class, 'check_exist_appartement'])->name('check_exist_appartement');
 Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
 Route::post('/demandes/projet', [FrontController::class, 'demandes_post'])->name('demandes.post');
+Route::post('/demandes/demande_post_to_api', [FrontController::class, 'demande_post_to_api'])->name('demande_post_to_api');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/projet/v/{statut?}', [FrontController::class, 'projet'])->name('projet');
 Route::get('/projet/d/{id}/{nom}', [FrontController::class, 'projet_details'])->name('projet_details');
@@ -39,6 +41,14 @@ Route::get('/demander_appartement/{id}', [FrontController::class, 'demander_appa
 Route::get('/article/{id}/{titre}', [FrontController::class, 'article'])->name('article');
 Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
 Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');
+
+
+
+Route::get('/api-logo', [ApiCrmController::class, 'logo'])->name('logo');
+Route::get('/api-produit/{id}', [ApiCrmController::class, 'produit'])->name('api-produit');
+
+
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [FrontController::class, 'dashboard'])->name('dashboard');

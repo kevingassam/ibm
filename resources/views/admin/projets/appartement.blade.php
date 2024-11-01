@@ -68,6 +68,7 @@
                                     @endif
                                     <th>Pièces</th>
                                     <th>Chambres</th>
+                                    <th>Prix</th>
                                     <th>Plan</th>
                                     <th>Date publication</th>
                                     <th></th>
@@ -92,6 +93,15 @@
                                         <td>{{ $maison->piece }}</td>
                                         <td>{{ $maison->chambre ?? '0' }}</td>
                                         <td>
+                                            @if ($maison->prix)
+                                                {{ $maison->prix }} DT
+                                            @else
+                                                <b class="text-danger">
+                                                    Démande !
+                                                </b>
+                                            @endif
+                                        </td>
+                                        <td>
                                             <a href="{{ Storage::url($maison->plan) }}"
                                                 class="btn btn-sm btn-outline-danger">
                                                 <i class="bi bi-file-earmark-pdf"></i> PDF
@@ -114,7 +124,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="{{ $appartement->type == 'habitation' ? '14' : '13' }}"
+                                        <td colspan="{{ $appartement->type == 'habitation' ? '15' : '14' }}"
                                             class="text-center p-3">
                                             <div class="alert alert-warning">
                                                 Aucun étage disponible.
@@ -237,6 +247,17 @@
                                 <input type="text" class="form-control" required id="chambres"
                                     value="{{ old('chambres', 0) }}" name="chambres" required>
                                 @error('chambres')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Prix</label>
+                                <input type="number" step="0.1" class="form-control" id="prix"
+                                    value="{{ old('prix') }}" name="prix">
+                                <div class="small text-warning">
+                                    Laisser null si c'est sur commande.
+                                </div>
+                                @error('prix')
                                     <span class="small text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>

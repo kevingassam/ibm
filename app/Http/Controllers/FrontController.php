@@ -10,6 +10,7 @@ use App\Models\DetailsAppartement;
 use App\Models\Partenaire;
 use App\Models\Projet;
 use App\Models\Temoignage;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -127,7 +128,7 @@ class FrontController extends Controller
         ]);
 
         // Déboguer la réponse
-        $status = $response->status(); 
+        $status = $response->status();
         $body = $response->body();
         if ($response->successful()) {
             return redirect()->back()
@@ -321,4 +322,57 @@ class FrontController extends Controller
             ->with('total_etages', $total_etages)
             ->with('total_articles', $total_articles);
     }
+
+
+
+    public function demande_post_to_api(Request $request){
+         // Envoyer les données à l'API via GuzzleHTTP
+
+         $protocol = $request->secure() ? 'https://' : 'http://';
+         $domain = $protocol . $request->getHost();
+         //validation
+         $this->validate($request, [
+             'nom' => 'required|string|max:255',
+             'prenom' => 'nullable|string|max:255',
+             'email' => 'required|email|max:255',
+             'telephone' => 'required|string|max:255',
+             'message' => 'nullable|string',
+             'appartement_id' => 'required|integer|'
+         ]);
+
+
+
+         $token = config('services.contact_form.api_key');
+         $url = config('services.contact_form.api') . "store-devis";
+         $response = Http::withHeaders([
+            'x-api-key' => $token ,
+        ])->post($url, [
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'commentaire' => $request->commentaire,
+            'photos' => json_encode([]),
+            "domaine" => $domain,
+            "id_produit" => $request->appartement_id,
+        ]);
+
+        // Déboguer la réponse
+        $status = $response->status();
+        $body = $response->body();
+
+        dd($body);
+
+        if ($response->successful()) {
+            return redirect()
+                ->back()
+                ->with('success', 'Votre demande de devis a bien été envoyée et votre devis a été créé avec succès.');
+        } else {
+            return redirect()
+                ->back()
+                ->with('error', 'Une erreur est survenue lors de l\'envoi de votre demande de devis mais le devis a été créé avec succès.');
+        }
+    }
+
+
 }

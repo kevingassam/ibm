@@ -24,11 +24,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 mx-auto">
-                    <form action="">
+                    <form action="{{ route('demande_post_to_api') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="appartement_id" value="{{ $appartement->id }}">
                         <div class="card p-3">
                             <h6>
                                 Demande : {{ $appartement->reference }}
                             </h6>
+                            <div>
+                                <b>Prix : </b>
+                                @if ($appartement->prix)
+                                    {{ $appartement->prix }} DT
+                                @else
+                                    <span class="text-danger">
+                                        Sur demande !
+                                    </span>
+                                @endif
+                            </div>
+                            <br>
+                            @if (session('success'))
+                                <br>
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if (session('error'))
+                                <br>
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                            @if ($errors->any())
+                                <div class="text-danger small">
+                                    @foreach ($errors->all() as $error)
+                                        <div>{{ $error }}</div>
+                                    @endforeach
+                                </div>
+                            @endif
+
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">

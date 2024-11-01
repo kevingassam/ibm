@@ -109,7 +109,7 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Surface</label>
                              <input type="text" class="form-control" required id="surface" name="surface"
-                                 value="{{ old('surface', $etage->surface) }}" required>
+                                 value="{{ old('surface', $etage->surface) }}">
                              @error('surface')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror
@@ -127,7 +127,7 @@
                          @endif
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Nombre de pièce</label>
-                             <input type="text" class="form-control" required id="piece"
+                             <input type="text" class="form-control" id="piece"
                                  value="{{ old('piece', $etage->pieces) }}" name="piece" required>
                              @error('piece')
                                  <span class="small text-danger"> {{ $message }} </span>
@@ -136,11 +136,22 @@
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Nombre de chambre</label>
                              <input type="text" class="form-control" required id="chambres"
-                                 value="{{ old('chambres', $etage->chambres) }}" name="chambres" required>
+                                 value="{{ old('chambres', $etage->chambres) }}" name="chambres" >
                              @error('chambres')
                                  <span class="small text-danger"> {{ $message }} </span>
                              @enderror
                          </div>
+                         <div class="col-sm-6 col-6">
+                            <label for="" class="mb-1">Prix</label>
+                            <input type="number" step="0.1" class="form-control"  id="prix"
+                                value="{{ old('prix', $etage->prix) }}" name="prix" >
+                                <div class="small text-warning">
+                                    Laisser null si c'est sur commande.
+                                </div>
+                            @error('prix')
+                                <span class="small text-danger"> {{ $message }} </span>
+                            @enderror
+                        </div>
                      </div>
                      <div class="mb-3">
                          <label for="" class="mb-1">Plan</label>

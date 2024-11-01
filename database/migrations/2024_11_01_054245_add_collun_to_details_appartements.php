@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('details_appartements', function (Blueprint $table) {
-            $table->string("surface_terrase")->nullable();
-            $table->string("type_parking")->nullable();
+            $table->decimal('prix', 13, 3)->nullable();
         });
     }
 
@@ -23,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('details_appartements', function (Blueprint $table) {
-            $table->dropColumn("surface_terrase");
-            $table->dropColumn("type_parking");
+            $table->dropColumn('prix');
         });
     }
 };
