@@ -109,7 +109,33 @@ class FrontController extends Controller
         $demande->message = $request->input('message');
         $demande->projet_id = $request->input('projet_id');
         $demande->save();
-        return redirect()->back()->with('success', 'Demande créée avec succès');
+
+
+
+
+        $token = config('services.contact_form.api_key');
+        $url = config('services.contact_form.api') . "contact";
+        $response = Http::withHeaders([
+            'x-api-key' => $token,
+        ])->post($url, [
+            'nom' => $request->input('nom'),
+            'email' => $request->input('email'),
+            'telephone' => $request->input('telephone'),
+            'message' => $request->input('message'),
+            'adresse' => $request->input('adresse') ?? "-",
+            "domaine" => config('app.app_url_demaine'),
+        ]);
+
+        // Déboguer la réponse
+        $status = $response->status(); 
+        $body = $response->body();
+        if ($response->successful()) {
+            return redirect()->back()
+                ->with('success', 'Votre message a bien été reçu et va être envoyé vers l\'équipe de support.');
+        } else {
+            return redirect()->back()
+                ->with('error', 'Une erreur s\'est produite lors de l\'envoi de votre message. Code: ' . $status . ' - Réponse: ' . $body);
+        }
     }
 
 
@@ -132,10 +158,10 @@ class FrontController extends Controller
 
 
         $token = config('services.contact_form.api_key');
-        $url = config('services.contact_form.api')."contact";
+        $url = config('services.contact_form.api') . "contact";
         $response = Http::withHeaders([
             'x-api-key' => $token,
-        ])->post($url , [
+        ])->post($url, [
             'nom' => $request->input('nom'),
             'email' => $request->input('email'),
             'telephone' => $request->input('telephone'),
@@ -209,24 +235,25 @@ class FrontController extends Controller
             ->with('autres', $autres);
     }
 
-    public function demander_appartement($id){
+    public function demander_appartement($id)
+    {
         $appartement = DetailsAppartement::find($id);
-        if(!$appartement){
+        if (!$appartement) {
             abort(404);
         }
         $sup = Appartement::find($appartement->appartement_id);
-        if($sup){
+        if ($sup) {
             $projet = Projet::find($sup->projet_id);
-            if($projet){
-                $parkings = Appartement::where('projet_id',$projet->id)
-                ->where('type',"place parking")
-                ->get();
+            if ($projet) {
+                $parkings = Appartement::where('projet_id', $projet->id)
+                    ->where('type', "place parking")
+                    ->first();
             }
         }
         return view("front.demander-appartement")
             ->with('appartement', $appartement)
             ->with('projet', $projet ?? null)
-            ->with('parkings', $parkings?? null);
+            ->with('parkings', $parkings ?? null);
     }
 
 

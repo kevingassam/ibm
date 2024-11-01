@@ -104,15 +104,27 @@
                          </div>
 
                      </div>
-                     <div class="mb-3">
-                         <label for="" class="mb-1">Surface</label>
-                         <input type="text" class="form-control" required id="surface" name="surface"
-                             value="{{ old('surface', $etage->surface) }}" required>
-                         @error('surface')
-                             <span class="small text-danger"> {{ $message }} </span>
-                         @enderror
-                     </div>
+
                      <div class="row mb-3">
+                         <div class="col-sm-6 col-6">
+                             <label for="" class="mb-1">Surface</label>
+                             <input type="text" class="form-control" required id="surface" name="surface"
+                                 value="{{ old('surface', $etage->surface) }}" required>
+                             @error('surface')
+                                 <span class="small text-danger"> {{ $message }} </span>
+                             @enderror
+                         </div>
+                         @if ($appartement->type == 'habitation')
+                             <div class="col-sm-6 col-6">
+                                 <label for="" class="mb-1">Surface de la terrasse</label>
+                                 <input type="text" class="form-control" required id="surface_terrase"
+                                     name="surface_terrase"
+                                     value="{{ old('surface_terrase', $etage->surface_terrase) }}">
+                                 @error('surface_terrase')
+                                     <span class="small text-danger"> {{ $message }} </span>
+                                 @enderror
+                             </div>
+                         @endif
                          <div class="col-sm-6 col-6">
                              <label for="" class="mb-1">Nombre de pièce</label>
                              <input type="text" class="form-control" required id="piece"
@@ -135,15 +147,10 @@
                          <span class="small text-warning mb-1">
                              ( Fichiers : jpeg,png,jpg,pdf )
                          </span>
-                         <input type="file" class="form-control" id="plan" name="plan"  >
+                         <input type="file" class="form-control" id="plan" name="plan">
                          @error('plan')
                              <span class="small text-danger"> {{ $message }} </span>
                          @enderror
-                     </div>
-                     <div class="modal-footer">
-                         <button type="button" class="btn btn-secondary btn-sm"
-                             data-bs-dismiss="modal">Annuler</button>
-                         <button type="submit" class="btn btn-dark">Ajouter</button>
                      </div>
                  </div>
                  <div class="modal-footer">

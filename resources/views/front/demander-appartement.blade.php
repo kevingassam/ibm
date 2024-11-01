@@ -24,64 +24,121 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 mx-auto">
-                    <div class="card p-3">
-                        <h6>
-                            Demande : {{ $appartement->reference }}
-                        </h6>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="nom">Nom * </label>
-                                    <input type="text" class="form-control" placeholder="John du pont" id="nom" required name="nom" value="{{ old('nom') }}">
-                                    @error('nom')
-                                        <span class="small text-danger"> {{ $message }} </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="prenom">Prénom  </label>
-                                    <input type="text" class="form-control" placeholder="John du pont" id="prenom" required name="prenom" value="{{ old('prenom') }}">
-                                    @error('prenom')
-                                        <span class="small text-danger"> {{ $message }} </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="email">Email * </label>
-                                    <input type="tel" class="form-control" placeholder="John_du_pont@gmail.com" required id="email" name="email" value="{{ old('email') }}">
-                                    @error('email')
-                                        <span class="small text-danger"> {{ $message }} </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3">
-                                    <label for="telephone">Téléphone * </label>
-                                    <input type="tel" class="form-control" placeholder="John du pont" required id="telephone" name="telephone" value="{{ old('telephone') }}">
-                                    @error('telephone')
-                                        <span class="small text-danger"> {{ $message }} </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="mb-3">
-                                    <label for="message">Message  </label>
-                                    <textarea name="message" id="messag" rows="3">{{ old('message') }}</textarea>
-                                    @error('message')
-                                        <span class="small text-danger"> {{ $message }} </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            @if ($parkings)
-                                <div class="col-sm-12">
+                    <form action="">
+                        <div class="card p-3">
+                            <h6>
+                                Demande : {{ $appartement->reference }}
+                            </h6>
+                            <div class="row">
+                                <div class="col-sm-6">
                                     <div class="mb-3">
+                                        <label for="nom">Nom * </label>
+                                        <input type="text" class="form-control" placeholder="John du pont" id="nom"
+                                            required name="nom" value="{{ old('nom') }}">
+                                        @error('nom')
+                                            <span class="small text-danger"> {{ $message }} </span>
+                                        @enderror
                                     </div>
                                 </div>
-                            @endif
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="prenom">Prénom </label>
+                                        <input type="text" class="form-control" placeholder="John du pont" id="prenom"
+                                            required name="prenom" value="{{ old('prenom') }}">
+                                        @error('prenom')
+                                            <span class="small text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="email">Email * </label>
+                                        <input type="tel" class="form-control" placeholder="John_du_pont@gmail.com"
+                                            required id="email" name="email" value="{{ old('email') }}">
+                                        @error('email')
+                                            <span class="small text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="telephone">Téléphone * </label>
+                                        <input type="tel" class="form-control" placeholder="John du pont" required
+                                            id="telephone" name="telephone" value="{{ old('telephone') }}">
+                                        @error('telephone')
+                                            <span class="small text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="mb-3">
+                                        <label for="message">Message </label>
+                                        <textarea name="message" id="messag" rows="3">{{ old('message') }}</textarea>
+                                        @error('message')
+                                            <span class="small text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                @if ($parkings)
+                                    <div class="col-sm-12">
+                                        <div class="mb-3">
+                                            <h6>
+                                                Parking
+                                            </h6>
+                                            <p class="small">
+                                                Les parkings sont disponibles pour les appartements de cette référence.
+                                                Vous pouvez télécharger les plans des parkings en cliquant sur le bouton
+                                                ci-dessous.
+
+                                            </p>
+                                            <table class="table">
+                                                <tbody>
+                                                    @foreach ($parkings->DetailsAppartement as $parking)
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                @if ($parking->statut == 'disponible')
+                                                                    <input type="checkbox" name="" id="">
+                                                                @endif
+                                                            </td>
+                                                            <td>{{ $parking->numero }}</td>
+                                                            <td>{{ $parking->reference }}</td>
+                                                            <td class="text-capitalize">{{ $parking->type_parking }}</td>
+                                                            <td class="text-capitalize">
+                                                                @if ($parking->statut == 'disponible')
+                                                                    <span class="text-success">
+                                                                        <b>Disponible</b>
+                                                                    </span>
+                                                                @else
+                                                                    <span class="text-danger">
+                                                                        <b>Indisponible</b>
+                                                                    </span>
+                                                                @endif
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <a href="{{ Storage::url($parking->plan) }}"
+                                                                    download="{{ $parking->etage }}" target="__blank"
+                                                                    class="btn btn-sm btn-dark">
+                                                                    <img width="25" height="25"
+                                                                        src="https://img.icons8.com/ios-filled/25/FFFFFF/pdf--v1.png"
+                                                                        alt="pdf--v1" />
+                                                                    Télécharger
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                            <br>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-dark">Envoyer</button>
+                                <button type="reset" class="btn btn-secondary">Annuler</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -89,7 +146,7 @@
 
 
     <style>
-        label{
+        label {
             margin-bottom: 0px !important;
         }
     </style>

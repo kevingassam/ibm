@@ -123,8 +123,10 @@
                 <div class="widget widget_banner  " data-bg-src="https://www.magazineb2b.com/wp-content/uploads/sites/467/2019/02/classification-immeubles-bureaux-1.jpg">
                     <div class="widget-banner text-center">
                         <h3 class="title">Besoin d'aide ? Nous sommes là pour vous aider</h3>
-                        <div class="logo"><img src="{{ $infos->GetLogo() }}" style="height: 50px !important;" alt="img"></div>
-                        <h4 class="subtitle">Vous bénéficiez d'une assistance en ligne</h4>
+                        <div class="mb-3">
+                            <img src="{{ $infos->GetLogo() }}" style="height: 50px !important;" alt="img">
+                        </div>
+                        <h5 class="subtitle">Vous bénéficiez d'une assistance en ligne</h5>
                         @if ($infos->tel1)
                             <h5 class="link">
                                 <a href="tel:{{ $infos->tel1 }}">

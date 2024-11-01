@@ -57,6 +57,7 @@
                                     <th>Référence</th>
                                     <th>Numéro</th>
                                     <th>Statut</th>
+                                    <th>Type de parking</th>
                                     <th>Plan</th>
                                     <th>Date publication</th>
                                     <th></th>
@@ -71,7 +72,8 @@
                                         <td>{{ $maison->id }}</td>
                                         <td>{{ $maison->reference ?? '-' }}</td>
                                         <td>{{ $maison->numero }}</td>
-                                        <td>{{ $maison->statut }}</td>
+                                        <td class="text-capitalize">{{ $maison->statut }}</td>
+                                        <td class="text-capitalize">{{ $maison->type_parking }}</td>
                                         <td>
                                             <a href="{{ Storage::url($maison->plan) }}"
                                                 class="btn btn-sm btn-outline-danger">
@@ -137,7 +139,7 @@
                         <input type="hidden" name="appartement_id" id="appartement_id" value="{{ $parking->id }}">
                         @csrf
                         <div class="row mb-3">
-                            <div class="col-sm-6 col-6">
+                            <div class="col-sm-6 col-6 pb-3">
                                 <label for="" class="mb-1">Référence</label>
                                 <input type="text" class="form-control" required id="reference"
                                     value="{{ old('reference') }}" name="reference" required>
@@ -145,7 +147,7 @@
                                     <span class="small text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>
-                            <div class="col-sm-6 col-6">
+                            <div class="col-sm-6 col-6 pb-3">
                                 <label for="" class="mb-1">Numéro</label>
                                 <input type="text" class="form-control" required id="numero"
                                     value="{{ old('numero') }}" name="numero" required>
@@ -153,13 +155,23 @@
                                     <span class="small text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>
-                            <div class="col-sm-12 col-12">
-                                <label for="" class="mb-1">statut</label>
+                            <div class="col-sm-6 col-12 pb-3">
+                                <label for="" class="mb-1">Statut</label>
                                 <select class="form-select" required id="statut" name="statut">
                                     <option value="disponible">Disponible</option>
                                     <option value="vendu">Vendu</option>
                                 </select>
                                 @error('statut')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6 col-12 pb-3">
+                                <label for="type_parking" class="mb-1">Type de parking</label>
+                                <select class="form-select" required id="type_parking" name="type_parking">
+                                    <option value="souterrain">Souterrain</option>
+                                    <option value="exterieur">Exterieur</option>
+                                </select>
+                                @error('type_parking')
                                     <span class="small text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>

@@ -35,7 +35,7 @@ Version: 1.0.0
     3.8. Text Color
     3.9. Overlay
     3.10. Animation
-    
+
 04. Template Style
     4.1. Widget
     4.2. Header
@@ -45,7 +45,7 @@ Version: 1.0.0
     4.6. Blog
     4.7. Comments
     4.8. Hero Area
-    4.9. Error    
+    4.9. Error
     4.00. Popup Search
     4.00. Popup Side Menu
     4.00. Wocommerce
@@ -2582,7 +2582,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   visibility: hidden;
   opacity: 0;
   display: inline-block;
@@ -2590,7 +2590,14 @@ input[type="checkbox"] {
   width: 0;
   height: 0;
   display: none;
-}
+} */
+
+input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 10px !important;
+  }
+
 
 input[type="checkbox"]:checked ~ label:before {
   content: "\f00c";
@@ -3509,7 +3516,7 @@ textarea.is-invalid {
     03. Utilities
 ==================================*/
 /*------------------- 3.1. Preloader -------------------*/
-/*======================= 
+/*=======================
     Preloader
 =======================*/
 .preloader {

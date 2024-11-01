@@ -24,17 +24,26 @@ class EtageController extends Controller
             'appartement_id' => 'required|integer|exists:appartements,id'
         ]);
         $appartement = Appartement::find($validated['appartement_id']);
+
+
+        if ($appartement->type == "habitation") {
+            $validated = $request->validate([
+                'surface_terrase' => 'required|string|max:255'
+            ]);
+        }
+
         $etage = new DetailsAppartement();
-        $etage->etage = $validated['etage'];
-        $etage->numero = $validated['numero'];
-        $etage->type = $validated['type'];
-        $etage->surface = $validated['surface'];
-        $etage->vocation = $validated['vocation'];
-        $etage->chambres = $validated['chambres'];
-        $etage->reference = $validated['reference'];
-        $etage->piece = $validated['piece'];
+        $etage->etage = $request->input('etage');
+        $etage->numero = $request->input('numero');
+        $etage->type = $request->input('type');
+        $etage->surface = $request->input('surface');
+        $etage->vocation = $request->input('vocation');
+        $etage->chambres = $request->input('chambres');
+        $etage->reference = $request->input('reference');
+        $etage->surface_terrase = $request->input('surface_terrase');
+        $etage->piece = $request->input('piece');
         $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
-        $etage->appartement_id = $validated['appartement_id'];
+        $etage->appartement_id = $request->input('appartement_id');
         $etage->save();
         return redirect()->back()->with('success', 'Etage ajouté avec succès!');
     }
@@ -63,16 +72,25 @@ class EtageController extends Controller
             'reference' => 'required|string|max:255|unique:details_appartements,reference,' . $id,
         ]);
         $etage = DetailsAppartement::find($id);
-        $etage->etage = $validated['etage'];
-        $etage->numero = $validated['numero'];
-        $etage->type = $validated['type'];
-        $etage->surface = $validated['surface'];
-        $etage->piece = $validated['piece'];
-        $etage->vocation = $validated['vocation'];
-        $etage->chambres = $validated['chambres'];
-        $etage->reference = $validated['reference'];
-        if ($request->hasFile('plan')) {
 
+        $appartement = Appartement::find($etage->appartement_id);
+        if ($appartement) {
+            if ($appartement->type == "habitation") {
+                $validated = $request->validate([
+                    'surface_terrase' => 'required|string|max:255'
+                ]);
+            }
+        }
+        $etage->etage = $request->input('etage');
+        $etage->numero = $request->input('numero');
+        $etage->type = $request->input('type');
+        $etage->surface = $request->input('surface');
+        $etage->piece = $request->input('piece');
+        $etage->vocation = $request->input('vocation');
+        $etage->chambres = $request->input('chambres');
+        $etage->reference = $request->input('reference');
+        $etage->surface_terrase = $request->input('surface_terrase');
+        if ($request->hasFile('plan')) {
             Storage::disk('public')->delete($etage->plan);
             $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
         }

@@ -34,7 +34,8 @@ class ParkingController extends Controller
             'reference' => 'required|string|max:255|unique:details_appartements,reference',
             'statut' => 'required|string|max:255',
             'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
-            'appartement_id' => 'required|integer|exists:appartements,id'
+            'appartement_id' => 'required|integer|exists:appartements,id',
+            'type_parking' => 'required|string|max:255',
         ]);
         $appartement = Appartement::find($validated['appartement_id']);
         $etage = new DetailsAppartement();
@@ -43,6 +44,7 @@ class ParkingController extends Controller
         $etage->reference = $validated['reference'];
         $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
         $etage->appartement_id = $validated['appartement_id'];
+        $etage->type_parking = $validated['type_parking'];
         $etage->save();
         return redirect()->back()->with('success', 'Etage ajouté avec succès!');
     }
@@ -54,11 +56,13 @@ class ParkingController extends Controller
             'statut' =>'required|string|max:255',
             'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
             'reference' => 'required|string|max:255 ' ,
+            'type_parking' => 'required|string|max:255',
         ]);
         $etage = DetailsAppartement::find($id);
         $etage->numero = $validated['numero'];
         $etage->statut = $validated['statut'];
         $etage->reference = $validated['reference'];
+        $etage->type_parking = $validated['type_parking'];
         if ($request->hasFile('plan')) {
             Storage::disk('public')->delete($etage->plan);
             $etage->plan = $request->file('plan')->store('appartements/plans', 'public');

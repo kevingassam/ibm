@@ -3,7 +3,7 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" wire:model='nom' required placeholder="Nom de l'appartement">
             <select name="type" wire:model='type' id="type" class="form-select">
-                <option value=""></option>
+                <option value="">Type de propriété </option>
                 <option value="habitation">Habitation</option>
                 <option value="commercial">Commercial</option>
                 <option value="place parking">Place parking</option>
@@ -28,7 +28,11 @@
                 @forelse ($appartements as $appartement)
                     <tr>
                         <td>{{ $appartement->nom }}</td>
-                        <td>{{ $appartement->type }}</td>
+                        <td>
+                            <span class="badge bg-primary">
+                                {{ $appartement->type }}
+                            </span>
+                        </td>
                         <td class="text-end">
 
                             @if ($appartement->type == "place parking")

@@ -14,6 +14,9 @@
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             {{ $appartement->nom }}
+                            <span class="text-capitalize">
+                                ( {{ $appartement->type }} )
+                            </span>
                         </li>
                     </ol>
                 </nav>
@@ -60,6 +63,9 @@
                                     <th>Type</th>
                                     <th>vocation</th>
                                     <th>Surface</th>
+                                    @if ($appartement->type == 'habitation')
+                                        <th>Surface Terrasse</th>
+                                    @endif
                                     <th>Pièces</th>
                                     <th>Chambres</th>
                                     <th>Plan</th>
@@ -76,10 +82,13 @@
                                         <td>{{ $maison->id }}</td>
                                         <td>{{ $maison->reference ?? '-' }}</td>
                                         <td>{{ $maison->numero }}</td>
-                                        <td>{{ $maison->etage }}</td>
-                                        <td>{{ $maison->type }}</td>
-                                        <td>{{ $maison->vocation ?? '-' }}</td>
+                                        <td class="text-capitalize">{{ $maison->etage }}</td>
+                                        <td class="text-capitalize">{{ $maison->type }}</td>
+                                        <td class="text-capitalize">{{ $maison->vocation ?? '-' }}</td>
                                         <td>{{ $maison->surface }}</td>
+                                        @if ($appartement->type == 'habitation')
+                                            <td>{{ $maison->surface_terrase ?? '-' }}</td>
+                                        @endif
                                         <td>{{ $maison->piece }}</td>
                                         <td>{{ $maison->chambre ?? '0' }}</td>
                                         <td>
@@ -99,13 +108,18 @@
                                             </button>
                                             <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
                                                 data-bs-target="#ModalDelete{{ $maison->id }}">
-                                                <i class="bi bi-trash-fill"></i> Supprimer
+                                                <i class="bi bi-trash-fill"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="13" class="text-center">Aucun étage disponible.</td>
+                                        <td colspan="{{ $appartement->type == 'habitation' ? '14' : '13' }}"
+                                            class="text-center p-3">
+                                            <div class="alert alert-warning">
+                                                Aucun étage disponible.
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -162,8 +176,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-1">Etage</label>
-                            <input type="text" class="form-control" required id="etage" value="{{ old('etage') }}"
-                                name="etage" required>
+                            <input type="text" class="form-control" required id="etage"
+                                value="{{ old('etage') }}" name="etage" required>
                             @error('etage')
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
@@ -191,15 +205,25 @@
                             </div>
 
                         </div>
-                        <div class="mb-3">
-                            <label for="" class="mb-1">Surface</label>
-                            <input type="text" class="form-control" required id="surface" name="surface"
-                                value="{{ old('surface') }}" required>
-                            @error('surface')
-                                <span class="small text-danger"> {{ $message }} </span>
-                            @enderror
-                        </div>
                         <div class="row mb-3">
+                            <div class="col-sm-6 col-6">
+                                <label for="" class="mb-1">Surface</label>
+                                <input type="text" class="form-control" required id="surface" name="surface"
+                                    value="{{ old('surface') }}" required>
+                                @error('surface')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            @if ($appartement->type == 'habitation')
+                                <div class="col-sm-6 col-6">
+                                    <label for="" class="mb-1">Surface de la terrasse</label>
+                                    <input type="text" class="form-control" required id="surface_terrase"
+                                        name="surface_terrase" value="{{ old('surface_terrase') }}">
+                                    @error('surface_terrase')
+                                        <span class="small text-danger"> {{ $message }} </span>
+                                    @enderror
+                                </div>
+                            @endif
                             <div class="col-sm-6 col-6">
                                 <label for="" class="mb-1">Nombre de pièce</label>
                                 <input type="text" class="form-control" required id="piece"

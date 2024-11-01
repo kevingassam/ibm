@@ -58,7 +58,7 @@
                         </div>
                     @endif
                     <div class="row mb-3">
-                        <div class="col-sm-6 col-6">
+                        <div class="col-sm-6 col-6 pb-3">
                             <label for="" class="mb-1">Référence</label>
                             <input type="text" class="form-control" required id="reference"
                                 value="{{ old('reference',$parking->reference) }}" name="reference" required>
@@ -66,7 +66,7 @@
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
-                        <div class="col-sm-6 col-6">
+                        <div class="col-sm-6 col-6 pb-3">
                             <label for="" class="mb-1">Numéro</label>
                             <input type="text" class="form-control" required id="numero"
                                 value="{{ old('numero',$parking->numero) }}" name="numero" required>
@@ -74,8 +74,8 @@
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
-                        <div class="col-sm-12 col-12">
-                            <label for="" class="mb-1">statut</label>
+                        <div class="col-sm-6 col-12 pb-3">
+                            <label for="" class="mb-1">Statut</label>
                             <select class="form-select" required id="statut" name="statut">
                                 <option value="disponible" @selected($parking->statut == "disponible")>Disponible</option>
                                 <option value="vendu" @selected($parking->statut == "vendu")>Vendu</option>
@@ -84,8 +84,18 @@
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
+                        <div class="col-sm-6 col-12 pb-3">
+                            <label for="type_parking" class="mb-1">Type de parking</label>
+                            <select class="form-select" required id="type_parking" name="type_parking">
+                                <option value="souterrain" @selected($parking->type_parking == "souterrain")>Souterrain</option>
+                                <option value="exterieur" @selected($parking->type_parking == "exterieur")>Exterieur</option>
+                            </select>
+                            @error('type_parking')
+                                <span class="small text-danger"> {{ $message }} </span>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 pb-3">
                         <label for="" class="mb-1">Plan</label>
                         <span class="small text-warning mb-1">
                             ( Fichiers : jpeg,png,jpg,pdf )
