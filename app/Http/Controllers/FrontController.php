@@ -361,8 +361,6 @@ class FrontController extends Controller
         $status = $response->status();
         $body = $response->body();
 
-        dd($body);
-
         if ($response->successful()) {
             return redirect()
                 ->back()
@@ -370,7 +368,7 @@ class FrontController extends Controller
         } else {
             return redirect()
                 ->back()
-                ->with('error', 'Une erreur est survenue lors de l\'envoi de votre demande de devis mais le devis a été créé avec succès.');
+                ->with('error', 'Une erreur est survenue lors de l\'envoi de votre demande.');
         }
     }
 
