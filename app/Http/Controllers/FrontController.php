@@ -68,7 +68,7 @@ class FrontController extends Controller
     {
         $ids = explode(',', $request->query('ids'));
         $elements = DetailsAppartement::whereIn('id', $ids)->get();
-        
+
         return view('front.compare', compact('elements'));
     }
 
@@ -100,7 +100,9 @@ class FrontController extends Controller
             'email' => 'required|email|max:255',
             'telephone' => 'required|numeric',
             'message' => 'required|string|max:2550',
-            'projet_id' => 'required|integer|exists:projets,id'
+            'projet_id' => 'required|integer|exists:projets,id',
+            'parkings*' => 'nullable|array|max:255',
+            'appartement_id' => 'required|integer',
         ]);
 
         $demande = new Demande();
@@ -126,6 +128,9 @@ class FrontController extends Controller
             'message' => $request->input('message'),
             'adresse' => $request->input('adresse') ?? "-",
             "domaine" => config('app.app_url_demaine'),
+            "projet" => "ibm",
+            "appartement_id" => $request->input("appartement_id"),
+            "parkings" => $request->input('parkings')?? [],
         ]);
 
         // Déboguer la réponse
@@ -327,7 +332,6 @@ class FrontController extends Controller
 
 
     public function demande_post_to_api(Request $request){
-         // Envoyer les données à l'API via GuzzleHTTP
 
          $protocol = $request->secure() ? 'https://' : 'http://';
          $domain = $protocol . $request->getHost();
@@ -338,13 +342,14 @@ class FrontController extends Controller
              'email' => 'required|email|max:255',
              'telephone' => 'required|string|max:255',
              'message' => 'nullable|string',
-             'appartement_id' => 'required|integer|'
+             'appartement_id' => 'required|integer',
+             'parkings*' => 'nullable|Array',
          ]);
 
 
 
          $token = config('services.contact_form.api_key');
-         $url = config('services.contact_form.api') . "store-devis";
+         $url = config('services.contact_form.api') . "store-demande";
          $response = Http::withHeaders([
             'x-api-key' => $token ,
         ])->post($url, [
@@ -353,9 +358,9 @@ class FrontController extends Controller
             'email' => $request->email,
             'telephone' => $request->telephone,
             'commentaire' => $request->commentaire,
-            'photos' => json_encode([]),
             "domaine" => $domain,
-            "id_produit" => $request->appartement_id,
+            "appartement_id" => $request->appartement_id,
+            'projet_id' => $request->appartement_id,
         ]);
 
         // Déboguer la réponse

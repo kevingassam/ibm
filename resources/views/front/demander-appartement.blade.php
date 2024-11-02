@@ -130,7 +130,7 @@
                                                         <tr>
                                                             <td class="text-center">
                                                                 @if ($parking->statut == 'disponible')
-                                                                    <input type="checkbox" name="" id="">
+                                                                    <input type="checkbox" name="parkings[]" id="">
                                                                 @endif
                                                             </td>
                                                             <td>{{ $parking->numero }}</td>
