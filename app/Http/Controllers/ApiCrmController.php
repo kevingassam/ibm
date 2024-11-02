@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appartement;
+use App\Models\DetailsAppartement;
 use App\Models\Information;
+use App\Models\Projet;
 use Illuminate\Http\Request;
 
 class ApiCrmController extends Controller
@@ -38,6 +41,34 @@ class ApiCrmController extends Controller
             'status' => true,
         ]);
 
+    }
+
+
+    public function propriete($id){
+        return response()
+        ->json(
+            [
+                'propriete' => Appartement::find($id),
+            ]
+        );
+    }
+
+    public function projet($id){
+        return response()
+        ->json(
+            [
+                'projet' => Projet::find($id),
+            ]
+        );
+    }
+
+    public function appartement($id){
+        return response()
+        ->json(
+            [
+                'appartement' => DetailsAppartement::find($id),
+            ]
+        );
     }
 
 }

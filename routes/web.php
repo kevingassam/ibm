@@ -46,7 +46,9 @@ Route::post('/login', [FrontController::class, 'login_post'])->name('login.post'
 
 Route::get('/api-logo', [ApiCrmController::class, 'logo'])->name('logo');
 Route::get('/api-produit/{id}', [ApiCrmController::class, 'produit'])->name('api-produit');
-
+Route::get('/api-propriete/{id}', [ApiCrmController::class, 'propriete'])->name('api-propriete');
+Route::get('/api-appartement/{id}', [ApiCrmController::class, 'appartement'])->name('api-appartement');
+Route::get('/api-projet/{id}', [ApiCrmController::class, 'projet'])->name('api-projet');
 
 
 Route::middleware('auth')->group(function () {
