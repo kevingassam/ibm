@@ -68,6 +68,7 @@ class FrontController extends Controller
     {
         $ids = explode(',', $request->query('ids'));
         $elements = DetailsAppartement::whereIn('id', $ids)->get();
+        
         return view('front.compare', compact('elements'));
     }
 

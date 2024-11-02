@@ -12,4 +12,11 @@ class Appartement extends Model
     public function DetailsAppartement(){
         return $this->hasMany(DetailsAppartement::class);
     }
+
+
+
+    public function Projet(){
+        return $this->belongsTo(Projet::class);
+    }
+
 }
