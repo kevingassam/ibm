@@ -106,7 +106,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label for="message">Message </label>
-                                        <textarea name="message" id="messag" rows="3">{{ old('message') }}</textarea>
+                                        <textarea name="message" id="message" rows="3">{{ old('message') }}</textarea>
                                         @error('message')
                                             <span class="small text-danger"> {{ $message }} </span>
                                         @enderror
@@ -130,7 +130,7 @@
                                                         <tr>
                                                             <td class="text-center">
                                                                 @if ($parking->statut == 'disponible')
-                                                                    <input type="checkbox" name="parkings[]" id="">
+                                                                    <input type="checkbox" name="parkings[]" id="{{ $parking->id }}" value="{{ $parking->id }}">
                                                                 @endif
                                                             </td>
                                                             <td>{{ $parking->numero }}</td>

@@ -130,7 +130,7 @@ class FrontController extends Controller
             "domaine" => config('app.app_url_demaine'),
             "projet" => "ibm",
             "appartement_id" => $request->input("appartement_id"),
-            "parkings" => $request->input('parkings')?? [],
+            "parkings" => $request->input('parkings') ?? [],
         ]);
 
         // Déboguer la réponse
@@ -331,33 +331,64 @@ class FrontController extends Controller
 
 
 
-    public function demande_post_to_api(Request $request){
+    public function demande_post_to_api(Request $request)
+    {
 
-         $protocol = $request->secure() ? 'https://' : 'http://';
-         $domain = $protocol . $request->getHost();
-         //validation
-         $this->validate($request, [
-             'nom' => 'required|string|max:255',
-             'prenom' => 'nullable|string|max:255',
-             'email' => 'required|email|max:255',
-             'telephone' => 'required|string|max:255',
-             'message' => 'nullable|string',
-             'appartement_id' => 'required|integer',
-             'parkings*' => 'nullable|Array',
-         ]);
+        $protocol = $request->secure() ? 'https://' : 'http://';
+        $domain = $protocol . $request->getHost();
+        //validation
+        $this->validate($request, [
+            'nom' => 'required|string|max:255',
+            'prenom' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|string|max:255',
+            'message' => 'nullable|string',
+            'appartement_id' => 'required|integer|exists:details_appartements,id',
+            'parkings*' => 'nullable|Array',
+        ]);
+        $contenu = "";
+        $appartement = DetailsAppartement::find($request->input('appartement_id'));
+        if ($appartement) {
+            $contenu = "
+                Référence = {$appartement->reference} <br />
+                Numéro = {$appartement->numero} <br />
+                Étage = {$appartement->etage} <br />
+                Type = {$appartement->type} <br />
+                Surface = {$appartement->surface} <br />
+                Chambre = {$appartement->chambre} <br />
+                Surface de la terrasse = {$appartement->surface_terrase} <br />
+                Prix = {$appartement->prix} CAD <br />
+                <hr>
+            ";
+        }
+
+        if ($request->has('parkings')) {
+            $contenu .= "<h5>Parking</h5>";
+            foreach ($request->parkings as $apr) {
+                $parking = DetailsAppartement::find($apr);
+                if ($parking) {
+                    $contenu .= "
+                        Parking = {$parking->numero} <br />
+                        Reference = {$parking->reference} <br />
+                        Type de parking = {$parking->type_parking} <br />
+                    ";
+                }
+            }
+        }
+
+        $contenu .= "<h5>Message</h5> <br> {$request->message}";
 
 
-
-         $token = config('services.contact_form.api_key');
-         $url = config('services.contact_form.api') . "store-demande";
-         $response = Http::withHeaders([
-            'x-api-key' => $token ,
+        $token = config('services.contact_form.api_key');
+        $url = config('services.contact_form.api') . "store-demande";
+        $response = Http::withHeaders([
+            'x-api-key' => $token,
         ])->post($url, [
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'email' => $request->email,
             'telephone' => $request->telephone,
-            'commentaire' => $request->commentaire,
+            'commentaire' => $contenu,
             "domaine" => $domain,
             "appartement_id" => $request->appartement_id,
             'projet_id' => $request->appartement_id,
@@ -377,6 +408,4 @@ class FrontController extends Controller
                 ->with('error', 'Une erreur est survenue lors de l\'envoi de votre demande.');
         }
     }
-
-
 }
