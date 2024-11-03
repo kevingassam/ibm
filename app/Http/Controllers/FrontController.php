@@ -388,7 +388,7 @@ class FrontController extends Controller
             'prenom' => $request->prenom,
             'email' => $request->email,
             'telephone' => $request->telephone,
-            'commentaire' => $contenu,
+            'message' => $contenu,
             "domaine" => $domain,
             "appartement_id" => $request->appartement_id,
             'projet_id' => $request->appartement_id,
