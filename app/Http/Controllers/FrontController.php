@@ -392,6 +392,7 @@ class FrontController extends Controller
             "domaine" => $domain,
             "appartement_id" => $request->appartement_id,
             'projet_id' => $request->appartement_id,
+            'parkings*' => $request->parkings,
         ]);
 
         // Déboguer la réponse

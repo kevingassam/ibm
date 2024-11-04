@@ -112,7 +112,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @if ($parkings)
+                                @if ($parkings->count() > 0)
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <h6>
@@ -124,13 +124,25 @@
                                                 ci-dessous.
 
                                             </p>
-                                            <table class="table">
+                                                <table class="cart_table">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-white"></td>
+                                                            <td class="text-white">Numéro </td>
+                                                            <td class="text-white">Réference</td>
+                                                            <td class="text-white">Type</td>
+                                                            <td class="text-white">Statut</td>
+                                                            <td class="text-white"></td>
+                                                        </tr>
+                                                    </thead>
                                                 <tbody>
                                                     @foreach ($parkings->DetailsAppartement as $parking)
                                                         <tr>
                                                             <td class="text-center">
                                                                 @if ($parking->statut == 'disponible')
-                                                                    <input type="checkbox" name="parkings[]" id="{{ $parking->id }}" value="{{ $parking->id }}">
+                                                                    <input type="checkbox" name="parkings[]"
+                                                                        id="{{ $parking->id }}"
+                                                                        value="{{ $parking->id }}">
                                                                 @endif
                                                             </td>
                                                             <td>{{ $parking->numero }}</td>
@@ -154,7 +166,7 @@
                                                                     <img width="25" height="25"
                                                                         src="https://img.icons8.com/ios-filled/25/FFFFFF/pdf--v1.png"
                                                                         alt="pdf--v1" />
-                                                                    Télécharger
+                                                                    Télécharger le plan
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -162,6 +174,10 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                @else
+                                    <div class="text-center text-danger alert alert-danger p-3">
+                                        Aucun parking n'est disponible !
                                     </div>
                                 @endif
                             </div>
