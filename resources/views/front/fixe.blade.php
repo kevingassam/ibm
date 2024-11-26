@@ -59,9 +59,7 @@
  ******************************** -->
     <div class="cursor-follower"></div>
 
-    <!-- slider drag cursor -->
-    <div class="slider-drag-cursor"><i class="fas fa-angle-left me-2"></i> DRAG <i class="fas fa-angle-right ms-2"></i>
-    </div>
+
 
     <!--==============================
      Preloader
@@ -93,7 +91,7 @@
             </div>
             <div class="th-mobile-menu">
                 <ul>
-                    <li class="">
+                    <li>
                         <a href="{{ route('home') }}">
                             accueil
                         </a>
@@ -552,7 +550,7 @@ All Js File
 
 
     <!-- Main Js File -->
-    <script src="/front/js/main.js"></script>
+    <script src="/front/js/main.js?v={{ time() }}"></script>
 
     <script src="/compare.js?v={{ time() }}"></script>
 </body>

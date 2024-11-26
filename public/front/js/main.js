@@ -63,14 +63,14 @@
             },
             options
         );
-    
+
         return this.each(function () {
             var menu = $(this); // Select menu
-    
+
             // Menu Show & Hide
             function menuToggle() {
                 menu.toggleClass(opt.bodyToggleClass);
-    
+
                 // collapse submenu on menu hide or show
                 var subMenu = "." + opt.subMenuClass;
                 $(subMenu).each(function () {
@@ -81,7 +81,7 @@
                     }
                 });
             }
-    
+
             // Class Set Up for every submenu
             menu.find("." + opt.subMenuParent).each(function () {
                 var submenu = $(this).find("ul");
@@ -91,7 +91,7 @@
                 $(this).addClass(opt.thSubMenuParent); // Add th-item-has-children class
                 $(this).children("a").append(opt.appendElement);
             });
-    
+
             // Toggle Submenu
             function toggleDropDown($element) {
                 var submenu = $element.children("ul");
@@ -101,7 +101,7 @@
                     submenu.toggleClass(opt.subMenuToggleClass);
                 }
             }
-    
+
             // Submenu toggle Button
             var itemHasChildren = "." + opt.thSubMenuParent + " > a";
             $(itemHasChildren).each(function () {
@@ -110,27 +110,27 @@
                     toggleDropDown($(this).parent());
                 });
             });
-    
+
             // Menu Show & Hide On Toggle Btn click
             $(opt.menuToggleBtn).each(function () {
                 $(this).on("click", function () {
                     menuToggle();
                 });
             });
-    
+
             // Hide Menu On outside click
             menu.on("click", function (e) {
                 e.stopPropagation();
                 menuToggle();
             });
-    
+
             // Stop Hide full menu on menu click
             menu.find("div").on("click", function (e) {
                 e.stopPropagation();
             });
         });
     };
-    
+
     $(".th-menu-wrapper").thmobilemenu();
 
     /*----------- 22. One Page Nav ----------*/
@@ -147,7 +147,7 @@
                     scrollTop: target.offset().top - 10
                     }, 1000);
                 };
-    
+
                 });
             });
             })
@@ -155,7 +155,7 @@
     };
     onePageNav('.onepage-nav');
     onePageNav('.scroll-down');
-    //one page sticky menu  
+    //one page sticky menu
     $(window).on('scroll', function(){
         if ($('.onepage-nav').length > 0) {
         };
@@ -182,7 +182,7 @@
 
     /*---------- 05. Scroll To Top ----------*/
     if ($('.scroll-top').length > 0) {
-        
+
         var scrollTopbtn = document.querySelector('.scroll-top');
         var progressPath = document.querySelector('.scroll-top path');
         var pathLength = progressPath.getTotalLength();
@@ -190,7 +190,7 @@
         progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
         progressPath.style.strokeDashoffset = pathLength;
         progressPath.getBoundingClientRect();
-        progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';		
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
         var updateProgress = function () {
             var scroll = $(window).scrollTop();
             var height = $(document).height() - $(window).height();
@@ -198,7 +198,7 @@
             progressPath.style.strokeDashoffset = progress;
         }
         updateProgress();
-        $(window).scroll(updateProgress);	
+        $(window).scroll(updateProgress);
         var offset = 50;
         var duration = 750;
         jQuery(window).on('scroll', function() {
@@ -207,7 +207,7 @@
             } else {
                 jQuery(scrollTopbtn).removeClass('show');
             }
-        });				
+        });
         jQuery(scrollTopbtn).on('click', function(event) {
             event.preventDefault();
             jQuery('html, body').animate({scrollTop: 0}, duration);
@@ -236,7 +236,7 @@
         var borderColor = $(this).data('border');
         $(this).css('--th-border-color', borderColor);
     });
-      
+
     if ($('[data-mask-src]').length > 0) {
         $('[data-mask-src]').each(function () {
           var mask = $(this).attr('data-mask-src');
@@ -274,12 +274,12 @@
             autoplay: autoplayconditon ? autoplayconditon : {delay: 6000, disableOnInteraction: false},
             navigation: {
                 nextEl: nextArrow.get(0),
-                prevEl: prevArrow.get(0),  
+                prevEl: prevArrow.get(0),
             },
             pagination: {
                 el: paginationEl.get(0),
                 type: paginationType,
-                clickable: true, 
+                clickable: true,
                 renderBullet: function (index, className) {
                     var number = index + 1;
                     var formattedNumber = number < 10 ? '0' + number : number;
@@ -338,9 +338,9 @@
 
             if (swiper) {
                 if ($(this).data('slider-prev')) {
-                    swiper.slidePrev(); 
+                    swiper.slidePrev();
                 } else {
-                    swiper.slideNext(); 
+                    swiper.slideNext();
                 }
             }
         }
@@ -432,51 +432,51 @@
             },
             options
         );
-    
+
         return this.each(function () {
             var $container = $(this);
             var $thumbs = $container.find(opt.tabButton);
             var $line = $('<span class="indicator"></span>').appendTo($container);
-    
+
             var sliderSelector = $container.data("slider-tab");
             var $slider = $(sliderSelector);
-    
+
             var swiper = $slider[0].swiper;
-    
+
             $thumbs.on("click", function (e) {
                 e.preventDefault();
                 var clickedThumb = $(this);
-    
+
                 clickedThumb.addClass("active").siblings().removeClass("active");
                 linePos(clickedThumb, $container);
-    
+
                 if (opt.sliderTab) {
                     var slideIndex = clickedThumb.index();
                     swiper.slideTo(slideIndex);
                 }
             });
-    
+
             if (opt.sliderTab) {
                 swiper.on("slideChange", function () {
                     var activeIndex = swiper.realIndex;
                     var $activeThumb = $thumbs.eq(activeIndex);
-    
+
                     $activeThumb.addClass("active").siblings().removeClass("active");
                     linePos($activeThumb, $container);
                 });
-    
+
                 var initialSlideIndex = swiper.activeIndex;
                 var $initialThumb = $thumbs.eq(initialSlideIndex);
                 $initialThumb.addClass("active").siblings().removeClass("active");
                 linePos($initialThumb, $container);
             }
-    
+
             function linePos($activeThumb) {
                 var thumbOffset = $activeThumb.position();
-    
+
                 var marginTop = parseInt($activeThumb.css('margin-top')) || 0;
                 var marginLeft = parseInt($activeThumb.css('margin-left')) || 0;
-    
+
                 $line.css("--height-set", $activeThumb.outerHeight() + "px");
                 $line.css("--width-set", $activeThumb.outerWidth() + "px");
                 $line.css("--pos-y", thumbOffset.top + marginTop + "px");
@@ -484,14 +484,14 @@
             }
         });
     };
-    
+
     if ($(".project-number-pagination").length) {
         $(".project-number-pagination").activateSliderThumbs({
             sliderTab: true,
             tabButton: ".tab-btn",
         });
-    }  
-    
+    }
+
 
     /*----------- 08. Ajax Contact Form ----------*/
     var form = ".ajax-contact";
@@ -634,7 +634,7 @@
     /* magnificPopup img view */
     $(".popup-image").magnificPopup({
         type: "image",
-        mainClass: 'mfp-zoom-in', 
+        mainClass: 'mfp-zoom-in',
         removalDelay: 260,
         gallery: {
             enabled: true,
@@ -645,7 +645,7 @@
     $(".popup-video").magnificPopup({
         type: "iframe",
         removalDelay: 260,
-        mainClass: 'mfp-zoom-in', 
+        mainClass: 'mfp-zoom-in',
     });
 
     /* magnificPopup video view */
@@ -776,7 +776,7 @@
                 });
             });
 
-            // Menu Active Class 
+            // Menu Active Class
             $($filterMenu).on('click', 'button', function (event) {
                 event.preventDefault();
                 $(this).addClass('active');
@@ -931,7 +931,7 @@
     }
 
     $(".svg-img").inlineSvg();
-    
+
 
     /*----------- 00. Woocommerce Toggle ----------*/
     // Ship To Different Address
@@ -1032,11 +1032,11 @@
 		if (a.length) {
 			$(a).each(function(i, item) {
 				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
-			});	
+			});
 			t.empty().append(inject);
 		}
 	}
-	
+
 	var methods = {
 		init : function() {
 
@@ -1053,14 +1053,14 @@
 			});
 
 		},
-		
+
 		lines : function() {
 
 			return this.each(function() {
 				var r = "eefec303079ad17405c889e092e105b0";
 				// Because it's hard to split a <br/> tag consistently across browsers,
-				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash 
-				// (of the word "split").  If you're trying to use this plugin on that 
+				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash
+				// (of the word "split").  If you're trying to use this plugin on that
 				// md5 hash string, it will fail because you're being ridiculous.
 				injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
 			});
@@ -1088,16 +1088,16 @@
 
         var posX = 0,
             posY = 0;
-    
+
         var mouseX = 0,
             mouseY = 0;
-    
+
         TweenMax.to({}, 0.016, {
         repeat: -1,
         onRepeat: function() {
             posX += (mouseX - posX) / 9;
             posY += (mouseY - posY) / 9;
-    
+
             TweenMax.set(follower, {
                 css: {
                 left: posX - 12,
@@ -1106,21 +1106,18 @@
             });
         }
         });
-    
-        $(document).on("mousemove", function(e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+
+        
         //circle
         $(".slider-area").on("mouseenter", function() {
             follower.addClass("d-none");
         });
         $(".slider-area").on("mouseleave", function() {
             follower.removeClass("d-none");
-        });  
+        });
     }
 
-    
+
     const cursor = document.querySelector(".slider-drag-cursor");
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const mouse = { x: pos.x, y: pos.y };
@@ -1129,9 +1126,9 @@
     const xSet = gsap.quickSetter(cursor, "x", "px");
     const ySet = gsap.quickSetter(cursor, "y", "px");
 
-    window.addEventListener("pointermove", e => {    
+    window.addEventListener("pointermove", e => {
     mouse.x = e.x;
-    mouse.y = e.y;  
+    mouse.y = e.y;
     });
 
     gsap.set(".slider-drag-cursor", {xPercent: -50, yPercent: -50});
@@ -1172,7 +1169,7 @@
 
 
 
-    
+
     // /*----------- 00. Right Click Disable ----------*/
     //   window.addEventListener('contextmenu', function (e) {
     //     // do something here...
@@ -1197,7 +1194,7 @@
     //       return false;
     //     }
     //   }
-    
+
 })(jQuery);
 
 
