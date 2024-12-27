@@ -26,23 +26,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontController::class, 'home'])->name('home');
+Route::get('/login', [FrontController::class, 'login'])->name('login');
+Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
+Route::get('/about', [FrontController::class, 'about'])->name('about');
+Route::get('/articles', [FrontController::class, 'blogs'])->name('articles');
+Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
+Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');
+Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
+
 Route::get('/projet/v/{statut?}', [FrontController::class, 'projet'])->name('projet');
 Route::get('/{slug}', [FrontController::class, 'projet_details'])->name('projet_details');
 
 Route::prefix('page')->group(function () {
-    Route::get('/login', [FrontController::class, 'login'])->name('login');
-    Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
     Route::get('/compare', [FrontController::class, 'compare'])->name('compare');
     Route::get('/check_exist_appartement/{id}', [FrontController::class, 'check_exist_appartement'])->name('check_exist_appartement');
-    Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
     Route::post('/demandes/projet', [FrontController::class, 'demandes_post'])->name('demandes.post');
     Route::post('/demandes/demande_post_to_api', [FrontController::class, 'demande_post_to_api'])->name('demande_post_to_api');
-    Route::get('/about', [FrontController::class, 'about'])->name('about');
-    Route::get('/articles', [FrontController::class, 'blogs'])->name('articles');
     Route::get('/demander_appartement/{id}', [FrontController::class, 'demander_appartement'])->name('demander_appartement');
     Route::get('/article/{id}/{titre}', [FrontController::class, 'article'])->name('article');
-    Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
-    Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');
+
 });
 
 
