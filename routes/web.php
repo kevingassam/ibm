@@ -34,8 +34,7 @@ Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
 Route::post('/login', [FrontController::class, 'login_post'])->name('login.post');
 Route::post('/contact', [FrontController::class, 'contact_post'])->name('contact.post');
 
-Route::get('/projet/v/{statut?}', [FrontController::class, 'projet'])->name('projet');
-Route::get('/{slug}', [FrontController::class, 'projet_details'])->name('projet_details');
+
 
 Route::prefix('page')->group(function () {
     Route::get('/compare', [FrontController::class, 'compare'])->name('compare');
@@ -76,3 +75,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+Route::get('/projet/v/{statut?}', [FrontController::class, 'projet'])->name('projet');
+Route::get('/{slug}', [FrontController::class, 'projet_details'])->name('projet_details');
