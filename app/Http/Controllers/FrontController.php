@@ -230,9 +230,9 @@ class FrontController extends Controller
     }
 
 
-    public function projet_details($id, $nom)
+    public function projet_details($slug)
     {
-        $projet = Projet::find($id);
+        $projet = Projet::where('slug', $slug)->first();
         if (!$projet) {
             abort(404);
         }

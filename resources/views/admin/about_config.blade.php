@@ -24,12 +24,11 @@
         </div>
         <!--end breadcrumb-->
 
-        <form action="{{ route('configurations.update', $infos->id) }}" id="uploadForm" method="post"
+        <form action="{{ route('update_about') }}" id="uploadForm" method="post"
             enctype="multipart/form-data">
             <input type="hidden" class="form-control" required placeholder="Nom du projet" value="{{ $infos->app_name }}"
                 name="app_name" />
             @csrf
-            @method('PUT')
             <div class="row">
                 <div class="col-sm-8">
                     <div class="card card-body">

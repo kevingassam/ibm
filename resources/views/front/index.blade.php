@@ -163,7 +163,7 @@
                                                 <div class="media-left">
                                                     <h4 class="property-card-title">
                                                         <a
-                                                            href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}">Town
+                                                            href="{{ route('projet_details', ['slug' => $projet->slug ]) }}">Town
                                                             {{ Str::limit($projet->nom, 30) }}
                                                         </a>
                                                     </h4>
@@ -171,7 +171,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="btn-wrap">
-                                                    <a href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}"
+                                                    <a href="{{ route('projet_details', ['slug' => $projet->slug ]) }}"
                                                         class="th-btn style-border2 th-btn-icon">Details
                                                     </a>
                                                 </div>
@@ -388,7 +388,7 @@
                                 <div class="portfolio-card style3">
                                     <div class="portfolio-img">
                                         <img src="{{ Storage::url($projet->photo) }}" alt="project image">
-                                        <a href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}"
+                                        <a href="{{ route('projet_details', ['slug' => $projet->slug ]) }}"
                                             class="icon-btn">
                                             <div class="icon">
                                                 <img src="/front/img/icon/arrow-right.svg" alt="img">
@@ -399,7 +399,7 @@
                                     <div class="portfolio-content">
                                         <h3 class="portfolio-title">
                                             <a
-                                                href="{{ route('projet_details', ['id' => $projet->id, 'nom' => $projet->nom]) }}">
+                                                href="{{ route('projet_details', ['slug' => $projet->slug ]) }}">
                                                 {{ $key+1 }}.
                                                 {{ Str::limit($projet->nom, 20) }}
                                             </a>

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appartement;
-use App\Models\DetailsAppartement;
 use App\Models\Projet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjetController extends Controller
 {
@@ -85,6 +85,7 @@ class ProjetController extends Controller
 
         $projet = new Projet();
         $projet->statut = $validated['statut'];
+        $projet->slug = Str::slug($validated['nom']);
         $projet->map = $validated['map'];
         $projet->video = $validated['video'];
         $projet->photo = $photoPath;
@@ -131,6 +132,7 @@ class ProjetController extends Controller
         ]);
 
         $projet->nom = $validated['nom'];
+        $projet->slug = Str::slug($validated['nom']);
         $projet->description = $validated['description'];
         $projet->map = $validated['map'];
         $projet->video = $validated['video'];

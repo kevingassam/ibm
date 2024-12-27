@@ -60,7 +60,9 @@ class TemoignageController extends Controller
 
     public function destroy($id){
         $temoinage = Temoignage::find($id);
-        Storage::delete($temoinage->photo);
+        if($temoinage->photo){
+            Storage::delete($temoinage->photo);
+        }
         $temoinage->delete();
         return redirect()->route('temoignages.index')->with('success','Témoignage supprimé avec succès');
     }
