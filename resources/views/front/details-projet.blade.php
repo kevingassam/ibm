@@ -258,13 +258,13 @@
                                     <div class="recent-post">
                                         <div class="media-img">
                                             <a
-                                                href="{{ route('projet_details', ['id' => $autre->id, 'nom' => $autre->nom]) }}">
+                                                href="{{ route('projet_details', ['slug' => $autre->slug]) }}">
                                                 <img src="{{ Storage::url($autre->photo) }}" alt="{{ $autre->nom }}">
                                             </a>
                                         </div>
                                         <div class="media-body">
                                             <h4 class="post-title"><a class="text-inherit"
-                                                    href="{{ route('projet_details', ['id' => $autre->id, 'nom' => $autre->nom]) }}">
+                                                    href="{{ route('projet_details', ['slug' => $autre->slug]) }}">
                                                     {{ Str::limit($autre->nom, 20) }}
                                                 </a>
                                             </h4>
@@ -300,13 +300,7 @@
                 </div>
             </div>
         </div>
-    </section><!--==============================
-                                                            Footer Area
-                                                            ==============================-->
-
-
-
-
+    </section>
 
 
 @endsection
