@@ -387,7 +387,7 @@
                             <div class="swiper-slide">
                                 <div class="portfolio-card style3">
                                     <div class="portfolio-img">
-                                        <img src="{{ Storage::url($projet->photo) }}" alt="project image">
+                                        <img src="{{ Storage::url($projet->photo) }}" alt="project image" style="height: 350px !important;" >
                                         <a href="{{ route('projet_details', ['slug' => $projet->slug ]) }}"
                                             class="icon-btn">
                                             <div class="icon">

@@ -90,7 +90,7 @@
                                 <div class="property-card-details">
                                     <div class="media-left">
                                         <h4 class="property-card-title">
-                                            <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}">
+                                            <a href="{{ route('projet_details',['slug'=>$projet->slug]) }}">
                                                 {{ Str::limit($projet->nom, 30)}}
                                                 </a>
                                             </h4>
@@ -109,7 +109,7 @@
                                     </span>
                                 </div>
                                 <div class="mt-2">
-                                    <a href="{{ route('projet_details',['id'=>$projet->id,'nom'=>$projet->nom]) }}"
+                                    <a href="{{ route('projet_details',['slug'=>$projet->slug]) }}"
                                         class="th-btn style-border2 th-btn-icon">Details</a>
                                 </div>
                             </div>
