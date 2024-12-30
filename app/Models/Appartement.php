@@ -10,7 +10,7 @@ class Appartement extends Model
     use HasFactory;
 
     public function DetailsAppartement(){
-        return $this->hasMany(DetailsAppartement::class);
+        return $this->hasMany(DetailsAppartement::class );
     }
 
 

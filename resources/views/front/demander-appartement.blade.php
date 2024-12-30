@@ -112,7 +112,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @if ($parkings->DetailsAppartement())
+                                @if ($parkings && $parkings->DetailsAppartement->count() > 0)
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <h6>
