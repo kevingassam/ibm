@@ -81,7 +81,14 @@
                                             <input class="form-check-input" type="checkbox">
                                         </td>
                                         <td>{{ $maison->id }}</td>
-                                        <td>{{ $maison->reference ?? '-' }}</td>
+                                        <td>
+                                            {{ $maison->reference ?? '-' }}
+                                            @if ($maison->statut == "vendu")
+                                                <span class="bg-danger badge">
+                                                    Vendu
+                                                </span>
+                                            @endif
+                                        </td>
                                         <td>{{ $maison->numero }}</td>
                                         <td class="text-capitalize">{{ $maison->etage }}</td>
                                         <td class="text-capitalize">{{ $maison->type }}</td>
@@ -258,6 +265,16 @@
                                     Laisser null si c'est sur commande.
                                 </div>
                                 @error('prix')
+                                    <span class="small text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6 col-6">
+                                <label for="statut" class="mb-1">Statut</label>
+                                <select name="statut" id="statut" class="form-select">
+                                    <option value="disponible">Disponible</option>
+                                    <option value="vendu">Vendu</option>
+                                </select>
+                                @error('statut')
                                     <span class="small text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>

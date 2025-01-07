@@ -163,7 +163,7 @@
                                                 <div class="media-left">
                                                     <h4 class="property-card-title">
                                                         <a
-                                                            href="{{ route('projet_details', ['slug' => $projet->slug ]) }}">Town
+                                                            href="{{ route('projet_details', ['slug' => $projet->slug ]) }}">
                                                             {{ Str::limit($projet->nom, 30) }}
                                                         </a>
                                                     </h4>

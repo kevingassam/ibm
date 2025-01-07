@@ -152,6 +152,16 @@
                                 <span class="small text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
+                        <div class="col-sm-6 col-6">
+                            <label for="statut" class="mb-1">Statut</label>
+                            <select name="statut" id="statut" class="form-select">
+                                <option value="disponible" @selected($etage->statut == "disponible")>Disponible</option>
+                                <option value="vendu" @selected($etage->statut == "vendu")>Vendu</option>
+                            </select>
+                            @error('statut')
+                                <span class="small text-danger"> {{ $message }} </span>
+                            @enderror
+                        </div>
                      </div>
                      <div class="mb-3">
                          <label for="" class="mb-1">Plan</label>

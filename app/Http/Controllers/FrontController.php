@@ -182,7 +182,7 @@ class FrontController extends Controller
         $body = $response->body();       // Récupère le corps de la réponse
         if ($response->successful()) {
             return redirect()->back()
-                ->with('success', 'Votre message a bien été reçu et va être envoyé vers l\'équipe de support.');
+                ->with('success', "Votre demande a été envoyée. L'équipe commerciale vous contactera prochainement.");
         } else {
             // Affichez les détails pour comprendre l'erreur
             return redirect()->back()
@@ -402,7 +402,7 @@ class FrontController extends Controller
         if ($response->successful()) {
             return redirect()
                 ->back()
-                ->with('success', 'Votre demande de devis a bien été envoyée et votre devis a été créé avec succès.');
+                ->with('success', "Votre demande a été envoyée. L'équipe commerciale vous contactera prochainement.");
         } else {
             return redirect()
                 ->back()

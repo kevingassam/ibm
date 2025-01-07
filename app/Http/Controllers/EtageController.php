@@ -22,7 +22,8 @@ class EtageController extends Controller
             'piece' => 'required|string|max:255',
             'prix' => 'nullable|numeric',
             'plan' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
-            'appartement_id' => 'required|integer|exists:appartements,id'
+            'appartement_id' => 'required|integer|exists:appartements,id',
+            'statut'=> 'required|string|max:100|in:disponible,vendu'
         ]);
         $appartement = Appartement::find($validated['appartement_id']);
 
@@ -46,6 +47,7 @@ class EtageController extends Controller
         $etage->plan = $request->file('plan')->store('appartements/plans', 'public');
         $etage->appartement_id = $request->input('appartement_id');
         $etage->prix = $request->input('prix');
+        $etage->statut = $request->input('statut');
         $etage->save();
         return redirect()->back()->with('success', 'Etage ajouté avec succès!');
     }
@@ -73,6 +75,7 @@ class EtageController extends Controller
             'chambres' => 'required|string|max:255',
             'reference' => 'required|string|max:255|unique:details_appartements,reference,' . $id,
             'prix' => 'nullable|numeric',
+             'statut'=> 'required|string|max:100|in:disponible,vendu'
         ]);
         $etage = DetailsAppartement::find($id);
 
@@ -93,6 +96,7 @@ class EtageController extends Controller
         $etage->chambres = $request->input('chambres');
         $etage->reference = $request->input('reference');
         $etage->surface_terrase = $request->input('surface_terrase');
+        $etage->statut = $request->input('statut');
         $etage->prix = $request->input('prix');
         if ($request->hasFile('plan')) {
             Storage::disk('public')->delete($etage->plan);

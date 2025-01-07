@@ -2,8 +2,8 @@
 @section('titre', $projet->nom)
 @section('body')
     <!--==============================
-                                                                    Breadcumb
-                                                                ============================== -->
+                                                                        Breadcumb
+                                                                    ============================== -->
     <div class="breadcumb-wrapper " data-bg-src="{{ Storage::url($projet->photo) }}">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div><!--==============================
-                                                                Property Page Area
-                                                                ==============================-->
+                                                                    Property Page Area
+                                                                    ==============================-->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="slider-area property-slider1">
@@ -127,7 +127,7 @@
                                                 <h6 class="text-capitalize">
                                                     {{ $appartement->nom }}
                                                     ({{ $appartement->type }})
-                                                 </h6>
+                                                </h6>
                                             </div>
                                             <div></div>
                                         </div>
@@ -162,9 +162,16 @@
                                                                 </a>
                                                             </td>
                                                             <td class="text-center">
-                                                                <a href="{{ route('demander_appartement',$details->id) }}" class="btn btn-sm btn-light">
-                                                                    Demander
-                                                                </a>
+                                                                @if ($details->statut == 'disponible')
+                                                                    <a href="{{ route('demander_appartement', $details->id) }}"
+                                                                        class="btn btn-sm btn-light">
+                                                                        Demander
+                                                                    </a>
+                                                                @else
+                                                                    <b>
+                                                                        <b class="text-danger">Vendu !</b>
+                                                                    </b>
+                                                                @endif
                                                             </td>
                                                             <td class="text-center">
                                                                 <button type="button"
@@ -257,8 +264,7 @@
                                 @foreach ($autres as $autre)
                                     <div class="recent-post">
                                         <div class="media-img">
-                                            <a
-                                                href="{{ route('projet_details', ['slug' => $autre->slug]) }}">
+                                            <a href="{{ route('projet_details', ['slug' => $autre->slug]) }}">
                                                 <img src="{{ Storage::url($autre->photo) }}" alt="{{ $autre->nom }}">
                                             </a>
                                         </div>
@@ -279,7 +285,8 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="widget widget_banner  " data-bg-src="https://www.magazineb2b.com/wp-content/uploads/sites/467/2019/02/classification-immeubles-bureaux-1.jpg">
+                        <div class="widget widget_banner  "
+                            data-bg-src="https://www.magazineb2b.com/wp-content/uploads/sites/467/2019/02/classification-immeubles-bureaux-1.jpg">
                             <div class="widget-banner text-center">
                                 <h3 class="title">Besoin d'aide ? Nous sommes là pour vous aider</h3>
                                 <div class="mb-3">
@@ -304,5 +311,3 @@
 
 
 @endsection
-
-
