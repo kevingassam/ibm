@@ -304,7 +304,7 @@
                             <div class="header-button">
                                 <a href="{{ route('contact') }}" class="th-btn style-border th-btn-icon">Demande
                                     Client</a>
-                                <button type="button" class="simple-icon sideMenuInfo sidebar-btn style2">
+                                <button type="button" class="simple-icon sideMenuInfo sidebar-btn style2 d-none">
                                     <span class="line"></span>
                                     <span class="line"></span>
                                     <span class="line"></span>
@@ -412,22 +412,17 @@
                                         <li><a href="{{ route('about') }}">À propos de nous</a></li>
                                         <li><a href="{{ route('projet', 'en cours') }}">Projets en cours</a></li>
                                         <li><a href="{{ route('projet', 'terminé') }}">Projets terminés</a></li>
-                                        <li><a href="{{ route('about') }}">À propos de nous</a></li>
-                                        <li><a href="{{ route('contact') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-auto">
                             <div class="widget widget_nav_menu footer-widget">
-                                <h3 class="widget_title">Explore</h3>
+                                <h3 class="widget_title"><br></h3>
                                 <div class="menu-all-pages-container">
                                     <ul class="menu">
-                                        <li><a href="property.html">All Properties</a></li>
-                                        <li><a href="team.html">Our Agents</a></li>
-                                        <li><a href="property.html">All Projects</a></li>
                                         <li><a href="{{ route('about') }}">À propos de nous</a></li>
-                                        <li><a href="{{ route('contact') }}">Neighborhood</a></li>
+                                        <li><a href="{{ route('contact') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>

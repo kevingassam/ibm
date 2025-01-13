@@ -45,7 +45,7 @@
                                     </a>
                                 </h2>
                                 <p class="blog-text">
-                                    {{ Str::limit(strip_tags($article->description), 250) }}
+                                    {{ Str::limit(html_entity_decode(strip_tags($article->description)), 100, '...') }}
                                 </p>
                                 <a href="{{ route('article', ['id' => $article->id, 'titre' => $article->titre]) }}"
                                     class="th-btn style-border2 th-btn-icon">

@@ -15,7 +15,7 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        $projets = Projet::all();
+        $projets = Projet::orderby('order', 'ASC')->get();
         return view('admin.projets.index', compact('projets'));
     }
 
@@ -28,6 +28,15 @@ class ProjetController extends Controller
     }
 
 
+
+    public function updateProjectOrder(Request $request)
+    {
+        $order = $request->input('order');
+        foreach ($order as $index => $id) {
+            Projet::where('id', $id)->update(['order' => $index + 1]);
+        }
+        return response()->json(['success' => true]);
+    }
 
 
 

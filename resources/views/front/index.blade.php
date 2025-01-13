@@ -179,7 +179,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
                             </div>
                         </div>
                     </div>
@@ -405,7 +404,7 @@
                                             </a>
                                         </h3>
                                         <p class="portfolio-text">
-                                            {{ Str::limit(strip_tags($projet->description), 100) }}
+                                            {{ Str::limit(html_entity_decode(strip_tags($projet->description)), 100, '...') }}
                                         </p>
                                     </div>
                                 </div>
