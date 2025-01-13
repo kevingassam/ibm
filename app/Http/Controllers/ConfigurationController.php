@@ -195,7 +195,5 @@ class ConfigurationController extends Controller
                 'message' => 'Configuration modifiée avec succès!',
             ], 200);
     }
-
-
 }
 
