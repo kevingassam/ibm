@@ -38,6 +38,14 @@ class ProjetController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function updateProjectappartements(Request $request){
+        $appartements = Appartement::where('projet_id', $request->input('projet_id'))->orderBy('order')->get();
+        foreach ($appartements as $index => $appartement) {
+            Appartement::where('id', $appartement->id)->update(['order' => $request->input('order')[$index]]);
+        }
+        return response()->json(['success' => true]);
+    }
+
 
 
     public function deleteSingleImage(Request $request)

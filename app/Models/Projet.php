@@ -10,6 +10,6 @@ class Projet extends Model
     use HasFactory;
 
     public function appartements(){
-        return $this->hasMany(Appartement::class);
+        return $this->hasMany(Appartement::class)->orderby('order',"Asc");
     }
 }

@@ -11,7 +11,7 @@ class CreateAppartement extends Component
 
     public function mount($projet){
         $this->projet = $projet;
-        $this->appartements = Appartement::where('projet_id', $projet->id)->get();
+        $this->appartements = Appartement::where('projet_id', $projet->id)->orderBy('order')->get();
     }
 
     public function save(){

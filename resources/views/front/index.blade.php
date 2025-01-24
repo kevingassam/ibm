@@ -119,8 +119,6 @@
                     <div class="title-area">
                         <span class="sub-title">Annonce en vedette</span>
                         <h2 class="sec-title text-theme">Trouvez la maison de vos rêves aujourd'hui </h2>
-                        <p class="text-theme">Quis nulla blandit vulputate morbi adipiscing sem vestibulum. Nulla
-                            turpis integer dui sed posuere sem. Id molestie mi arcu gravida lorem potenti.</p>
                     </div>
                 </div>
                 <div class="col-auto">
@@ -196,7 +194,7 @@
             <div class="counter-card-wrap style2">
                 <div class="counter-card style2">
                     <div class="media-body">
-                        <h2 class="box-number text-white"><span class="counter-number text-white">20</span>+</h2>
+                        <h2 class="box-number text-white"><span class="counter-number text-white">16</span>+</h2>
                         <p class="box-text text-light">Années d'xperiences</p>
                     </div>
                 </div>

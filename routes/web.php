@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/projet/appartement/{id}', [ProjetController::class, 'details_appartement'])->name('details_appartement');
     Route::get('/projet/parking/{id}', [ParkingController::class, 'details_parking'])->name('details_parking');
     Route::post('/update-project-order', [ProjetController::class, 'updateProjectOrder'])->name('update.project.order');
+    Route::post('/update-project-appartements', [ProjetController::class, 'updateProjectappartements'])->name('update.project.appartements');
     Route::resource('parkings', ParkingController::class);
 });
 

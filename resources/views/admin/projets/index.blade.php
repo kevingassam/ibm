@@ -51,7 +51,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>
-                                        
+
                                     </th>
                                     <th>Titre</th>
                                     <th>Date modification</th>
@@ -104,24 +104,7 @@
                                                 <i class="bi bi-house-add"></i>
                                                 Propriétés ( {{ $projet->appartements->count() }} )
                                             </button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="ModalAppartement{{ $projet->id }}" tabindex="-1">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h6 class="modal-title" id="exampleModalLabel">
-                                                                Gestion des types des propriétés
-                                                            </h6>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        @csrf
-                                                        <div class="modal-body">
-                                                            @livewire('CreateAppartement', ['projet' => $projet])
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <x-ModalProjet :Id="$projet->id"></x-ModalProjet>
                                         </td>
                                         <td class="text-end">
@@ -142,6 +125,26 @@
                             </tbody>
                         </table>
                     </div>
+                    @forelse ($projets as $projet)
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalAppartement{{ $projet->id }}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="exampleModalLabel">
+                                            Gestion des types des propriétés
+                                        </h6>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    @csrf
+                                    <div class="modal-body">
+                                        @livewire('CreateAppartement', ['projet' => $projet])
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -164,6 +167,31 @@
                     data: {
                         _token: '{{ csrf_token() }}',
                         order: order
+                    },
+                    success: function(response) {
+                        console.log('Ordre mis à jour avec succès');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Erreur lors de la mise à jour de l\'ordre', error);
+                    }
+                });
+            }
+        });
+        var sortable2 = new Sortable(document.getElementById('sortable2'), {
+            onEnd: function(evt) {
+                var order = [];
+                var rows = document.querySelectorAll('#sortable2 tr');
+                var projet_id = rows[0].getAttribute('data-projet_id');
+                rows.forEach(function(row) {
+                    order.push(row.getAttribute('data-id'));
+                });
+                $.ajax({
+                    url: '{{ route('update.project.appartements') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        order: order,
+                        projet_id: projet_id
                     },
                     success: function(response) {
                         console.log('Ordre mis à jour avec succès');

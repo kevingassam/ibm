@@ -19,14 +19,18 @@
         <table class="table align-middle">
             <thead class="table-light">
                 <tr>
+                    <th></th>
                     <th scope="col">Nom</th>
                     <th scope="col">Type</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="sortable2">
                 @forelse ($appartements as $appartement)
-                    <tr>
+                <tr data-id="{{ $appartement->id }}" id="tr-appartement-{{ $appartement->id }}" data-projet_id="{{ $projet->id }}" >
+                    <td>
+                        <i class="bi bi-grid-3x3-gap" style="cursor: pointer;"></i>
+                    </td>
                         <td>{{ $appartement->nom }}</td>
                         <td>
                             <span class="badge bg-primary">
@@ -51,7 +55,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="2" class="text-center">Aucune propriété disponible.</td>
+                        <td colspan="3" class="text-center">Aucune propriété disponible.</td>
                     </tr>
                 @endforelse
             </tbody>
