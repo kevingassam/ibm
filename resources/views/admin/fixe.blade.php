@@ -30,6 +30,13 @@
     <link rel="shortcut icon" href="{{ $infos->GetIcon() }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tiny.cloud/1/prci1ask4660amvheuqm4tcy5y725g238o05h4g3rii7zkdd/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+
     @livewireStyles
     @yield('header')
 

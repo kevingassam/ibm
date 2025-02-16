@@ -51,6 +51,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('header')
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DCG4HZGZN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-4DCG4HZGZN');
+    </script>
+
 </head>
 
 <body class="bg-light">
@@ -86,7 +99,8 @@
             <button class="th-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ $infos->GetLogo() }}"  style="Max-height: 30px !important;" alt="{{ $infos->app_name }}">
+                    <img src="{{ $infos->GetLogo() }}" style="Max-height: 30px !important;"
+                        alt="{{ $infos->app_name }}">
                 </a>
             </div>
             <div class="th-mobile-menu">
@@ -140,8 +154,7 @@
             <div class="widget  ">
                 <div class="th-widget-about">
                     <div class="about-logo">
-                        <a href="{{ route('home') }}"><img src="/front/img/logo.svg"
-                                alt="{{ $infos->app_name }}"></a>
+                        <a href="{{ route('home') }}"><img src="/front/img/logo.svg" alt="{{ $infos->app_name }}"></a>
                     </div>
                     <p class="about-text">
                         {{ $infos->text_footer ?? '' }}
@@ -334,7 +347,8 @@
                                 <div class="th-widget-about">
                                     <div class="about-logo">
                                         <a href="{{ route('home') }}">
-                                            <img src="{{ $infos->GetLogo() }}" style="Max-height: 80px !important;" alt="{{ $infos->app_name }}">
+                                            <img src="{{ $infos->GetLogo() }}" style="Max-height: 80px !important;"
+                                                alt="{{ $infos->app_name }}">
                                         </a>
                                     </div>
                                     <p class="about-text">
