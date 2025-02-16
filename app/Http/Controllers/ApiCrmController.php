@@ -36,39 +36,53 @@ class ApiCrmController extends Controller
             'icon' => $iconUrl,
             "nom" => $config->app_name,
             "adresse" => $config->adresse2 ?? null,
-            "contact" => $config->tel1 ."". $config->tel2 ? " / ". $config->tel2 : null,
+            "contact" => $config->tel1 . "" . $config->tel2 ? " / " . $config->tel2 : null,
             "matricule" =>  $config->matricule ?? null,
             'status' => true,
         ]);
-
     }
 
 
-    public function propriete($id){
+    public function propriete($id)
+    {
         return response()
-        ->json(
-            [
-                'propriete' => Appartement::find($id),
-            ]
-        );
+            ->json(
+                [
+                    'propriete' => Appartement::find($id),
+                ]
+            );
     }
 
-    public function projet($id){
+    public function projet($id)
+    {
         return response()
-        ->json(
-            [
-                'projet' => Projet::find($id),
-            ]
-        );
+            ->json(
+                [
+                    'projet' => Projet::find($id),
+                ]
+            );
     }
 
-    public function appartement($id){
-        return response()
-        ->json(
-            [
-                'appartement' => DetailsAppartement::find($id),
-            ]
-        );
+    public function appartement($id)
+    {
+        $appartement =  DetailsAppartement::find($id);
+        if ($appartement) {
+            return response()
+                ->json(
+                    [
+                        'appartement' => DetailsAppartement::find($id),
+                        'statut' => true, 
+                        'message' => "l4appartement a ete retrouver"
+                    ]
+                );
+        }else{
+            return response()
+                ->json(
+                    [
+                        'statut' => false,
+                        'message' => "l'appartement n'existe pas"
+                    ]
+                );
+        }
     }
-
 }
